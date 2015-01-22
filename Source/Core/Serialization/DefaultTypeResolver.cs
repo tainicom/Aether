@@ -28,12 +28,6 @@ namespace tainicom.Aether.Core.Serialization
 
             particleType = Type.GetType(typeName, false);
 
-            if (particleType == null)
-                particleType = Type.GetType(typeName.Replace("TableEngine", "tainicom.Aether"));
-
-            if (particleType == null)
-                particleType = Type.GetType(typeName.Replace("TableEngine", "tainicom.Aether").Replace("Aether.Core", "tainicom.Aether.Core"));
-            
             IAether particle = (IAether)Activator.CreateInstance(particleType);
             return particle;
         }
