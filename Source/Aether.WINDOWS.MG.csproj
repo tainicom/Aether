@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0D61F6EB-434F-4003-AF24-3E1300EBFF18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tainicom.Aether</RootNamespace>
+    <AssemblyName>tainicom.Aether</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\x86\Windows.MG\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\x86\Windows.MG\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\AnyCPU\Windows.MG\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;WINDOWS</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\x86\Windows.MG\tainicom.Aether.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\AnyCPU\Windows.MG\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\x86\Windows.MG\tainicom.Aether.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Core\BasePlasma.cs" />
+    <Compile Include="Core\BaseWalker.cs" />
+    <Compile Include="Core\Cameras\Camera.cs" />
+    <Compile Include="Core\Cameras\InterpolatedCamera.cs" />
+    <Compile Include="Core\Cameras\MovingCamera.cs" />
+    <Compile Include="Core\Cameras\OrthographicCamera.cs" />
+    <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Core\Cameras\StageCamera.cs" />
+    <Compile Include="Core\Data\EnabledCollection.cs" />
+    <Compile Include="Core\GluonPlasma.cs" />
+    <Compile Include="Core\Gluons\AetherTimer.cs" />
+    <Compile Include="Core\LeptonPlasma.cs" />
+    <Compile Include="Core\Managers\CamerasManager.cs" />
+    <Compile Include="Core\Managers\GluonsManager.cs" />
+    <Compile Include="Core\Managers\LeptonsManager.cs" />
+    <Compile Include="Core\Managers\MaterialsManager.cs" />
+    <Compile Include="Core\Managers\PhotonsManager.cs" />
+    <Compile Include="Core\Materials\AlphaTestMaterial.cs" />
+    <Compile Include="Core\Materials\BasicMaterial.cs" />
+    <Compile Include="Core\Materials\Data\DirectionalLightData.cs" />
+    <Compile Include="Core\Materials\EnvironmentMapMaterial.cs" />
+    <Compile Include="Core\Materials\MaterialBase.cs" />
+    <Compile Include="Core\Materials\SkinnedMaterial.cs" />
+    <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
+    <Compile Include="Core\Serialization\AetherXMLReader.cs" />
+    <Compile Include="Core\Serialization\AetherXMLWriter.cs" />
+    <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
+    <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
+    <Compile Include="Core\Walkers\PhotonsWalker.cs" />
+    <Compile Include="Core\Walkers\WireframePhotonsWalker.cs" />
+    <Compile Include="Design\Converters\QuaternionWPGConverter.cs" />
+    <Compile Include="Design\Converters\Vector3ColorWPGConverter.cs" />
+    <Compile Include="Design\Converters\Vector3WPGConverter.cs" />
+    <Compile Include="Design\Converters\Vector4ColorWPGConverter.cs" />
+    <Compile Include="Elementary\Cameras\ICamera.cs" />
+    <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
+    <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
+    <Compile Include="Elementary\Data\UniqueID.cs" />
+    <Compile Include="Elementary\Gluon\IGluon.cs" />
+    <Compile Include="Elementary\Gluon\IMaximumStep.cs" />
+    <Compile Include="Elementary\IAether.cs" />
+    <Compile Include="Elementary\IAetherNotify.cs" />
+    <Compile Include="Elementary\IAetherWalker.cs" />
+    <Compile Include="Elementary\IInitializable.cs" />
+    <Compile Include="Elementary\IPlasma.cs" />
+    <Compile Include="Elementary\ITickable.cs" />
+    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
+    <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Managers\IAetherManager.cs" />
+    <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
+    <Compile Include="Elementary\Photons\IDynamicPhoton.cs" />
+    <Compile Include="Elementary\Photons\IEditorPhoton.cs" />
+    <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
+    <Compile Include="Elementary\Photons\ILightCone.cs" />
+    <Compile Include="Elementary\Photons\ILightDirection.cs" />
+    <Compile Include="Elementary\Photons\ILightSource.cs" />
+    <Compile Include="Elementary\Photons\IMaterial.cs" />
+    <Compile Include="Elementary\Photons\IPhoton.cs" />
+    <Compile Include="Elementary\Photons\IRenderable.cs" />
+    <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
+    <Compile Include="Elementary\Serialization\IAetherReader.cs" />
+    <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
+    <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
+    <Compile Include="Elementary\Serialization\IAetherWriter.cs" />
+    <Compile Include="Engine\AetherContext.cs" />
+    <Compile Include="Engine\AetherEngine.cs" />
+    <Compile Include="Engine\AetherEngine.IDictionary.cs" />
+    <Compile Include="Engine\AetherEngine.IDisposable.cs" />
+    <Compile Include="Engine\AetherEngine.ISerialization.cs" />
+    <Compile Include="Engine\AetherEngine.Managers.cs" />
+    <Compile Include="Engine\AetherEngine.Names.cs" />
+    <Compile Include="Engine\AetherException.cs" />
+    <Compile Include="Engine\BaseManager.cs" />
+    <Compile Include="Engine\BaseManager.IDictionary.cs" />
+    <Compile Include="Engine\BaseManager.IDisposable.cs" />
+    <Compile Include="Engine\BaseManager.ISerialization.cs" />
+    <Compile Include="Engine\Data\AetherEngineData.cs" />
+    <Compile Include="Maths\Tau.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.Windows.csproj">
+      <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
+      <Name>MonoGame.Framework.Windows</Name>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
