@@ -1,2 +1,2 @@
 # Aether
- A modular game engine
+ Aether is a modular game engine
