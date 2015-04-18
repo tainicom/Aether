@@ -30,41 +30,16 @@ namespace tainicom.Aether.Core.Cameras
         protected Matrix _projection;
         //view related
         
-        #if PHONE
-        public
-        #else
-        protected
-        #endif
-        Vector3 _position = Vector3.Zero;
-             
-        #if PHONE
-        public
-        #else
-        protected
-        #endif        
-        Vector3 _lookAt = Vector3.Forward;
+        protected Vector3 _position = Vector3.Zero;
+                  
+        protected Vector3 _lookAt = Vector3.Forward;
         
-        #if PHONE
-        public
-        #else
-        protected
-        #endif
-        Vector3 _up = Vector3.Up;
+        protected Vector3 _up = Vector3.Up;
         //projection related
                 
-        #if PHONE
-        public
-        #else
-        protected
-        #endif
-        float _nearPlane = 10.0f;
+        protected float _nearPlane = 10.0f;
         
-        #if PHONE
-        public
-        #else
-        protected
-        #endif        
-        float _farPlane = 10000.0f;
+        protected float _farPlane = 10000.0f;
 
         //updates
         protected int updateLock = 0;
@@ -142,7 +117,11 @@ namespace tainicom.Aether.Core.Cameras
         public float NearPlane
         {
             get { return _nearPlane; }
-            set { _nearPlane = value; if (updateLock == 0) UpdateProjection(); }
+            set
+            {
+                if (value >= _farPlane || value <=0) return;
+                _nearPlane = value; if (updateLock == 0) UpdateProjection(); 
+            }
         }
 
         #if(WINDOWS)
@@ -151,7 +130,11 @@ namespace tainicom.Aether.Core.Cameras
         public float FarPlane
         {
             get { return _farPlane; }
-            set { _farPlane = value; if (updateLock == 0) UpdateProjection(); }
+            set
+            {
+                if (value <= _nearPlane) return;
+                _farPlane = value; if (updateLock == 0) UpdateProjection();
+            }
         }
 
         public void UpdateView()
