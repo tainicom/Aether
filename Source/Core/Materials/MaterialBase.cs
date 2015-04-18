@@ -95,9 +95,12 @@ namespace tainicom.Aether.Core.Materials
             }
 
             IEffectMatrices effectMatrices = _effect as IEffectMatrices;
+            if (effectMatrices != null)
+            {
             effectMatrices.World = this.World;
             effectMatrices.View = this.View;
             effectMatrices.Projection = this.Projection;
+            }
 
             _effect.CurrentTechnique.Passes[0].Apply();
         }

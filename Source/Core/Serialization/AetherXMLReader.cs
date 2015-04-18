@@ -76,7 +76,7 @@ namespace tainicom.Aether.Core.Serialization
                     UniqueID uid;
                     IAether particle;
                     ReadParticle(out uid, out particle);
-                    if (particle == null) throw new Exception("Cant read particle.");
+                    if (particle == null) throw new Exception("Can't read particle.");
                     particles.Add(uid,particle);
                 }
             }
