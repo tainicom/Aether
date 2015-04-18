@@ -141,6 +141,8 @@
     <Compile Include="Engine\BaseManager.IDisposable.cs" />
     <Compile Include="Engine\BaseManager.ISerialization.cs" />
     <Compile Include="Engine\Data\AetherEngineData.cs" />
+    <Compile Include="Maths\Extensions.cs" />
+    <Compile Include="Maths\Line3.cs" />
     <Compile Include="Maths\Tau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
