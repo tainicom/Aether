@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("Aether Engine")]
 [assembly: AssemblyDescription("Modular game engine")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyCopyright("Copyright © Kastellanos Nikolaos 2014")]
+[assembly: AssemblyCopyright("Copyright © Kastellanos Nikolaos 2014-2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: AssemblyConfiguration("")]
