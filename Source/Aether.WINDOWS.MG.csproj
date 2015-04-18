@@ -137,6 +137,7 @@
     <Compile Include="Engine\Data\AetherEngineData.cs" />
     <Compile Include="Maths\Extensions.cs" />
     <Compile Include="Maths\Line3.cs" />
+    <Compile Include="MonoGame\AetherContextMG.cs" />
     <Compile Include="Maths\Tau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -144,6 +144,7 @@
     <Compile Include="Maths\Extensions.cs" />
     <Compile Include="Maths\Line3.cs" />
     <Compile Include="Maths\Tau.cs" />
+    <Compile Include="MonoGame\AetherContextMG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

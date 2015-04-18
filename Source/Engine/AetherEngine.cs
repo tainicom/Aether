@@ -34,17 +34,19 @@ namespace tainicom.Aether.Engine
     {
         #region Aether Fields
 
+        private AetherContext _context;
+
         public AetherEngineData EngineData;
-        
-        public GraphicsDevice GraphicsDevice { get { return _graphicsDevice; } }
-        protected GraphicsDevice _graphicsDevice;
         
         internal IPlasma Root;
 
+        public AetherContext Context { get { return _context; } }
+
         #endregion
         
-        public AetherEngine()
+        public AetherEngine(AetherContext context)
         {
+            this._context = context;
             //initialize trivial data
             EngineData = new AetherEngineData();
 

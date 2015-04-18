@@ -22,6 +22,7 @@ using tainicom.Aether.Engine;
 using System.ComponentModel;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Serialization;
+using tainicom.Aether.MonoGame;
 
 namespace tainicom.Aether.Core.Materials
 {
@@ -78,7 +79,7 @@ namespace tainicom.Aether.Core.Materials
 
         public virtual void Initialize(AetherEngine engine)
         {   
-            this.GraphicsDevice = engine.GraphicsDevice;
+            this.GraphicsDevice = AetherContextMG.GetDevice(engine);
             CreateEffect();
         }
 

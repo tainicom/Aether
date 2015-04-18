@@ -47,11 +47,11 @@ namespace tainicom.Aether.Engine
         
         protected virtual void CreateManagers()
         {
-            LeptonsMgr = new LeptonsManager(this, null, "Leptons");
-            GluonsMgr = new GluonsManager(this, null, "Gluons");
-            CamerasMgr = new CamerasManager(this, null, "Cameras");
-            MaterialsMgr = new MaterialsManager(this, null, "Materials");
-            PhotonsMgr = new PhotonsManager(this, null, "Photons");
+            LeptonsMgr = new LeptonsManager(this, _context, "Leptons");
+            GluonsMgr = new GluonsManager(this, _context, "Gluons");
+            CamerasMgr = new CamerasManager(this, _context, "Cameras");
+            MaterialsMgr = new MaterialsManager(this, _context, "Materials");
+            PhotonsMgr = new PhotonsManager(this, _context, "Photons");
 
             AddManager(LeptonsMgr);
             AddManager(GluonsMgr);

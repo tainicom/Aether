@@ -19,13 +19,13 @@ using System;
 
 namespace tainicom.Aether.Engine
 {
-    public class AetherContext : IDisposable
+    public abstract class AetherContext : IDisposable
     {
-        readonly string ContentDirectory;
+        private bool _isDisposed = false;
+        protected bool IsDisposed { get { return _isDisposed; } }
 
-        public AetherContext(string contentDirectory)
+        public AetherContext()
         {
-            this.ContentDirectory = contentDirectory;
         }
 
         ~AetherContext()
@@ -41,16 +41,14 @@ namespace tainicom.Aether.Engine
             GC.SuppressFinalize(this);
         }
 
-        protected bool isDisposed = false;
-        protected virtual void Dispose(bool disposing)
-        {
-            if (isDisposed) return;
-            if (disposing)
-            {   
-            }
+        private void Dispose(bool disposing)
+		{   
+            if (_isDisposed) return;
+            OnDispose(disposing);
+            _isDisposed = true;
+		}
             
-            isDisposed = true;
-        }
+        protected abstract void OnDispose(bool disposing);
 
         #endregion
         
