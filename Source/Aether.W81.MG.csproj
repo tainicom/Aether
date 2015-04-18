@@ -39,6 +39,7 @@
     <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.Windows8_1.csproj">
       <Project>{22e695a8-455a-437f-b80b-b71f85ded19d}</Project>
       <Name>MonoGame.Framework.Windows8_1</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -50,8 +51,12 @@
     <Compile Include="Core\GluonPlasma.cs" />
     <Compile Include="Core\Gluons\AetherTimer.cs" />
     <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
+    <Compile Include="Core\Serialization\AetherXMLReader.cs" />
     <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
     <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
+    <Compile Include="Core\Walkers\PhotonsWalker.cs" />
+    <Compile Include="Core\Walkers\WireframePhotonsWalker.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
     <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
@@ -61,8 +66,10 @@
     <Compile Include="Elementary\IAether.cs" />
     <Compile Include="Elementary\IAetherNotify.cs" />
     <Compile Include="Elementary\IAetherWalker.cs" />
+    <Compile Include="Elementary\IInitializable.cs" />
     <Compile Include="Elementary\IPlasma.cs" />
     <Compile Include="Elementary\ITickable.cs" />
+    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
     <Compile Include="Elementary\Managers\IAetherManager.cs" />
@@ -81,6 +88,20 @@
     <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
     <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
     <Compile Include="Elementary\Serialization\IAetherWriter.cs" />
+    <Compile Include="Engine\AetherContext.cs" />
+    <Compile Include="Engine\AetherEngine.cs" />
+    <Compile Include="Engine\AetherEngine.IDictionary.cs" />
+    <Compile Include="Engine\AetherEngine.IDisposable.cs" />
+    <Compile Include="Engine\AetherEngine.ISerialization.cs" />
+    <Compile Include="Engine\AetherEngine.Managers.cs" />
+    <Compile Include="Engine\AetherEngine.Names.cs" />
+    <Compile Include="Engine\AetherException.cs" />
+    <Compile Include="Engine\BaseManager.cs" />
+    <Compile Include="Engine\BaseManager.IDictionary.cs" />
+    <Compile Include="Engine\BaseManager.IDisposable.cs" />
+    <Compile Include="Engine\BaseManager.ISerialization.cs" />
+    <Compile Include="Engine\Data\AetherEngineData.cs" />
+    <Compile Include="Maths\Tau.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
