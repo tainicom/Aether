@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Elementary.Photons
 {
-    public interface ILightSource
+    public interface ILightSource: IAether
     {
         Vector3 LightSourceColor {get;set;}
         float Intensity {get;set;}
