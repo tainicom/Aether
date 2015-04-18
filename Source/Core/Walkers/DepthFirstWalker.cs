@@ -21,7 +21,7 @@ namespace tainicom.Aether.Core.Walkers
 {
     public class DepthFirstWalker : BaseWalker
     {
-        protected IAether Root;
+        protected IAether startingElement;
 
         protected struct Breadcrumb
         {
@@ -36,8 +36,9 @@ namespace tainicom.Aether.Core.Walkers
         protected Breadcrumb currentNode;
         protected Queue<Breadcrumb> BreadcrumbQueue;
 
-        public DepthFirstWalker()
+        public DepthFirstWalker(IAether startingElement)
         {
+            this.startingElement = startingElement;
             BreadcrumbQueue = new Queue<Breadcrumb>(16);
         }
 
@@ -58,7 +59,7 @@ namespace tainicom.Aether.Core.Walkers
         {
             if (currentNode.Plasma == null)
             {
-                Current = Root;
+                Current = startingElement;
                 BreadcrumbQueue.Clear();
                 currentNode = new Breadcrumb((IPlasma)Current, -1);
                 return true;

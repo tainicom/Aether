@@ -16,11 +16,11 @@
 
 using System;
 using System.Collections.Generic;
-using tainicom.Aether.Elementary;
-using tainicom.Aether.Engine;
 using Microsoft.Xna.Framework;
-using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Leptons;
+using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Walkers
 {
@@ -33,11 +33,15 @@ namespace tainicom.Aether.Core.Walkers
         public Matrix View { get; set; }
         public Matrix World { get; set; }
 
+        public PhotonsWalker(): base(null)
+        {
+        }
+
         void IInitializable.Initialize(AetherEngine engine)
         {
             this.engine = engine;
             this.Manager = engine.PhotonsMgr;
-            this.Root = engine.PhotonsMgr.Root;
+            this.startingElement = engine.PhotonsMgr.Root;
         }
 
         public override void Reset()

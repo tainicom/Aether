@@ -36,11 +36,15 @@ namespace tainicom.Aether.Core.Walkers
         public Matrix View { get; set; }
         public Matrix World { get; set; }
 
+        public WireframePhotonsWalker(): base(null)
+        {
+        }
+
         void IInitializable.Initialize(AetherEngine engine)
         {
             this.engine = engine;
             this.Manager = engine.PhotonsMgr;
-            this.Root = engine.PhotonsMgr.Root;
+            this.startingElement = engine.PhotonsMgr.Root;
             
             //create material
             material = new BasicMaterial();
