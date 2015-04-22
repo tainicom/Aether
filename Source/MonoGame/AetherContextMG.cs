@@ -41,6 +41,7 @@ namespace tainicom.Aether.MonoGame
             return;
         }
         
+#if WINDOWS
         public ContentManager GetContent(Assembly library)
         {
             ContentManager result;
@@ -60,6 +61,7 @@ namespace tainicom.Aether.MonoGame
 
             return result;
         }
+#endif
 
         public static GraphicsDevice GetDevice(AetherEngine engine)
         {
