@@ -22,6 +22,7 @@ using tainicom.Aether.Elementary.Cameras;
 using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine;
 using tainicom.Aether.Maths;
+using tainicom.Aether.MonoGame;
 
 namespace tainicom.Aether.Core.Cameras
 {
@@ -95,9 +96,9 @@ namespace tainicom.Aether.Core.Cameras
 
         public virtual void Initialize(AetherEngine engine)
         {
-            //_graphicsDevice = ((Table)engine).GraphicsDevice;
-            float width = (float)engine.GraphicsDevice.Viewport.Width;
-            float height = (float)engine.GraphicsDevice.Viewport.Height;
+            var device = AetherContextMG.GetDevice(engine);
+            float width = (float)device.Viewport.Width;
+            float height = (float)device.Viewport.Height;
             _aspectRatio = width / height;
             UpdateView();
             UpdateProjection();
