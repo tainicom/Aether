@@ -69,6 +69,7 @@
     <Compile Include="Core\Cameras\StageCamera.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
     <Compile Include="Core\GluonPlasma.cs" />
+    <Compile Include="Core\Gluons\AetherPhasor.cs" />
     <Compile Include="Core\Gluons\AetherTimer.cs" />
     <Compile Include="Core\LeptonPlasma.cs" />
     <Compile Include="Core\Managers\CamerasManager.cs" />

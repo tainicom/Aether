@@ -37,7 +37,7 @@ namespace tainicom.Aether.Core.Gluons
             elapsedTime = TimeSpan.Zero;
         }
 
-        public void Tick(GameTime gameTime)
+        public virtual void Tick(GameTime gameTime)
         {
             elapsedTime += gameTime.ElapsedGameTime;
         }
