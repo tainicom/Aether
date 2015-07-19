@@ -123,6 +123,7 @@
     <Compile Include="Elementary\Photons\IMaterial.cs" />
     <Compile Include="Elementary\Photons\IPhoton.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
+    <Compile Include="Elementary\Radiums\IRadium.cs" />
     <Compile Include="Elementary\Serialization\IAetherReader.cs">
       <SubType>Code</SubType>
     </Compile>
