@@ -46,7 +46,7 @@ namespace tainicom.Aether.Core.Serialization
 
         public void Close()
         {
-#if !NETFX_CORE
+#if WINDOWS || WINDOWS_PHONE
             reader.Close();
 #else
             reader.Dispose();

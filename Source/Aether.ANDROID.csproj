@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{6926AF8D-F389-4454-8553-ACD2DBBE3DB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>tainicom.Aether</RootNamespace>
+    <AssemblyName>tainicom.Aether</AssemblyName>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\Android\</OutputPath>
+    <DefineConstants>DEBUG;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\Android\</OutputPath>
+    <DefineConstants>ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Core\BasePlasma.cs" />
+    <Compile Include="Core\BaseWalker.cs" />
+    <Compile Include="Core\Cameras\Camera.cs" />
+    <Compile Include="Core\Cameras\MovingCamera.cs" />
+    <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Core\Cameras\StageCamera.cs" />
+    <Compile Include="Core\Data\EnabledCollection.cs" />
+    <Compile Include="Core\GluonPlasma.cs" />
+    <Compile Include="Core\Gluons\AetherTimer.cs" />
+    <Compile Include="Core\LeptonPlasma.cs" />
+    <Compile Include="Core\Managers\CamerasManager.cs" />
+    <Compile Include="Core\Managers\GluonsManager.cs" />
+    <Compile Include="Core\Managers\LeptonsManager.cs" />
+    <Compile Include="Core\Managers\MaterialsManager.cs" />
+    <Compile Include="Core\Managers\PhotonsManager.cs" />
+    <Compile Include="Core\Materials\AlphaTestMaterial.cs" />
+    <Compile Include="Core\Materials\BasicMaterial.cs" />
+    <Compile Include="Core\Materials\Data\DirectionalLightData.cs" />
+    <Compile Include="Core\Materials\EnvironmentMapMaterial.cs" />
+    <Compile Include="Core\Materials\MaterialBase.cs" />
+    <Compile Include="Core\Materials\SkinnedMaterial.cs" />
+    <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
+    <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
+    <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
+    <Compile Include="Core\Walkers\PhotonsWalker.cs" />
+    <Compile Include="Elementary\Cameras\ICamera.cs" />
+    <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
+    <Compile Include="Elementary\Data\UniqueID.cs" />
+    <Compile Include="Elementary\Gluon\IGluon.cs" />
+    <Compile Include="Elementary\Gluon\IMaximumStep.cs" />
+    <Compile Include="Elementary\IAether.cs" />
+    <Compile Include="Elementary\IAetherNotify.cs" />
+    <Compile Include="Elementary\IAetherWalker.cs" />
+    <Compile Include="Elementary\IInitializable.cs" />
+    <Compile Include="Elementary\IPlasma.cs" />
+    <Compile Include="Elementary\ITickable.cs" />
+    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
+    <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
+    <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Managers\IAetherManager.cs" />
+    <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
+    <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
+    <Compile Include="Elementary\Photons\ILightCone.cs" />
+    <Compile Include="Elementary\Photons\ILightDirection.cs" />
+    <Compile Include="Elementary\Photons\ILightSource.cs" />
+    <Compile Include="Elementary\Photons\IMaterial.cs" />
+    <Compile Include="Elementary\Photons\IPhoton.cs" />
+    <Compile Include="Elementary\Photons\IRenderable.cs" />
+    <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
+    <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
+    <Compile Include="Elementary\Serialization\IAetherReader.cs" />
+    <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
+    <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
+    <Compile Include="Engine\AetherContext.cs" />
+    <Compile Include="Engine\AetherEngine.cs" />
+    <Compile Include="Engine\AetherEngine.IDictionary.cs" />
+    <Compile Include="Engine\AetherEngine.IDisposable.cs" />
+    <Compile Include="Engine\AetherEngine.ISerialization.cs" />
+    <Compile Include="Engine\AetherEngine.Managers.cs" />
+    <Compile Include="Engine\AetherEngine.Names.cs" />
+    <Compile Include="Engine\AetherException.cs" />
+    <Compile Include="Engine\BaseManager.cs" />
+    <Compile Include="Engine\BaseManager.IDictionary.cs" />
+    <Compile Include="Engine\BaseManager.IDisposable.cs" />
+    <Compile Include="Engine\BaseManager.ISerialization.cs" />
+    <Compile Include="Engine\Data\AetherEngineData.cs" />
+    <Compile Include="Maths\Extensions.cs" />
+    <Compile Include="Maths\Line3.cs" />
+    <Compile Include="Maths\Tau.cs" />
+    <Compile Include="MonoGame\AetherContextMG.cs" />
+    <Compile Include="Properties\AssemblyInfo.Android.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\Game\packages\MonoGame.Framework.Portable.3.2.99.1-Beta\lib\portable-net40+sl50+win+wpa81+wp80+MonoAndroid10+MonoTouch10\MonoGame.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

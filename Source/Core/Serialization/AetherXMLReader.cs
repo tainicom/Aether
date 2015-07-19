@@ -35,9 +35,7 @@ namespace tainicom.Aether.Core.Serialization
         private Stream stream;
         private XmlReader reader;
 
-
         Dictionary<UniqueID,IAether> deserialisedParticles = new Dictionary<UniqueID,IAether>();
-
 
         public AetherXMLReader(AetherEngine engine, Stream stream)
         {
