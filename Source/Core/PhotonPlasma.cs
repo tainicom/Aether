@@ -22,9 +22,9 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class PhotonPlasma: BasePlasma, ITickable
+    public class PhotonPlasma: BasePlasma, IPhotonPlasma, ITickable
     {
-        EnabledList<IAether> _enabledParticles;
+        protected EnabledList<IAether> _enabledParticles;
 
         public List<IAether> VisibleParticles { get { return _enabledParticles; } }
 

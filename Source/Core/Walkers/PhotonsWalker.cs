@@ -56,7 +56,7 @@ namespace tainicom.Aether.Core.Walkers
 
         protected override IList<IAether> GetParticles(IPlasma plasma)
         {
-            PhotonPlasma photonPlasma = plasma as PhotonPlasma;
+            IPhotonPlasma photonPlasma = plasma as IPhotonPlasma;
             if (photonPlasma != null)
                 return photonPlasma.VisibleParticles;
             return plasma;
