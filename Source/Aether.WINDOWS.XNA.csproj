@@ -31,7 +31,7 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\x86\Windows.XNA\</OutputPath>
     <DefineConstants>TRACE;WINDOWS</DefineConstants>
@@ -107,12 +107,11 @@
     <Compile Include="Elementary\IAetherWalker.cs" />
     <Compile Include="Elementary\IInitializable.cs" />
     <Compile Include="Elementary\IPlasma.cs" />
-    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
-    <Compile Include="Elementary\Managers\IAetherManager.cs" />
-    <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\ITickable.cs" />
+    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
     <Compile Include="Elementary\Photons\IDynamicPhoton.cs" />
     <Compile Include="Elementary\Photons\IEditorPhoton.cs" />
@@ -122,11 +121,11 @@
     <Compile Include="Elementary\Photons\ILightSource.cs" />
     <Compile Include="Elementary\Photons\IMaterial.cs" />
     <Compile Include="Elementary\Photons\IPhoton.cs" />
+    <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
+    <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
     <Compile Include="Elementary\Radiums\IRadium.cs" />
-    <Compile Include="Elementary\Serialization\IAetherReader.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Elementary\Serialization\IAetherReader.cs" />
     <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
     <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
     <Compile Include="Elementary\Serialization\IAetherWriter.cs" />
@@ -149,7 +148,6 @@
     <Compile Include="MonoGame\AetherContextMG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

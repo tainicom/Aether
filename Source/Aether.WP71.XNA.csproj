@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Aether</RootNamespace>
-    <AssemblyName>Aether</AssemblyName>
+    <RootNamespace>tainicom.Aether</RootNamespace>
+    <AssemblyName>tainicom.Aether</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
@@ -33,7 +33,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <DefineConstants>TRACE;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;WINDOWS_PHONE WP7</DefineConstants>
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|Windows Phone' ">
@@ -45,24 +45,57 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE;WINDOWS_PHONE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;WINDOWS_PHONE WP7</DefineConstants>
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Compile Include="Core\BasePlasma.cs" />
+    <Compile Include="Core\BaseWalker.cs" />
+    <Compile Include="Core\Cameras\Camera.cs" />
+    <Compile Include="Core\Cameras\MovingCamera.cs" />
+    <Compile Include="Core\Cameras\OrthographicCamera.cs" />
+    <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Core\Cameras\StageCamera.cs" />
+    <Compile Include="Core\Data\EnabledCollection.cs" />
+    <Compile Include="Core\GluonPlasma.cs" />
+    <Compile Include="Core\Gluons\AetherTimer.cs" />
+    <Compile Include="Core\LeptonPlasma.cs" />
+    <Compile Include="Core\Managers\CamerasManager.cs" />
+    <Compile Include="Core\Managers\GluonsManager.cs" />
+    <Compile Include="Core\Managers\LeptonsManager.cs" />
+    <Compile Include="Core\Managers\MaterialsManager.cs" />
+    <Compile Include="Core\Managers\PhotonsManager.cs" />
+    <Compile Include="Core\Materials\AlphaTestMaterial.cs" />
+    <Compile Include="Core\Materials\BasicMaterial.cs" />
+    <Compile Include="Core\Materials\Data\DirectionalLightData.cs" />
+    <Compile Include="Core\Materials\EnvironmentMapMaterial.cs" />
+    <Compile Include="Core\Materials\MaterialBase.cs" />
+    <Compile Include="Core\Materials\SkinnedMaterial.cs" />
+    <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
+    <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
+    <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
+    <Compile Include="Core\Walkers\PhotonsWalker.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
     <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
+    <Compile Include="Elementary\Data\UniqueID.cs" />
     <Compile Include="Elementary\Gluon\IGluon.cs" />
     <Compile Include="Elementary\Gluon\IMaximumStep.cs" />
     <Compile Include="Elementary\IAether.cs" />
+    <Compile Include="Elementary\IAetherNotify.cs" />
     <Compile Include="Elementary\IAetherWalker.cs" />
+    <Compile Include="Elementary\IInitializable.cs" />
+    <Compile Include="Elementary\IPlasma.cs" />
     <Compile Include="Elementary\ITickable.cs" />
+    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
     <Compile Include="Elementary\Photons\IDynamicPhoton.cs" />
     <Compile Include="Elementary\Photons\IEditorPhoton.cs" />
@@ -74,6 +107,25 @@
     <Compile Include="Elementary\Photons\IPhoton.cs" />
     <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
+    <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
+    <Compile Include="Elementary\Serialization\IAetherReader.cs" />
+    <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
+    <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
+    <Compile Include="Engine\AetherContext.cs" />
+    <Compile Include="Engine\AetherEngine.cs" />
+    <Compile Include="Engine\AetherEngine.IDictionary.cs" />
+    <Compile Include="Engine\AetherEngine.IDisposable.cs" />
+    <Compile Include="Engine\AetherEngine.ISerialization.cs" />
+    <Compile Include="Engine\AetherEngine.Managers.cs" />
+    <Compile Include="Engine\AetherEngine.Names.cs" />
+    <Compile Include="Engine\AetherException.cs" />
+    <Compile Include="Engine\BaseManager.cs" />
+    <Compile Include="Engine\BaseManager.IDictionary.cs" />
+    <Compile Include="Engine\BaseManager.IDisposable.cs" />
+    <Compile Include="Engine\BaseManager.ISerialization.cs" />
+    <Compile Include="Engine\Data\AetherEngineData.cs" />
+    <Compile Include="Maths\Tau.cs" />
+    <Compile Include="MonoGame\AetherContextMG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +137,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
