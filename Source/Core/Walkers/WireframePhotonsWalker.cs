@@ -24,6 +24,7 @@ using tainicom.Aether.Core.Cameras;
 using tainicom.Aether.Elementary.Leptons;
 using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Core.Materials;
+using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
@@ -74,8 +75,9 @@ namespace tainicom.Aether.Core.Walkers
 
         private void Render(GameTime gameTime, IAether particle)
         {
-            ICamera camera = Camera.Current;
-
+            Matrix worldTransform;
+            LeptonsManager.GetWorldTransform(particle, out worldTransform);
+            
             IDrawable drawable = particle as IDrawable;
             IPhoton photon = particle as IPhoton;
             ILepton lepton = particle as ILepton;
@@ -85,7 +87,7 @@ namespace tainicom.Aether.Core.Walkers
 
             if (photon != null && lepton != null && photon.Material != null && (drawable == null || drawable.Visible))
             {
-                ((IShaderMatrices)material).World = lepton.LocalTransform;
+                ((IShaderMatrices)material).World = worldTransform;
                 ((IShaderMatrices)material).View = this.View;
                 ((IShaderMatrices)material).Projection = this.Projection;
                 material.Apply();

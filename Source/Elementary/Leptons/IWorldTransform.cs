@@ -14,13 +14,13 @@
 //   limitations under the License.
 #endregion
 
+using Microsoft.Xna.Framework;
 
-namespace tainicom.Aether.Elementary.Photons
+namespace tainicom.Aether.Elementary.Leptons
 {
-    /// <summary>
-    /// This photon has changing geometry
-    /// </summary>
-    interface IDynamicPhoton: IPhoton
+    public interface IWorldTransform: IAether
     {
+        Matrix WorldTransform { get; }
+        void UpdateWorldTransform(IWorldTransform parentWorldTransform);
     }
 }

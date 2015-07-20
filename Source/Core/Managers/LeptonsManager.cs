@@ -71,6 +71,36 @@ namespace tainicom.Aether.Core.Managers
             //_engine.RemoveChild(Root, particle);
         }
         
+        public static Matrix GetWorldTransform(IAether particle)
+        {
+            Matrix result;
+            GetWorldTransform(particle, out result);
+            return result;
+        }
+
+        public static void GetWorldTransform(IAether particle, out Matrix world)
+        {            
+            var worldTransform = particle as IWorldTransform;
+            if (worldTransform != null)
+            {
+                world = worldTransform.WorldTransform;
+                return;
+            }
+            var localTransform = particle as ILocalTransform;
+            if (localTransform != null)
+            {
+                world = localTransform.LocalTransform;
+                return;
+            }
+            var position = particle as IPosition;
+            if (position != null)
+            {
+                world = Matrix.CreateTranslation(position.Position);
+                return;
+            }
+            
+            world = Matrix.Identity;
+        }
     }
 
 }

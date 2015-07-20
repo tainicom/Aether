@@ -21,9 +21,9 @@ namespace tainicom.Aether.Elementary.Leptons
     /// <summary>
     /// Particle that have position, rotation & scale
     /// </summary>
-    public interface ILepton : IPosition, IAether
+    public interface ILepton : ILocalTransform, IPosition, IAether
     {
-        Matrix LocalTransform { get; }
+        //Matrix LocalTransform { get; } //Defined in ILocalTransform 
 
         Quaternion Rotation { get; set; }
         Vector3 Scale { get; set; }

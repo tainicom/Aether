@@ -50,6 +50,7 @@
 	<Compile Include="Core\Cameras\PerspectiveCamera.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
     <Compile Include="Core\GluonPlasma.cs" />
+    <Compile Include="Core\Gluons\AetherPhasor.cs" />
     <Compile Include="Core\Gluons\AetherTimer.cs" />
     <Compile Include="Core\LeptonPlasma.cs" />
     <Compile Include="Core\Managers\CamerasManager.cs" />
@@ -65,7 +66,6 @@
     <Compile Include="Core\Materials\SkinnedMaterial.cs" />
     <Compile Include="Core\PhotonPlasma.cs" />
     <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
-    <Compile Include="Core\Serialization\AetherXMLReader.cs" />
     <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
     <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
     <Compile Include="Core\Walkers\PhotonsWalker.cs" />
@@ -84,11 +84,11 @@
     <Compile Include="Elementary\ITickable.cs" />
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Leptons\IWorldTransform.cs" />
     <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
-    <Compile Include="Elementary\Photons\IDynamicPhoton.cs" />
-    <Compile Include="Elementary\Photons\IEditorPhoton.cs" />
     <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
     <Compile Include="Elementary\Photons\ILightCone.cs" />
     <Compile Include="Elementary\Photons\ILightDirection.cs" />
@@ -98,10 +98,10 @@
     <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
     <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
+    <Compile Include="Elementary\Radiums\IRadium.cs" />
     <Compile Include="Elementary\Serialization\IAetherReader.cs" />
     <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
     <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
-    <Compile Include="Elementary\Serialization\IAetherWriter.cs" />
     <Compile Include="Engine\AetherContext.cs" />
     <Compile Include="Engine\AetherEngine.cs" />
     <Compile Include="Engine\AetherEngine.IDictionary.cs" />

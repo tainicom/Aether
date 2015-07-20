@@ -58,13 +58,11 @@
     <Compile Include="Core\BasePlasma.cs" />
     <Compile Include="Core\BaseWalker.cs" />
     <Compile Include="Core\Cameras\Camera.cs" />
-    <Compile Include="Core\Cameras\InterpolatedCamera.cs" />
-    <Compile Include="Core\Cameras\MovingCamera.cs" />
     <Compile Include="Core\Cameras\OrthographicCamera.cs" />
     <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
-    <Compile Include="Core\Cameras\StageCamera.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
     <Compile Include="Core\GluonPlasma.cs" />
+    <Compile Include="Core\Gluons\AetherPhasor.cs" />
     <Compile Include="Core\Gluons\AetherTimer.cs" />
     <Compile Include="Core\LeptonPlasma.cs" />
     <Compile Include="Core\Managers\CamerasManager.cs" />
@@ -105,11 +103,11 @@
     <Compile Include="Elementary\ITickable.cs" />
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Leptons\IWorldTransform.cs" />
     <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
-    <Compile Include="Elementary\Photons\IDynamicPhoton.cs" />
-    <Compile Include="Elementary\Photons\IEditorPhoton.cs" />
     <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
     <Compile Include="Elementary\Photons\ILightCone.cs" />
     <Compile Include="Elementary\Photons\ILightDirection.cs" />
@@ -119,6 +117,7 @@
     <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
     <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
+    <Compile Include="Elementary\Radiums\IRadium.cs" />
     <Compile Include="Elementary\Serialization\IAetherReader.cs" />
     <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
     <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
@@ -143,15 +142,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Portable.3.2.99.1-Beta\lib\portable-net40+sl40+win+wp80\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.Windows.csproj">
-      <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
-      <Name>MonoGame.Framework.Windows</Name>
-      <Private>False</Private>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

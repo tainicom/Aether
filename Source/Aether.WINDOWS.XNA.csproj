@@ -62,11 +62,8 @@
     <Compile Include="Core\BasePlasma.cs" />
     <Compile Include="Core\BaseWalker.cs" />
     <Compile Include="Core\Cameras\Camera.cs" />
-    <Compile Include="Core\Cameras\InterpolatedCamera.cs" />
-    <Compile Include="Core\Cameras\MovingCamera.cs" />
     <Compile Include="Core\Cameras\OrthographicCamera.cs" />
     <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
-    <Compile Include="Core\Cameras\StageCamera.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
     <Compile Include="Core\GluonPlasma.cs" />
     <Compile Include="Core\Gluons\AetherPhasor.cs" />
@@ -110,11 +107,11 @@
     <Compile Include="Elementary\ITickable.cs" />
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Leptons\IWorldTransform.cs" />
     <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
-    <Compile Include="Elementary\Photons\IDynamicPhoton.cs" />
-    <Compile Include="Elementary\Photons\IEditorPhoton.cs" />
     <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
     <Compile Include="Elementary\Photons\ILightCone.cs" />
     <Compile Include="Elementary\Photons\ILightDirection.cs" />

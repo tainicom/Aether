@@ -15,7 +15,6 @@
 #endregion
 
 #if (WINDOWS)
-using Microsoft.Xna.Framework.Design;
 using tainicom.Aether.Design.Converters;
 #endif
 using Microsoft.Xna.Framework.Graphics;

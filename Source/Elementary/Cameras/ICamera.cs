@@ -21,9 +21,6 @@ namespace tainicom.Aether.Elementary.Cameras
 {
     public interface ICamera: IPosition, IAether
     {
-        //sigleton         
-        void SetAsCurrent();
-
         //fundamental
         Matrix View { get; }
         Matrix Projection { get; }

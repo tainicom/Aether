@@ -14,18 +14,12 @@
 //   limitations under the License.
 #endregion
 
+using Microsoft.Xna.Framework;
 
-namespace tainicom.Aether.Elementary.Photons
+namespace tainicom.Aether.Elementary.Leptons
 {
-    /// <summary>
-    /// Used to 
-    /// </summary>
-    /// <remarks>
-    /// See Also IPhoton
-    /// </remarks>
-    public interface IEditorPhoton : IAether
+    public interface ILocalTransform: IAether
     {
-        void EditorAccept(IGeometryVisitor geometryVisitor);
-        IMaterial Material { get; }
+        Matrix LocalTransform { get; }
     }
 }

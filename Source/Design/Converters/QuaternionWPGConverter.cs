@@ -52,8 +52,6 @@ namespace tainicom.Aether.Design.Converters
             return base.ConvertFrom(context, culture, value);
         }
 
-
-
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
             if (value is Quaternion && destinationType == typeof(String))
