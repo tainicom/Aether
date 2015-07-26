@@ -20,5 +20,6 @@ namespace tainicom.Aether.Elementary.Serialization
     public interface IAetherTypeResolver
     {
         IAether CreateInstance(string type);
+        IAether Convert(IAether particle);
     }
 }

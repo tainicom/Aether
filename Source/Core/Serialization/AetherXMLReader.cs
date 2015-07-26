@@ -175,6 +175,8 @@ namespace tainicom.Aether.Core.Serialization
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 if (serialisableParticle != null)
                     serialisableParticle.Load(this);
+
+                particle = TypeResolver.Convert(particle);
                 
                 if(particleName!=string.Empty)
                     Engine.SetParticleName(particle, particleName);

@@ -32,5 +32,9 @@ namespace tainicom.Aether.Core.Serialization
             return particle;
         }
 
+        public IAether Convert(IAether particle)
+        {
+            return particle;
+        }
     }
 }
