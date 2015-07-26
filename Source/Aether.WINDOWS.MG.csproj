@@ -77,6 +77,8 @@
     <Compile Include="Core\Materials\MaterialBase.cs" />
     <Compile Include="Core\Materials\SkinnedMaterial.cs" />
     <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Photons\PointLight.cs" />
+    <Compile Include="Core\Photons\SpotLight.cs" />
     <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
     <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
     <Compile Include="Core\Serialization\AetherXMLReader.cs" />
