@@ -62,6 +62,7 @@
     <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
     <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
     <Compile Include="Core\Walkers\PhotonsWalker.cs" />
+    <Compile Include="Core\Walkers\WireframePhotonsWalker.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
     <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
