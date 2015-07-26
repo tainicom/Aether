@@ -14,9 +14,8 @@
 //   limitations under the License.
 #endregion
 
-
-
 using Microsoft.Xna.Framework;
+
 namespace tainicom.Aether.Elementary.Photons
 {
     public interface ILightDirection
