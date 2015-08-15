@@ -85,6 +85,22 @@ namespace tainicom.Aether.Core.Materials
             DirectionalLight0 = new DirectionalLightData() { Enabled=true };
             DirectionalLight1 = new DirectionalLightData();
             DirectionalLight2 = new DirectionalLightData();
+
+            //default lighting
+            DirectionalLight0.Direction = new Vector3(-0.5265408f, -0.5735765f, -0.6275069f);
+            DirectionalLight0.DiffuseColor = new Vector3(1, 0.9607844f, 0.8078432f);
+            DirectionalLight0.SpecularColor = new Vector3(1, 0.9607844f, 0.8078432f);
+            //DirectionalLight0.Enabled = true;
+            DirectionalLight1.Direction = new Vector3(0.7198464f, 0.3420201f, 0.6040227f);
+            DirectionalLight1.DiffuseColor = new Vector3(0.9647059f, 0.7607844f, 0.4078432f);
+            DirectionalLight1.SpecularColor = Vector3.Zero;
+            //DirectionalLight1.Enabled = true;
+            DirectionalLight2.Direction = new Vector3(0.4545195f, -0.7660444f, 0.4545195f);
+            DirectionalLight2.DiffuseColor = new Vector3(0.3231373f, 0.3607844f, 0.3937255f);
+            DirectionalLight2.SpecularColor = new Vector3(0.3231373f, 0.3607844f, 0.3937255f);
+            //DirectionalLight2.Enabled = true;
+            AmbientLightColor = new Vector3(0.05333332f, 0.09882354f, 0.1819608f);
+
             Alpha = 1f;
         }
       
