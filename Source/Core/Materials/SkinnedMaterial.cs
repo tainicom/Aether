@@ -109,6 +109,12 @@ namespace tainicom.Aether.Core.Materials
 
             base.Apply();
         }
+
+        public void ApplySkinned()
+        {
+            Effect.WeightsPerVertex = WeightsPerVertex;
+            _effect.CurrentTechnique.Passes[0].Apply();
+        }
                 
         public virtual void SetBoneTransforms (Matrix[] boneTransforms)
         {
