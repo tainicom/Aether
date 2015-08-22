@@ -22,12 +22,15 @@ namespace tainicom.Aether.Core.Serialization
 {
     public class DefaultTypeResolver: IAetherTypeResolver
     {
-        public IAether CreateInstance(string typeName)
+        public IAether CreateInstance(string type)
         {
             Type particleType;
 
-            particleType = Type.GetType(typeName, false);
+            particleType = Type.GetType(type, false);
 
+            if (particleType == null)
+                throw new ArgumentException(String.Format("Can't find type '{0}'",type),"typeName");
+            
             IAether particle = (IAether)Activator.CreateInstance(particleType);
             return particle;
         }
