@@ -274,7 +274,7 @@ namespace tainicom.Aether.Core.Serialization
             writer.Write(uid.ToByteArray());
         }
 
-        public void WriteList(string name, List<string> values)
+        public void WriteList(string name, IList<string> values)
         {            
             //writer.Write(name);
             writer.Write(values.Count);
@@ -284,7 +284,7 @@ namespace tainicom.Aether.Core.Serialization
             }
         }
 
-        public void WriteList(string name, List<Vector2> values)
+        public void WriteList(string name, IList<Vector2> values)
         {
             //writer.Write(name);
             writer.Write(values.Count);
@@ -295,7 +295,7 @@ namespace tainicom.Aether.Core.Serialization
             }
         }
 
-        public void WriteList(string name, List<Vector3> values)
+        public void WriteList(string name, IList<Vector3> values)
         {
             //writer.Write(name);
             writer.Write(values.Count);
@@ -307,7 +307,7 @@ namespace tainicom.Aether.Core.Serialization
             }
         }
 
-        public void WriteList<T>(string name, List<T> values) where T : IAetherSerialization
+        public void WriteList<T>(string name, IList<T> values) where T : IAetherSerialization
         {
             //writer.Write(name);
             writer.Write(values.Count);

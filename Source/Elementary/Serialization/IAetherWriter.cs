@@ -63,10 +63,10 @@ namespace tainicom.Aether.Elementary.Serialization
         void WriteTimeSpan(string name, TimeSpan value);
         void WriteGuid(Guid uid);
 
-        void WriteList(string name, List<string> values);
-        void WriteList(string name, List<Vector2> values);
-        void WriteList(string name, List<Vector3> values);
-        void WriteList<T>(string name, List<T> values) where T : IAetherSerialization;
+        void WriteList(string name, IList<string> values);
+        void WriteList(string name, IList<Vector2> values);
+        void WriteList(string name, IList<Vector3> values);
+        void WriteList<T>(string name, IList<T> values) where T : IAetherSerialization;
 
 
         void WriteBoundingBox(string name, BoundingBox BoundingBox);

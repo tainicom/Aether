@@ -323,7 +323,7 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteEndElement();
         }
         
-        public void WriteList(string name, List<string> values)
+        public void WriteList(string name, IList<string> values)
         {
             writer.WriteStartElement(name);
             foreach (string value in values)
@@ -333,7 +333,7 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteEndElement();
         }
 
-        public void WriteList(string name, List<Vector2> values)
+        public void WriteList(string name, IList<Vector2> values)
         {
             writer.WriteStartElement(name);
             foreach (Vector2 value in values)
@@ -343,7 +343,7 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteEndElement();
         }
 
-        public void WriteList(string name, List<Vector3> values)
+        public void WriteList(string name, IList<Vector3> values)
         {
             writer.WriteStartElement(name);
             foreach (Vector3 value in values)
@@ -353,7 +353,7 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteEndElement();
         }
 
-        public void WriteList<T>(string name, List<T> values) where T : IAetherSerialization
+        public void WriteList<T>(string name, IList<T> values) where T : IAetherSerialization
         {
             writer.WriteStartElement(name);
             foreach (IAetherSerialization value in values)
