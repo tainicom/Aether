@@ -87,7 +87,7 @@ namespace tainicom.Aether.Elementary.Data
         
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return uid.ToString("X16");
+            return uid.ToString("D");
         }
 
         public string ToString()
