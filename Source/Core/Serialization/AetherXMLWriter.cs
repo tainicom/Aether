@@ -122,7 +122,8 @@ namespace tainicom.Aether.Core.Serialization
                 writer.WriteStartElement("AetherParticle");
                 writer.WriteStartAttribute("UID"); uid.Save(this); writer.WriteEndAttribute();
                 if (particleName != String.Empty) writer.WriteAttributeString("Name", particleName);
-                writer.WriteAttributeString("Type", particleType.AssemblyQualifiedName);
+                string typeName = particleType.FullName + ", " + particleType.Assembly.GetName().Name;
+                writer.WriteAttributeString("Type", typeName);
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 if (serialisableParticle != null)
                     serialisableParticle.Save(this);

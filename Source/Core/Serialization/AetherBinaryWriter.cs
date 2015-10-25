@@ -106,7 +106,8 @@ namespace tainicom.Aether.Core.Serialization
 
                 writer.Write(particleName); //name
                 Type particleType = particle.GetType();
-                writer.Write(particleType.AssemblyQualifiedName); //type
+                string typeName = particleType.FullName + ", " + particleType.Assembly.GetName().Name;
+                writer.Write(typeName); //type
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 bool isSerialisableParticle = serialisableParticle != null;
                 writer.Write(isSerialisableParticle); //mark whether Particle has data to serialize
