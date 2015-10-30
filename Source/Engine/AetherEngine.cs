@@ -36,11 +36,13 @@ namespace tainicom.Aether.Engine
 
         private AetherContext _context;
 
-        public AetherEngineData EngineData;
+        internal AetherEngineData EngineData;
         
         internal IPlasma Root;
 
         public AetherContext Context { get { return _context; } }
+
+        public float TotalTime { get { return (float)EngineData.TotalTime; } }
 
         #endregion
         
