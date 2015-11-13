@@ -39,7 +39,11 @@ namespace tainicom.Aether.Core.Photons
         #endif
         public float Intensity { get; set; }
 
+        #if WINDOWS
+        [Category("Light")]
+        #endif
         public float MaximumRadius { get; set; }
+
         public Vector3 PremultiplyColor { get { return this.LightSourceColor * this.Intensity; } }
         
         public PointLight(): base()
