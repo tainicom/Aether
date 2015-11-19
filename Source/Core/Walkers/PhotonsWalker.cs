@@ -111,20 +111,20 @@ namespace tainicom.Aether.Core.Walkers
 
         public Quaternion Rotation
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return Quaternion.Identity; }
+            set { }
         }
 
         public Vector3 Scale
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return Vector3.One; }
+            set { }
         }
 
         public Vector3 Position
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get { return Vector3.Zero; }
+            set {  }
         }
 
     }
