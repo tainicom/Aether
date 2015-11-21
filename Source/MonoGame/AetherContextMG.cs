@@ -12,7 +12,6 @@ namespace tainicom.Aether.MonoGame
     {
         private GraphicsDevice _graphicsDevice;
         private ContentManager _contentManager;
-        private Dictionary<Assembly, ContentManager> _contentMgrs;
 
         public GraphicsDevice Device { get { return _graphicsDevice; } }
         public ContentManager Content { get { return _contentManager; } }
@@ -21,7 +20,6 @@ namespace tainicom.Aether.MonoGame
         {
             this._graphicsDevice = graphicsDevice;
             this._contentManager = content;
-            this._contentMgrs = new Dictionary<Assembly, ContentManager>();
         }
         
         protected override void OnDispose(bool disposing)
@@ -30,39 +28,14 @@ namespace tainicom.Aether.MonoGame
             {
                 _contentManager.Dispose();
                 _graphicsDevice.Dispose();
-                foreach (var contentMgr in _contentMgrs.Values)
-                    contentMgr.Dispose();
             }
 
             this._graphicsDevice = null;
             this._contentManager = null;
-            this._contentMgrs = null;
 
             return;
         }
         
-#if WINDOWS
-        public ContentManager GetContent(Assembly library)
-        {
-            ContentManager result;
-            _contentMgrs.TryGetValue(library, out result);
-
-            if (result == null)
-            {
-                //cache lib contentManagers
-            string hstLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\";
-            string asmLocation = Path.GetDirectoryName(library.Location) + "\\";
-            String relModuleLocation = new Uri(hstLocation).MakeRelativeUri(new Uri(asmLocation)).ToString();
-            String rootDirectory = relModuleLocation + "/Content";
-                result = new ContentManager(Content.ServiceProvider, rootDirectory);
-                _contentMgrs.Add(library, result);
-            }
-            else return result;
-
-            return result;
-        }
-#endif
-
         public static GraphicsDevice GetDevice(AetherEngine engine)
         {
             return ((AetherContextMG)engine.Context).Device;
