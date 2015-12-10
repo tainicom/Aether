@@ -95,6 +95,7 @@
     <Compile Include="Design\Converters\Vector3ColorWPGConverter.cs" />
     <Compile Include="Design\Converters\Vector3WPGConverter.cs" />
     <Compile Include="Design\Converters\Vector4ColorWPGConverter.cs" />
+    <Compile Include="Elementary\Audio\ISound.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
     <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
