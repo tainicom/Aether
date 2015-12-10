@@ -106,13 +106,14 @@ namespace tainicom.Aether.Core.Materials
             _effect.CurrentTechnique.Passes[0].Apply();
         }
         
-        public void ApplyTextures(Texture[] textures)
+        public void ApplyTextures(ITexture[] textures)
         {
             for (int i = 0; i < NumberOfTextures; i++)
             {
                 if (textures == null) GraphicsDevice.Textures[i] = null;
                 else if (i >= textures.Length) GraphicsDevice.Textures[i] = null;
-                else GraphicsDevice.Textures[i] = textures[i];
+                else if (textures[i] == null) GraphicsDevice.Textures[i] = null;
+                else GraphicsDevice.Textures[i] = textures[i].Texture;
             }
         }
 

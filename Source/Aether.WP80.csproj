@@ -113,6 +113,7 @@
     <Compile Include="Core\Materials\MaterialBase.cs" />
     <Compile Include="Core\Materials\SkinnedMaterial.cs" />
     <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Photons\AetherTexture.cs" />
     <Compile Include="Core\Photons\PointLight.cs" />
     <Compile Include="Core\Photons\SpotLight.cs" />
     <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
     <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
+    <Compile Include="Elementary\Photons\ITexture.cs" />
     <Compile Include="Elementary\Radiums\IRadium.cs" />
     <Compile Include="Elementary\Serialization\IAetherReader.cs" />
     <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />

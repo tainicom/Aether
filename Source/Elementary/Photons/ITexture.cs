@@ -14,18 +14,13 @@
 //   limitations under the License.
 #endregion
 
+
 using Microsoft.Xna.Framework.Graphics;
 
 namespace tainicom.Aether.Elementary.Photons
 {
-    public interface IMaterial : IAether, IGeometryVisitor
+    public interface ITexture : IAether
     {
-        BlendState BlendState { get; set; }
-        DepthStencilState DepthStencilState { get; set; }
-        RasterizerState RasterizerState { get; set; }
-        SamplerState[] SamplerStates { get; }
-        
-        void Apply();
-        void ApplyTextures(ITexture[] textures);
+        Texture Texture { get; }
     }
 }
