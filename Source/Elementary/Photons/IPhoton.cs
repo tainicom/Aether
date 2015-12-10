@@ -40,6 +40,6 @@ namespace tainicom.Aether.Elementary.Photons
     {
         void Accept(IGeometryVisitor geometryVisitor);
         IMaterial Material { get; }
-        Texture[] Textures { get; }
+        ITexture[] Textures { get; }
     }
 }
