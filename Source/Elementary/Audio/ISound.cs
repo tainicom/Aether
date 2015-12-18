@@ -18,6 +18,8 @@ namespace tainicom.Aether.Elementary.Audio
 {
     public interface ISound: IAether
     {
-        void Play(float volume, float pitch, float panning);
+        void Play();
+        void Play(float volume, float pitch, float pan);
+        void Stop();
     }
 }
