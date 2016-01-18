@@ -190,7 +190,7 @@ namespace tainicom.Aether.Core.Serialization
             return;
         }
 
-        public void ReadParticleManagers(string name, List<IAetherManager> particleManagers)
+        public void ReadParticleManagers(string name, IList<IAetherManager> particleManagers)
         {
             reader.ReadStartElement(name);
             while (reader.NodeType != XmlNodeType.EndElement)

@@ -133,7 +133,7 @@ namespace tainicom.Aether.Core.Serialization
             return;
         }
         
-        public void WriteParticleManagers(string name, List<Elementary.Managers.IAetherManager> particleManagers)
+        public void WriteParticleManagers(string name, IList<Elementary.Managers.IAetherManager> particleManagers)
         {
             writer.WriteStartElement(name);
             foreach (IAetherManager manager in particleManagers)

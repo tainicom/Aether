@@ -118,7 +118,7 @@ namespace tainicom.Aether.Core.Serialization
             return;
         }
 
-        public void WriteParticleManagers(string name, List<IAetherManager> particleManagers)
+        public void WriteParticleManagers(string name, IList<IAetherManager> particleManagers)
         {
             //writer.Write(name);
             writer.Write((Int32)particleManagers.Count);

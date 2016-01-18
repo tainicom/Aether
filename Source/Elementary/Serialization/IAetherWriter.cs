@@ -32,7 +32,7 @@ namespace tainicom.Aether.Elementary.Serialization
         void WriteParticles(string name, Dictionary<Data.UniqueID, IAether> particles);
         void WriteParticles(string name, IList<IAether> particles);
         
-        void WriteParticleManagers(string name, List<IAetherManager> particleManagers);
+        void WriteParticleManagers(string name, IList<IAetherManager> particleManagers);
         
         void WriteBoolean(string name, bool value);
         void WriteInt64(string name, Int64 value);

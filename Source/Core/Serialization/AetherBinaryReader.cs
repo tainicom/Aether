@@ -137,7 +137,7 @@ namespace tainicom.Aether.Core.Serialization
             return;
         }
 
-        public void ReadParticleManagers(string name, List<IAetherManager> particleManagers)
+        public void ReadParticleManagers(string name, IList<IAetherManager> particleManagers)
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
@@ -148,7 +148,7 @@ namespace tainicom.Aether.Core.Serialization
             }
         }
 
-        private void ReadParticleManager(List<IAetherManager> particleManagers)
+        private void ReadParticleManager(IList<IAetherManager> particleManagers)
         {
             string managerName = reader.ReadString();
             string assemblyQualifiedName = reader.ReadString();

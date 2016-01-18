@@ -33,7 +33,7 @@ namespace tainicom.Aether.Elementary.Serialization
         void ReadParticles(string name, Dictionary<Data.UniqueID, IAether> particles);
         void ReadParticles(string name, IList<IAether> particles);
 
-        void ReadParticleManagers(string name, List<IAetherManager> particleManagers);
+        void ReadParticleManagers(string name, IList<IAetherManager> particleManagers);
         
         void ReadBoolean(string name, out bool value);
         void ReadInt64(string name, out Int64 value);
