@@ -15,19 +15,12 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.Serialization;
-using tainicom.Aether.Engine;
-using tainicom.Aether.Core.Managers;
-using tainicom.Aether.Elementary.Data;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using tainicom.Aether.Elementary.Managers;
 using tainicom.Aether.Elementary;
-using tainicom.Aether.Core.Walkers;
+using tainicom.Aether.Elementary.Data;
+using tainicom.Aether.Elementary.Managers;
+using tainicom.Aether.Engine.Data;
 
-//namespace tainicom.Aether.Engine
 namespace tainicom.Aether.Engine
 {
     public partial class AetherEngine
@@ -52,7 +45,7 @@ namespace tainicom.Aether.Engine
             //initialize trivial data
             EngineData = new AetherEngineData();
 
-            Managers = new List<IAetherManager>();
+            Managers = new ManagerCollection(this);
             CreateManagers();
         }
         

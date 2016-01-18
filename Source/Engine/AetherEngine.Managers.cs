@@ -14,27 +14,19 @@
 //   limitations under the License.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.Serialization;
-using tainicom.Aether.Engine;
-using tainicom.Aether.Core.Managers;
-using tainicom.Aether.Elementary.Data;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using tainicom.Aether.Elementary.Managers;
+using tainicom.Aether.Core.Managers;
 using tainicom.Aether.Elementary;
-using tainicom.Aether.Core.Walkers;
+using tainicom.Aether.Elementary.Managers;
+using tainicom.Aether.Engine.Data;
 
-//namespace tainicom.Aether.Engine
 namespace tainicom.Aether.Engine
 {
     public partial class AetherEngine
     {
         #region Aether Fields
 
-        private IList<IAetherManager> Managers { get; set; }
+        public ManagerCollection Managers { get; private set; }
         
         //Managers
         public LeptonsManager LeptonsMgr;
@@ -53,11 +45,11 @@ namespace tainicom.Aether.Engine
             MaterialsMgr = new MaterialsManager(this, _context, "Materials");
             PhotonsMgr = new PhotonsManager(this, _context, "Photons");
 
-            AddManager(LeptonsMgr);
-            AddManager(GluonsMgr);
-            AddManager(PhotonsMgr);
-            AddManager(CamerasMgr);
-            AddManager(MaterialsMgr);
+            Managers.Add(LeptonsMgr);
+            Managers.Add(GluonsMgr);
+            Managers.Add(PhotonsMgr);
+            Managers.Add(CamerasMgr);
+            Managers.Add(MaterialsMgr);
 
             foreach (IAetherManager particleManager in Managers)
             {
@@ -66,11 +58,6 @@ namespace tainicom.Aether.Engine
             }
 
             return;
-        }
-
-        protected void AddManager(IAetherManager manager)
-        {
-            Managers.Add(manager);
         }
 
         private void TickManagers(GameTime gameTime)

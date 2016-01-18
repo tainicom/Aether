@@ -15,47 +15,43 @@
 #endregion
 
 using System;
+using tainicom.Aether.Elementary.Managers;
 
-namespace tainicom.Aether.Engine
+namespace tainicom.Aether.Engine.Data
 {
-    public partial class AetherEngine : IDisposable
-    {        
-        protected bool isDisposed = false;
-        
-        //~AetherEngine()
-        ~AetherEngine()
+    public partial class ManagerCollection : IDisposable
+    {
+        private bool isDisposed = false;
+        public bool IsDisposed { get { return isDisposed; } }
+
+        ~ManagerCollection()
         {
             Dispose(false);
         }
-
-        #region IDisposable Members
 
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-
+        
         protected virtual void Dispose(bool disposing)
         {
-            if (isDisposed) return;
+            if (IsDisposed) return;
+
             if (disposing)
-            {   
-                //free unmanaged objects
-                Managers.Dispose();
-                //((IDisposable)_aetherContext).Dispose();
+            {
+                // release other disposable objects
+                foreach (IAetherManager particleManager in this)
+                    particleManager.Dispose();
             }
-            //clear managed objects
-            Managers.Clear();
-            Managers = null;
-            //_moduleManager = null;
-            //_aetherContext = null;
+
+            // free resources
+            this.Clear();
 
             isDisposed = true;
             return;
         }
-
-        #endregion
 
     }
 }
