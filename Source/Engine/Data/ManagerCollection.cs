@@ -28,6 +28,19 @@ namespace tainicom.Aether.Engine.Data
             this._engine = engine;
         }
 
+        public IAetherManager this[string name] 
+        {
+            get
+            {
+                for (int i = 0; i < this.Count; i++)
+                {
+                    if (this[i].Name == name) 
+                        return this[i];
+                }
+                return null;
+            }
+        }
+        
         protected override void InsertItem(int index, IAetherManager item)
         {
 			// check if manager allready in use.
