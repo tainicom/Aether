@@ -149,7 +149,8 @@ namespace tainicom.Aether.Core.Serialization
 
             writer.WriteStartElement("AetherParticleManager");
             writer.WriteAttributeString("Name", manager.Name);
-            writer.WriteAttributeString("Type", managerType.AssemblyQualifiedName);
+            string typeName = managerType.FullName + ", " + managerType.Assembly.GetName().Name;
+            writer.WriteAttributeString("Type", typeName);
             IAetherSerialization serialisableParticle = manager as IAetherSerialization;
             if (serialisableParticle != null)
                 serialisableParticle.Save(this);
