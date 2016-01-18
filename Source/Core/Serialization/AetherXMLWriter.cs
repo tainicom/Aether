@@ -55,10 +55,10 @@ namespace tainicom.Aether.Core.Serialization
         
         public void Close()
         {
-            #if !NETFX_CORE
-            writer.Close();
+            #if WP8_1 || W8_1 || W10
+            writer.Dispose();            
             #else
-            writer.Dispose();
+            writer.Close();
             #endif
         }
         

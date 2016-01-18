@@ -46,11 +46,11 @@ namespace tainicom.Aether.Core.Serialization
 
         public void Close()
         {
-#if WINDOWS || WP7 || WP8
+            #if WP8_1 || W8_1 || W10
+            reader.Dispose();            
+            #else
             reader.Close();
-#else
-            reader.Dispose();
-#endif
+            #endif
         }
 
         public void Read(string name, IAetherSerialization value)
