@@ -41,6 +41,17 @@ namespace tainicom.Aether.Engine.Data
             }
         }
         
+        public TManager GetManager<TManager>() where TManager : class, IAetherManager
+        {
+            var itemType = typeof(TManager);
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (this[i].GetType() == itemType)
+                    return (TManager)this[i];
+            }
+            return null;
+        }
+
         protected override void InsertItem(int index, IAetherManager item)
         {
 			// check if manager allready in use.
