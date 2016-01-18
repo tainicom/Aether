@@ -32,7 +32,7 @@ namespace tainicom.Aether.Engine
             //write particles
             writer.WriteParticles("Particles", particles);   
             //write managers
-            writer.WriteParticleManagers("Managers", _particleManagers);
+            writer.WriteParticleManagers("Managers", Managers);
         }
         #endif
 
@@ -43,7 +43,7 @@ namespace tainicom.Aether.Engine
             //read particles
             reader.ReadParticles("Particles", particles);
             //read managers
-            reader.ReadParticleManagers("Managers", _particleManagers);
+            reader.ReadParticleManagers("Managers", Managers);
 
         }
     }

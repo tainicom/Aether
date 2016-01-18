@@ -34,7 +34,7 @@ namespace tainicom.Aether.Engine
     {
         #region Aether Fields
 
-        private List<IAetherManager> _particleManagers;
+        private IList<IAetherManager> Managers { get; set; }
         
         //Managers
         public LeptonsManager LeptonsMgr;
@@ -59,7 +59,7 @@ namespace tainicom.Aether.Engine
             AddManager(CamerasMgr);
             AddManager(MaterialsMgr);
 
-            foreach (IAetherManager particleManager in _particleManagers)
+            foreach (IAetherManager particleManager in Managers)
             {
                 if (particleManager is IInitializable)
                     ((IInitializable)particleManager).Initialize(this);
@@ -70,12 +70,12 @@ namespace tainicom.Aether.Engine
 
         protected void AddManager(IAetherManager manager)
         {
-            _particleManagers.Add(manager);
+            Managers.Add(manager);
         }
 
         private void TickManagers(GameTime gameTime)
         {
-            foreach (IAetherManager particleManager in _particleManagers)
+            foreach (IAetherManager particleManager in Managers)
             {
                 if (!particleManager.IsEnabled) continue;
                 particleManager.Tick(gameTime);
@@ -84,7 +84,7 @@ namespace tainicom.Aether.Engine
 
         private void RenderManagers(GameTime gameTime)
         {
-            foreach (IAetherManager particleManager in _particleManagers)
+            foreach (IAetherManager particleManager in Managers)
             {
                 if (!particleManager.IsEnabled) continue;
                 if (particleManager is IRenderable)

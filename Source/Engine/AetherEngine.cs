@@ -52,7 +52,7 @@ namespace tainicom.Aether.Engine
             //initialize trivial data
             EngineData = new AetherEngineData();
 
-            _particleManagers = new List<IAetherManager>();
+            Managers = new List<IAetherManager>();
             CreateManagers();
         }
         
@@ -78,7 +78,7 @@ namespace tainicom.Aether.Engine
             this.Add(uid, particle);
 
             //notify managers
-            foreach (IAetherManager particleManager in _particleManagers)
+            foreach (IAetherManager particleManager in Managers)
             {
                 particleManager.RegisterParticle(uid, particle);
             }
@@ -90,7 +90,7 @@ namespace tainicom.Aether.Engine
         {
             UniqueID uid = FindUniqueId(particle);
             //notify managers
-            foreach (IAetherManager particleManager in _particleManagers)
+            foreach (IAetherManager particleManager in Managers)
             {
                 particleManager.UnregisterParticle(uid);
             }

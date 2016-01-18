@@ -49,15 +49,15 @@ namespace tainicom.Aether.Engine
             if (disposing)
             {   
                 //free unmanaged objects
-                foreach (IAetherManager particleManager in _particleManagers)
+                foreach (IAetherManager particleManager in Managers)
                 {
                     particleManager.Dispose();
                 }
                 //((IDisposable)_aetherContext).Dispose();
             }
             //clear managed objects
-            _particleManagers.Clear();
-            _particleManagers = null;
+            Managers.Clear();
+            Managers = null;
             //_moduleManager = null;
             //_aetherContext = null;
 
