@@ -28,7 +28,6 @@ namespace tainicom.Aether.Engine
     {
         #region Private / Protected
         protected AetherEngine _engine;
-        AetherContext _aetherContext;
         #endregion
 
         #region Public Properties
@@ -38,13 +37,9 @@ namespace tainicom.Aether.Engine
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Constructs a new instance of the <see cref="BaseManager" /> class.
-        /// </summary>
-        public BaseManager(AetherEngine engine, AetherContext aetherContext, string name)
+
+        public BaseManager(string name)
         {
-            this._engine = engine;
-            _aetherContext = aetherContext;
             this.Name = name;
             IsEnabled = true;
         }
@@ -54,6 +49,7 @@ namespace tainicom.Aether.Engine
         
         public virtual void Initialize(AetherEngine engine)
         {
+            this._engine = engine;
             this.Root = new BasePlasma();
         }
 

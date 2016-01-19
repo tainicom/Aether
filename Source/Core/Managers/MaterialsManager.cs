@@ -24,8 +24,7 @@ namespace tainicom.Aether.Core.Managers
 {
     public class MaterialsManager : BaseManager<IMaterial>
     {
-        public MaterialsManager(AetherEngine engine, AetherContext aetherContext, string name)
-            : base(engine, aetherContext, name)
+        public MaterialsManager(): base("Materials")
         {
             
         }

@@ -27,12 +27,13 @@ namespace tainicom.Aether.Core.Managers
     {
         public IAetherWalker DefaultWalker { get; set; }
 
-        public PhotonsManager(AetherEngine engine, AetherContext aetherContext, string name): base(engine, aetherContext, name)
+        public PhotonsManager(): base("Photons")
         {
         }
 
         public override void Initialize(AetherEngine engine)
         {
+            this._engine = engine;
             Root = new PhotonPlasma();
             //Root = engine.RegisterParticle(new PhotonPlasma(), "Root");
 
@@ -58,7 +59,7 @@ namespace tainicom.Aether.Core.Managers
 
         public void Render(GameTime gameTime, IAetherWalker walker)
         {
-            walker.Reset();            
+            walker.Reset();
             while (walker.MoveNext())
                 ((IRenderable)walker).Render(gameTime);
         }

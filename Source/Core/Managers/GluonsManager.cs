@@ -27,13 +27,14 @@ namespace tainicom.Aether.Core.Managers
     {
         protected IPlasma maxStepParticles;
 
-        public GluonsManager(AetherEngine engine, AetherContext aetherContext, string name): base(engine, aetherContext, name)
+        public GluonsManager(): base("Gluons")
         {
             
         }
 
         public override void Initialize(AetherEngine engine)
         {
+            this._engine = engine;
             Root = new GluonPlasma();
             maxStepParticles = new BasePlasma();
         }

@@ -34,9 +34,9 @@ namespace tainicom.Aether.Core.Serialization
         public readonly AetherEngine Engine;
         private Stream stream;
         private XmlReader reader;
-
+        
         Dictionary<UniqueID,IAether> deserialisedParticles = new Dictionary<UniqueID,IAether>();
-
+        
         public AetherXMLReader(AetherEngine engine, Stream stream)
         {
             this.Engine = engine;
@@ -48,9 +48,9 @@ namespace tainicom.Aether.Core.Serialization
         {
             #if WP8_1 || W8_1 || W10
             reader.Dispose();            
-            #else
+			#else
             reader.Close();
-            #endif
+			#endif
         }
 
         public void Read(string name, IAetherSerialization value)
@@ -150,7 +150,7 @@ namespace tainicom.Aether.Core.Serialization
                 }
             }
             reader.MoveToElement();
-            bool isEmptyElement = reader.IsEmptyElement;            
+            bool isEmptyElement = reader.IsEmptyElement;
             reader.ReadStartElement();
 
             if (elementName == "AetherParticleRef")
@@ -230,6 +230,13 @@ namespace tainicom.Aether.Core.Serialization
                 IAetherManager manager = null;
                 foreach (IAetherManager mgr in particleManagers)
                     if (mgr.Name == managerName) { manager = mgr; break; }
+                if (manager == null)
+                {
+                    manager = (IAetherManager)Activator.CreateInstance(Type.GetType(type, false));
+                    particleManagers.Add(manager);
+                    if (manager is IInitializable)
+                        ((IInitializable)manager).Initialize(this.Engine);
+                }
                 IAetherSerialization serialisableParticle = manager as IAetherSerialization;
                 if (serialisableParticle != null)
                     serialisableParticle.Load(this);

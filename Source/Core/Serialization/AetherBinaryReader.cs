@@ -48,9 +48,9 @@ namespace tainicom.Aether.Core.Serialization
         {
             #if WP8_1 || W8_1 || W10
             reader.Dispose();            
-            #else
+			#else
             reader.Close();
-            #endif
+			#endif
         }
 
         public void Read(string name, IAetherSerialization value)
@@ -156,6 +156,13 @@ namespace tainicom.Aether.Core.Serialization
             IAetherManager manager = null;
             foreach (IAetherManager mgr in particleManagers)
                 if (mgr.Name == managerName) { manager = mgr; break; }
+            if (manager == null)
+            {
+                manager = (IAetherManager)Activator.CreateInstance(managerType, false);
+                particleManagers.Add(manager);
+                if (manager is IInitializable)
+                    ((IInitializable)manager).Initialize(this.Engine);
+            }
             IAetherSerialization serialisableParticle = manager as IAetherSerialization;
             bool isSerialisableParticle = reader.ReadBoolean();
             if (isSerialisableParticle)

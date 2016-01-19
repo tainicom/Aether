@@ -24,7 +24,7 @@ namespace tainicom.Aether.Core.Managers
 {
     public class CamerasManager : BaseManager<ICamera>
     {
-        public CamerasManager(AetherEngine engine, AetherContext aetherContext, string name): base(engine, aetherContext, name)
+        public CamerasManager(): base("Cameras")
         {
             
         }

@@ -24,14 +24,14 @@ namespace tainicom.Aether.Core.Managers
 {
     public class LeptonsManager : BaseManager<ILepton>
     {
-        public LeptonsManager(AetherEngine engine, AetherContext aetherContext, string name)
-            : base(engine, aetherContext, name)
+        public LeptonsManager(): base("Leptons")
         {
             
         }
 
         public override void Initialize(AetherEngine engine)
         {
+            this._engine = engine;
             Root = new LeptonPlasma();
         }
         
@@ -70,7 +70,7 @@ namespace tainicom.Aether.Core.Managers
             System.Diagnostics.Debug.Assert(particle is ILepton);
             //_engine.RemoveChild(Root, particle);
         }
-        
+
         public static Matrix GetWorldTransform(IAether particle)
         {
             Matrix result;
@@ -79,7 +79,7 @@ namespace tainicom.Aether.Core.Managers
         }
 
         public static void GetWorldTransform(IAether particle, out Matrix world)
-        {            
+        {
             var worldTransform = particle as IWorldTransform;
             if (worldTransform != null)
             {

@@ -45,7 +45,6 @@ namespace tainicom.Aether.Engine
             }
             particles.Clear();
             particles = null;
-            _aetherContext = null;
 
             isDisposed = true;
         }
