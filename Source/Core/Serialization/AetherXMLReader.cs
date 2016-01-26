@@ -46,10 +46,10 @@ namespace tainicom.Aether.Core.Serialization
         
         public void Close()
         {
-            #if WP8_1 || W8_1 || W10
-            reader.Dispose();            
-			#else
+            #if WINDOWS || WP7
             reader.Close();
+			#else
+            reader.Dispose();
 			#endif
         }
 

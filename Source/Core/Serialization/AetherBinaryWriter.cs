@@ -45,11 +45,7 @@ namespace tainicom.Aether.Core.Serialization
 
         public void Close()
         {
-            #if WP8_1 || W8_1 || W10
             writer.Dispose();            
-            #else
-            writer.Close();
-            #endif
         }
 
         public void Write(string name, IAetherSerialization value)
