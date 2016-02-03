@@ -141,7 +141,6 @@
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
     <Compile Include="Elementary\Data\UniqueID.cs" />
     <Compile Include="Elementary\Gluon\IGluon.cs" />
-    <Compile Include="Elementary\Gluon\IMaximumStep.cs" />
     <Compile Include="Elementary\IAether.cs" />
     <Compile Include="Elementary\IAetherNotify.cs" />
     <Compile Include="Elementary\IAetherWalker.cs" />

@@ -25,8 +25,6 @@ namespace tainicom.Aether.Core.Managers
 {
     public class GluonsManager : BaseManager<IGluon>
     {
-        protected IPlasma maxStepParticles;
-
         public GluonsManager(): base("Gluons")
         {
             
@@ -36,7 +34,6 @@ namespace tainicom.Aether.Core.Managers
         {
             this._engine = engine;
             Root = new GluonPlasma();
-            maxStepParticles = new BasePlasma();
         }
         
         //protected override void Dispose(bool disposing)
@@ -59,49 +56,18 @@ namespace tainicom.Aether.Core.Managers
         public override void Tick(GameTime gameTime)
         {
 			((ITickable)Root).Tick(gameTime);
-            //((ITickable)Root).Tick(GetMaxStep(gameTime));
-        }
-
-        GameTime _maxStepGameTime = new GameTime();
-        private GameTime GetMaxStep(GameTime gameTime)
-        {
-            if (maxStepParticles.Count == 0) return gameTime;
-
-            TimeSpan ElapsedGameTime = gameTime.ElapsedGameTime;
-            for (int i = 0; i < maxStepParticles.Count; i++)
-            {
-                TimeSpan maximumStep = ((IMaximumStep)maxStepParticles).MaximumStep;
-                if(maximumStep<ElapsedGameTime)
-                    ElapsedGameTime = maximumStep;
-            }
-
-            #if WINDOWS || WP7
-            _maxStepGameTime = new GameTime(gameTime.TotalGameTime, ElapsedGameTime, gameTime.IsRunningSlowly);
-            #else
-            _maxStepGameTime.TotalGameTime = gameTime.TotalGameTime;
-            _maxStepGameTime.ElapsedGameTime = ElapsedGameTime;
-            _maxStepGameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
-            #endif
-
-            return _maxStepGameTime;
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
             System.Diagnostics.Debug.Assert(particle is IGluon);
             Root.Add(particle);
-
-            if (particle is IMaximumStep)
-                maxStepParticles.Add(particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
             System.Diagnostics.Debug.Assert(particle is IGluon);
             Root.Remove(particle);
-
-            if(particle is IMaximumStep)
-                maxStepParticles.Remove(particle);
         }
         
         
