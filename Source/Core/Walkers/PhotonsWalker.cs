@@ -67,8 +67,8 @@ namespace tainicom.Aether.Core.Walkers
         {
             try 
             { 
-            Render(gameTime, Current);
-        }
+                Render(gameTime, Current);
+            }
             catch(Exception e) { throw e; }
 
             return;

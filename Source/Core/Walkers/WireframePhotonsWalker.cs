@@ -77,7 +77,7 @@ namespace tainicom.Aether.Core.Walkers
         {
             Matrix worldTransform;
             LeptonsManager.GetWorldTransform(particle, out worldTransform);
-            
+
             IDrawable drawable = particle as IDrawable;
             IPhoton photon = particle as IPhoton;
             ILepton lepton = particle as ILepton;

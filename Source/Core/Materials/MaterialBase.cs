@@ -27,7 +27,7 @@ using tainicom.Aether.MonoGame;
 namespace tainicom.Aether.Core.Materials
 {
     abstract public class MaterialBase : IMaterial, IInitializable, IShaderMatrices, IAetherSerialization
-    {        
+    {   
         #region Implement IShaderMatrices Properties
         #if(WINDOWS)
         [Browsable(false)]
@@ -78,7 +78,7 @@ namespace tainicom.Aether.Core.Materials
         }
 
         public virtual void Initialize(AetherEngine engine)
-        {   
+        {
             this.GraphicsDevice = AetherContextMG.GetDevice(engine);
             CreateEffect();
         }
@@ -98,9 +98,9 @@ namespace tainicom.Aether.Core.Materials
             IEffectMatrices effectMatrices = _effect as IEffectMatrices;
             if (effectMatrices != null)
             {
-            effectMatrices.World = this.World;
-            effectMatrices.View = this.View;
-            effectMatrices.Projection = this.Projection;
+                effectMatrices.World = this.World;
+                effectMatrices.View = this.View;
+                effectMatrices.Projection = this.Projection;
             }
 
             _effect.CurrentTechnique.Passes[0].Apply();

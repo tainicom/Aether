@@ -42,12 +42,12 @@ namespace tainicom.Aether.Engine
         }
 
         private void Dispose(bool disposing)
-		{   
+        {
             if (_isDisposed) return;
             OnDispose(disposing);
             _isDisposed = true;
-		}
-            
+        }
+        
         protected abstract void OnDispose(bool disposing);
 
         #endregion

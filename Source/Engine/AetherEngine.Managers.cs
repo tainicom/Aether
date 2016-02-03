@@ -44,7 +44,7 @@ namespace tainicom.Aether.Engine
             CamerasMgr = new CamerasManager();
             MaterialsMgr = new MaterialsManager();
             PhotonsMgr = new PhotonsManager();
-
+            
             Managers.Add(LeptonsMgr);
             Managers.Add(GluonsMgr);
             Managers.Add(PhotonsMgr);

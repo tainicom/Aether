@@ -24,7 +24,7 @@ namespace tainicom.Aether.Elementary.Leptons
     public interface ILepton : ILocalTransform, IPosition, IAether
     {
         //Matrix LocalTransform { get; } //Defined in ILocalTransform 
-
+        
         Quaternion Rotation { get; set; }
         Vector3 Scale { get; set; }
         //Vector3 Position { get; set; } //Defined in IPosition

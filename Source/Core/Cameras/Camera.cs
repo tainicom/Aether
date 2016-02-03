@@ -31,12 +31,12 @@ namespace tainicom.Aether.Core.Cameras
         //view related
         
         protected Vector3 _position = Vector3.Zero;
-                  
+        
         protected Vector3 _lookAt = Vector3.Forward;
         
         protected Vector3 _up = Vector3.Up;
         //projection related
-                
+        
         protected float _nearPlane = 10.0f;
         
         protected float _farPlane = 10000.0f;

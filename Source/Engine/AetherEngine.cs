@@ -28,9 +28,9 @@ namespace tainicom.Aether.Engine
         #region Aether Fields
 
         private AetherContext _context;
-
-        internal AetherEngineData EngineData;
         
+        internal AetherEngineData EngineData;
+
         internal IPlasma Root;
 
         public AetherContext Context { get { return _context; } }
@@ -103,7 +103,7 @@ namespace tainicom.Aether.Engine
 
         public void Tick(GameTime gameTime)
         {
-            TickManagers(gameTime);            
+            TickManagers(gameTime);
             EngineData.TotalTime += gameTime.ElapsedGameTime.TotalSeconds;
             return;
         }

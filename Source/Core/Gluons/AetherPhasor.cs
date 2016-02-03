@@ -31,7 +31,6 @@ namespace tainicom.Aether.Core.Gluons
         public float Value 
         { 
             get {return A * (float)Math.Sin((double)(elapsedTime.TotalSeconds * AngularFrequency + Phase));}
-            
         }
 
         public IRadium<float> Output =  EmptyRadium<float>.GetEmpty();
