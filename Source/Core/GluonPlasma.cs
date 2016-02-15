@@ -14,6 +14,7 @@
 //   limitations under the License.
 #endregion
 
+using System;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Gluon;
@@ -24,6 +25,7 @@ namespace tainicom.Aether.Core
     public class GluonPlasma: BasePlasma, ITickable
     {
         EnabledList<IAether> _enabledParticles;
+        private bool isEnumerating = false; 
 
         public GluonPlasma()
         {
@@ -33,15 +35,19 @@ namespace tainicom.Aether.Core
         public void Tick(GameTime gameTime)
         {
             _enabledParticles.Process();
+            isEnumerating = true;
             foreach (IGluon item in _enabledParticles)
             {
                 item.Tick(gameTime);
             }
+            isEnumerating = false;
             return;
         }
 
         protected override void InsertItem(int index, IAether item)
         {
+            if (isEnumerating)
+                throw new InvalidOperationException("Can't modify collection inside Tick() method.");
             base.InsertItem(index, item);
             _enabledParticles.Add(item);
             return;
@@ -49,6 +55,8 @@ namespace tainicom.Aether.Core
 
         protected override void RemoveItem(int index)
         {
+            if (isEnumerating)
+                throw new InvalidOperationException("Can't modify collection inside Tick() method.");
             IAether item = this[index];
             if (_enabledParticles.Contains(item)) _enabledParticles.Remove(item);
             base.RemoveItem(index);
