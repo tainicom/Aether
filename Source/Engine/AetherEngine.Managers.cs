@@ -37,7 +37,7 @@ namespace tainicom.Aether.Engine
         
         #endregion
         
-        protected virtual void CreateManagers()
+        private void CreateManagers()
         {
             LeptonsMgr = new LeptonsManager();
             GluonsMgr = new GluonsManager();
