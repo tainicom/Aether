@@ -154,7 +154,7 @@ namespace tainicom.Aether.Core.Serialization
                 if (mgr.Name == managerName) { manager = mgr; break; }
             if (manager == null)
             {
-                manager = (IAetherManager)Activator.CreateInstance(managerType, false);
+                manager = (IAetherManager)Activator.CreateInstance(managerType);
                 particleManagers.Add(manager);
                 if (manager is IInitializable)
                     ((IInitializable)manager).Initialize(this.Engine);
