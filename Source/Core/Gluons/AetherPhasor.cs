@@ -17,7 +17,6 @@
 using System;
 using tainicom.Aether.Elementary.Gluon;
 using Microsoft.Xna.Framework;
-using tainicom.Aether.Elementary.Radiums;
 
 namespace tainicom.Aether.Core.Gluons
 {
@@ -32,8 +31,6 @@ namespace tainicom.Aether.Core.Gluons
         { 
             get {return A * (float)Math.Sin((double)(elapsedTime.TotalSeconds * AngularFrequency + Phase));}
         }
-
-        public IRadium<float> Output =  EmptyRadium<float>.GetEmpty();
 
         public AetherPhasor(): base()
         {
@@ -71,7 +68,6 @@ namespace tainicom.Aether.Core.Gluons
         public override void Tick(GameTime gameTime)
         {
             base.Tick(gameTime);
-            Output.Value = this.Value;
         }
 
     }    
