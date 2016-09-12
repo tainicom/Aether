@@ -190,9 +190,9 @@
     <Compile Include="MonoGame\AetherContextMG.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.WindowsUAP.csproj">
+    <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.WindowsUniversal.csproj">
       <Project>{09c41a48-7bf3-4a46-9eb8-ce95b4c27ca9}</Project>
-      <Name>MonoGame.Framework.WindowsUAP</Name>
+      <Name>MonoGame.Framework.WindowsUniversal</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
