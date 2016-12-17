@@ -46,7 +46,7 @@ namespace tainicom.Aether.Core.Serialization
 
         public void Close()
         {
-            reader.Dispose();            
+            reader.Dispose();
         }
 
         public void Read(string name, IAetherSerialization value)
@@ -117,6 +117,9 @@ namespace tainicom.Aether.Core.Serialization
                 particle = TypeResolver.CreateInstance(AssemblyQualifiedName);
             }
 
+            if (!uid.Equals(UniqueID.Unknown))
+                deserialisedParticles.Add(uid, particle);
+
             bool isSerialisableParticle = reader.ReadBoolean();
             if (isSerialisableParticle)
             {
@@ -126,9 +129,6 @@ namespace tainicom.Aether.Core.Serialization
 
             if (particleName != string.Empty)
                 Engine.SetParticleName(particle, particleName);
-
-            if (!uid.Equals(UniqueID.Unknown))
-                deserialisedParticles.Add(uid, particle);
 
             return;
         }

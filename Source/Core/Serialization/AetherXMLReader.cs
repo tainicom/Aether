@@ -171,18 +171,19 @@ namespace tainicom.Aether.Core.Serialization
                     particle = TypeResolver.CreateInstance(typeName);
                 }
                 
+                if (!uid.Equals(UniqueID.Unknown))
+                    deserialisedParticles.Add(uid, particle);
+
                 //particle = (IAetherParticle)FormatterServices.GetUninitializedObject(particleType); //this behaves the same the build in Serialisation. Not available on WP7
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 if (serialisableParticle != null)
                     serialisableParticle.Load(this);
 
                 particle = TypeResolver.Convert(particle);
+                deserialisedParticles[uid] = particle; // update converted particle
                 
                 if(particleName!=string.Empty)
                     Engine.SetParticleName(particle, particleName);
-
-                if(!uid.Equals(UniqueID.Unknown))
-                    deserialisedParticles.Add(uid, particle);
 
                 if (!isEmptyElement) reader.ReadEndElement();
             }
