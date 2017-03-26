@@ -124,14 +124,10 @@ namespace tainicom.Aether.Core.Materials
 
         public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
-            try
-            {
                 GraphicsDevice.DrawUserPrimitives<T>(this.PrimitiveType,
                     vertexData, vertexOffset, primitiveCount,                    
                     vertexDeclaration);
             }
-            catch (InvalidOperationException ioe) { }
-        }
 
         public void SetVertices<T>(IPhoton photon, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
         {
@@ -140,26 +136,18 @@ namespace tainicom.Aether.Core.Materials
 
         public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
-            try 
-            {
                 GraphicsDevice.DrawUserIndexedPrimitives<T>(this.PrimitiveType,
                     vertexData, vertexOffset, numVertices,
                     indexData, indexOffset, primitiveCount,
                     vertexDeclaration);
             }
-            catch (InvalidOperationException ioe) { }
-        }
 
         public void SetVertices(IPhoton photon, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
         {
-            try 
-            {
                 GraphicsDevice.SetVertexBuffer(vertexBuffer);
                 GraphicsDevice.Indices = indexBuffer;
                 GraphicsDevice.DrawIndexedPrimitives(this.PrimitiveType, baseVertex, 0, numVertices, startIndex, primitiveCount);
             }
-            catch(InvalidOperationException ioe) { }
-        }
 
         public override string ToString()
         {
