@@ -30,8 +30,8 @@ namespace tainicom.Aether.Elementary.Serialization
 
         void Read(string name, IAetherSerialization value);
         void ReadParticle(string name, out IAether particle);
-        void ReadParticles(string name, Dictionary<Data.UniqueID, IAether> particles);
-        void ReadParticles(string name, IList<IAether> particles);
+        void ReadParticles<T>(string name, IDictionary<Data.UniqueID, T> particles) where T : IAether;
+        void ReadParticles<T>(string name, IList<T> particles) where T : IAether;
 
         void ReadParticleManagers(string name, IList<IAetherManager> particleManagers);
         

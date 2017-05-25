@@ -29,8 +29,8 @@ namespace tainicom.Aether.Elementary.Serialization
 
         void Write(string name, IAetherSerialization value);
         void WriteParticle(string name, IAether particle);
-        void WriteParticles(string name, Dictionary<Data.UniqueID, IAether> particles);
-        void WriteParticles(string name, IList<IAether> particles);
+        void WriteParticles<T>(string name, IDictionary<Data.UniqueID, T> particles) where T : IAether;
+        void WriteParticles<T>(string name, IList<T> particles) where T : IAether;
         
         void WriteParticleManagers(string name, IList<IAetherManager> particleManagers);
         
