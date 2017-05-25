@@ -45,7 +45,7 @@ namespace tainicom.Aether.Core.Serialization
 
         public void Close()
         {
-            writer.Dispose();            
+            writer.Dispose();
         }
 
         public void Write(string name, IAetherSerialization value)
@@ -54,11 +54,11 @@ namespace tainicom.Aether.Core.Serialization
             value.Save(this);
         }
 
-        public void WriteParticles(string name, Dictionary<UniqueID, IAether> particles)
+        public void WriteParticles<T>(string name, IDictionary<UniqueID, T> particles) where T : IAether
         {
             //writer.Write(name);
             writer.Write((Int32)particles.Count);
-            foreach (KeyValuePair<UniqueID, IAether> pair in particles)
+            foreach (KeyValuePair<UniqueID, T> pair in particles)
             {
                 IAether particle = pair.Value;
                 UniqueID uid = pair.Key;
@@ -66,7 +66,7 @@ namespace tainicom.Aether.Core.Serialization
             }
         }
 
-        public void WriteParticles(string name, IList<IAether> particles)
+        public void WriteParticles<T>(string name, IList<T> particles) where T:IAether
         {
             //writer.Write(name); 
             writer.Write((Int32)particles.Count);

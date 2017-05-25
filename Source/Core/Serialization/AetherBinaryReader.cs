@@ -55,8 +55,8 @@ namespace tainicom.Aether.Core.Serialization
             //System.Diagnostics.Debug.Assert(name == name2);
             value.Load(this);
         }
-        
-        public void ReadParticles(string name, Dictionary<UniqueID, IAether> particles)
+
+        public void ReadParticles<T>(string name, IDictionary<UniqueID, T> particles) where T : IAether
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
@@ -66,11 +66,11 @@ namespace tainicom.Aether.Core.Serialization
                 UniqueID uid;
                 IAether particle;
                 ReadParticle(out uid, out particle);
-                particles.Add(uid, particle);
+                particles.Add(uid, (T)particle);
             }
         }
 
-        public void ReadParticles(string name, IList<IAether> particles)
+        public void ReadParticles<T>(string name, IList<T> particles) where T : IAether
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
@@ -80,7 +80,7 @@ namespace tainicom.Aether.Core.Serialization
                 UniqueID uid;
                 IAether particle;
                 ReadParticle(out uid, out particle);
-                particles.Add(particle);
+                particles.Add((T)particle);
             }
         }
 

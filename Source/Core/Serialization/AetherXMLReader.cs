@@ -60,7 +60,7 @@ namespace tainicom.Aether.Core.Serialization
             reader.ReadEndElement();
         }
         
-        public void ReadParticles(string name, Dictionary<Elementary.Data.UniqueID, Elementary.IAether> particles)
+        public void ReadParticles<T>(string name, IDictionary<Elementary.Data.UniqueID, T> particles) where T:IAether
         {
             reader.ReadToFollowing(name);
             if (reader.IsEmptyElement) { reader.Read(); return; }
@@ -75,13 +75,13 @@ namespace tainicom.Aether.Core.Serialization
                     IAether particle;
                     ReadParticle(out uid, out particle);
                     if (particle == null) throw new Exception("Can't read particle.");
-                    particles.Add(uid,particle);
+                    particles.Add(uid,(T)particle);
                 }
             }
             reader.ReadEndElement();
         }
 
-        public void ReadParticles(string name, IList<IAether> particles)
+        public void ReadParticles<T>(string name, IList<T> particles) where T : IAether
         {
             reader.ReadToFollowing(name);
             if (reader.IsEmptyElement) { reader.Read(); return; }
@@ -95,7 +95,7 @@ namespace tainicom.Aether.Core.Serialization
                     UniqueID uid;
                     IAether particle;
                     ReadParticle(out uid, out particle);
-                    particles.Add(particle);
+                    particles.Add((T)particle);
                 }
             }
             reader.ReadEndElement();
