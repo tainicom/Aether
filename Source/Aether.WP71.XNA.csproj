@@ -88,12 +88,12 @@
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
     <Compile Include="Elementary\Data\UniqueID.cs" />
     <Compile Include="Elementary\Gluon\IGluon.cs" />
+    <Compile Include="Elementary\Gluon\ITickable.cs" />
     <Compile Include="Elementary\IAether.cs" />
     <Compile Include="Elementary\IAetherNotify.cs" />
     <Compile Include="Elementary\IAetherWalker.cs" />
     <Compile Include="Elementary\IInitializable.cs" />
     <Compile Include="Elementary\IPlasma.cs" />
-    <Compile Include="Elementary\ITickable.cs" />
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
     <Compile Include="Elementary\Leptons\ILocalTransform.cs" />

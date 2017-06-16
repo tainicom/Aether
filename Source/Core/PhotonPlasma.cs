@@ -15,8 +15,9 @@
 #endregion
 
 using System.Collections.Generic;
-using tainicom.Aether.Elementary;
 using Microsoft.Xna.Framework;
+using tainicom.Aether.Elementary;
+using tainicom.Aether.Elementary.Gluon;
 using tainicom.Aether.Elementary.Photons;
 using tainicom.Aether.Engine.Data;
 

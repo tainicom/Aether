@@ -14,8 +14,9 @@
 //   limitations under the License.
 #endregion
 
-using tainicom.Aether.Elementary.Data;
 using System;
+using tainicom.Aether.Elementary.Data;
+using tainicom.Aether.Elementary.Gluon;
 
 namespace tainicom.Aether.Elementary.Managers
 {

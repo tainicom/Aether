@@ -14,12 +14,14 @@
 //   limitations under the License.
 #endregion
 
-using tainicom.Aether.Engine;
-using tainicom.Aether.Elementary.Photons;
+
+using Microsoft.Xna.Framework;
+using tainicom.Aether.Core.Walkers;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Data;
-using tainicom.Aether.Core.Walkers;
-using Microsoft.Xna.Framework;
+using tainicom.Aether.Elementary.Gluon;
+using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {

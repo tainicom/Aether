@@ -16,7 +16,7 @@
 
 using Microsoft.Xna.Framework;
 
-namespace tainicom.Aether.Elementary
+namespace tainicom.Aether.Elementary.Gluon
 {
     public interface ITickable
     {
