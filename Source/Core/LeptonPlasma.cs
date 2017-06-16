@@ -21,47 +21,10 @@ using tainicom.Aether.Elementary.Leptons;
 
 namespace tainicom.Aether.Core
 {
-    public class LeptonPlasma: BasePlasma, ITickable
+    public class LeptonPlasma: BasePlasma
     {
-        EnabledList<IAether> _enabledParticles;
-
         public LeptonPlasma()
         {
-            _enabledParticles = new EnabledList<IAether>();
-        }
-        
-        public void Tick(GameTime gameTime)
-        {
-            _enabledParticles.Process();
-            foreach (ILepton item in _enabledParticles)
-            {
-                //item.Tick(gameTime);
-            }
-            return;
-        }
-
-        protected override void InsertItem(int index, IAether item)
-        {
-            base.InsertItem(index, item);
-            _enabledParticles.Add(item);
-            return;
-        }
-
-        protected override void RemoveItem(int index)
-        {
-            IAether item = this[index];
-            if (_enabledParticles.Contains(item)) _enabledParticles.Remove(item);
-            base.RemoveItem(index);
-        }
-        
-        public void Enable(ILepton item)
-        {
-            _enabledParticles.Enable(item);
-        }
-
-        public void Disable(ILepton item)
-        {
-            _enabledParticles.Disable(item);
         }
 
     }
