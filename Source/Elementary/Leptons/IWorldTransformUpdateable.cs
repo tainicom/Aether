@@ -18,8 +18,9 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Elementary.Leptons
 {
-    public interface IWorldTransform: IAether
+    public interface IWorldTransformUpdateable : IAether
     {
-        Matrix WorldTransform { get; }
+        void UpdateWorldTransform(IWorldTransform parentWorldTransform);
     }
 }
+

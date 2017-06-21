@@ -152,6 +152,7 @@
     <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
     <Compile Include="Elementary\Leptons\IWorldTransform.cs" />
+    <Compile Include="Elementary\Leptons\IWorldTransformUpdateable.cs" />
     <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
     <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
