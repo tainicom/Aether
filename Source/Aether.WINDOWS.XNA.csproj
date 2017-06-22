@@ -110,6 +110,7 @@
     <Compile Include="Elementary\IPlasma.cs" />
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILeptonPlasma.cs" />
     <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
     <Compile Include="Elementary\Leptons\IWorldTransform.cs" />
