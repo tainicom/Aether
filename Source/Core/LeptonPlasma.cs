@@ -40,6 +40,15 @@ namespace tainicom.Aether.Core
         {
         }
         
+        protected override void InsertItem(int index, IAether item)
+        {   
+            base.InsertItem(index, item);
+
+            var updatetable = item as IWorldTransformUpdateable;
+            if (updatetable != null)
+                updatetable.UpdateWorldTransform(this);
+        }
+
         public Matrix LocalTransform
         {
             get { return _localTransform; }
@@ -71,9 +80,9 @@ namespace tainicom.Aether.Core
         {
             foreach (var child in this)
             {
-                var updatetableChild = child as IWorldTransformUpdateable;
-                if (updatetableChild == null) continue;
-                updatetableChild.UpdateWorldTransform(this);
+                var updatetable = child as IWorldTransformUpdateable;
+                if (updatetable != null)
+                    updatetable.UpdateWorldTransform(this);
             }
         }
 
