@@ -86,10 +86,9 @@ namespace tainicom.Aether.Core.Walkers
 
             IDrawable drawable = particle as IDrawable;
             IPhoton photon = particle as IPhoton;
-            ILepton lepton = particle as ILepton;
             IMaterial material = (photon != null) ? photon.Material : null;
 
-            if (photon != null && lepton != null && material != null && (drawable==null || drawable.Visible))
+            if (photon != null && material != null && (drawable==null || drawable.Visible))
             {
                 ((IShaderMatrices)material).World = worldTransform;
                 ((IShaderMatrices)material).View = this.View;
