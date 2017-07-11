@@ -118,6 +118,11 @@ namespace tainicom.Aether.Engine
             parent.Add(child);
         }
 
+        public virtual void InsertChild(IPlasma parent, int index, IAether child)
+        {
+                parent.Insert(index, child);
+        }
+
         public virtual void RemoveChild(IPlasma parent, IAether child)
         {
             parent.Remove(child);
