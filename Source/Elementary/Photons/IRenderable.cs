@@ -25,6 +25,5 @@ namespace tainicom.Aether.Elementary
     public interface IRenderable
     {
         void Render(GameTime gameTime);
-        void Render(GameTime gameTime, IAetherWalker walker);
     }
 }

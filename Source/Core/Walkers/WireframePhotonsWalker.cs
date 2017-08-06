@@ -68,11 +68,6 @@ namespace tainicom.Aether.Core.Walkers
             Render(gameTime, Current);
         }
 
-        public void Render(GameTime gameTime, IAetherWalker walker)
-        {
-            throw new NotSupportedException("Can'not assign walker on a walker");
-        }
-
         private void Render(GameTime gameTime, IAether particle)
         {
             Matrix worldTransform;
