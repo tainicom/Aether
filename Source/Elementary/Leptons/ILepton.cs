@@ -19,7 +19,7 @@ using Microsoft.Xna.Framework;
 namespace tainicom.Aether.Elementary.Leptons
 {
     /// <summary>
-    /// Particle that have position, rotation & scale
+    /// Particle that have position, rotation and scale
     /// </summary>
     public interface ILepton : ILocalTransform, IPosition, IAether
     {
