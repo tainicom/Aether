@@ -25,7 +25,7 @@ using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class PhotonsWalker : DepthFirstWalker, IInitializable, ILepton, IRenderable, IShaderMatrices
+    public class PhotonsWalker : DepthFirstWalker, IInitializable, ILepton, IRenderableWalker, IShaderMatrices
     {
         private AetherEngine engine;
         PhotonPlasma PhotonRoot { get { return (PhotonPlasma)engine.PhotonsMgr.Root;  } }

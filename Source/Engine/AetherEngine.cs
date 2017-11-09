@@ -33,11 +33,12 @@ namespace tainicom.Aether.Engine
 
         internal IPlasma Root;
 
+        #endregion
+
         public AetherContext Context { get { return _context; } }
 
         public float TotalTime { get { return (float)EngineData.TotalTime; } }
 
-        #endregion
         
         public AetherEngine(AetherContext context)
         {
@@ -108,6 +109,11 @@ namespace tainicom.Aether.Engine
             return;
         }
                 
+        public void PreRender(GameTime gameTime)
+        {
+            PreRenderManagers(gameTime);
+        }
+
         public void Render(GameTime gameTime)
         {
             RenderManagers(gameTime);
