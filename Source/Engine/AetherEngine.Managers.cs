@@ -69,13 +69,23 @@ namespace tainicom.Aether.Engine
             }
         }
 
+        private void PreRenderManagers(GameTime gameTime)
+        {
+            foreach (IAetherManager particleManager in Managers)
+            {
+                if (!particleManager.IsEnabled) continue;
+                if (particleManager is IRenderableManager)
+                    ((IRenderableManager)particleManager).PreRender(gameTime);
+            }
+        }
+
         private void RenderManagers(GameTime gameTime)
         {
             foreach (IAetherManager particleManager in Managers)
             {
                 if (!particleManager.IsEnabled) continue;
-                if (particleManager is IRenderable)
-                    ((IRenderable)particleManager).Render(gameTime);
+                if (particleManager is IRenderableManager)
+                    ((IRenderableManager)particleManager).Render(gameTime);
             }
         }
         

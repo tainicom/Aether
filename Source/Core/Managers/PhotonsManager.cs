@@ -25,7 +25,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class PhotonsManager: BaseManager<IPhoton>, IRenderable
+    public class PhotonsManager: BaseManager<IPhoton>, IRenderableManager
     {
         public IAetherWalker DefaultWalker { get; set; }
 
@@ -53,6 +53,9 @@ namespace tainicom.Aether.Core.Managers
                 tickableRoot.Tick(gameTime);
             return;
         }
+        public void PreRender(GameTime gameTime)
+        {
+        }
 
         public void Render(GameTime gameTime)
         {
@@ -63,7 +66,7 @@ namespace tainicom.Aether.Core.Managers
         {
             walker.Reset();
             while (walker.MoveNext())
-                ((IRenderable)walker).Render(gameTime);
+                ((IRenderableWalker)walker).Render(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
