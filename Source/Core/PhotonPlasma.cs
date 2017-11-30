@@ -27,7 +27,7 @@ namespace tainicom.Aether.Core
     {
         protected EnabledList<IAether> _enabledParticles;
 
-        public IList<IAether> VisibleParticles { get { return _enabledParticles; } }
+        public IEnumerator<IAether> VisibleParticles { get { return _enabledParticles.GetEnumerator(); } }
 
         public PhotonPlasma()
         {

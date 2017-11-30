@@ -14,6 +14,7 @@
 //   limitations under the License.
 #endregion
 
+using System.Collections;
 using System.Collections.Generic;
 using tainicom.Aether.Elementary;
 
@@ -26,13 +27,15 @@ namespace tainicom.Aether.Core.Walkers
         protected struct Breadcrumb
         {
             public IPlasma Plasma;
-            public int Index;
-            public Breadcrumb(IPlasma plasma, int index)
+            public IEnumerator Enumerator;
+
+            public Breadcrumb(IPlasma plasma, IEnumerator Enumerator)
             {
                 this.Plasma = plasma;
-                this.Index = index;
+                this.Enumerator = Enumerator;
             }
         }
+
         protected Breadcrumb currentNode;
         protected Queue<Breadcrumb> BreadcrumbQueue;
 
@@ -45,7 +48,7 @@ namespace tainicom.Aether.Core.Walkers
         public override void Reset()
         {
             currentNode.Plasma = null;
-            currentNode.Index = -1;
+            currentNode.Enumerator = null;
             Current = null;
         }
 
@@ -61,22 +64,21 @@ namespace tainicom.Aether.Core.Walkers
             {
                 Current = startingElement;
                 BreadcrumbQueue.Clear();
-                currentNode = new Breadcrumb((IPlasma)Current, -1);
+                IEnumerator<IAether> enumerator = GetParticles((IPlasma)Current);
+                currentNode = new Breadcrumb((IPlasma)Current, enumerator);
                 return true;
             }
 
-            currentNode.Index++;
-
-            IList<IAether> particles = GetParticles(currentNode.Plasma);
-
-            if (currentNode.Index < particles.Count)
+            if (currentNode.Enumerator.MoveNext())
             {
-                Current = particles[currentNode.Index];
+                Current = (IAether)currentNode.Enumerator.Current;
+
                 IPlasma plasma = Current as IPlasma;
                 if (plasma != null)
                 {
                     BreadcrumbQueue.Enqueue(currentNode);
-                    currentNode = new Breadcrumb(plasma, -1);
+                    IEnumerator<IAether> enumerator = GetParticles(plasma);
+                    currentNode = new Breadcrumb(plasma, enumerator);
                 }
                 return true;
             }
@@ -93,9 +95,9 @@ namespace tainicom.Aether.Core.Walkers
             return false;
         }
 
-        protected virtual IList<IAether> GetParticles(IPlasma plasma)
+        protected virtual IEnumerator<IAether> GetParticles(IPlasma plasma)
         {
-            return plasma;
+            return plasma.GetEnumerator();
         }
 
     }

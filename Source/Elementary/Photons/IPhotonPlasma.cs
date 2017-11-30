@@ -22,6 +22,6 @@ namespace tainicom.Aether.Elementary.Photons
 {
     public interface IPhotonPlasma
     {
-        IList<IAether> VisibleParticles { get; }
+        IEnumerator<IAether> VisibleParticles { get; }
     }
 }

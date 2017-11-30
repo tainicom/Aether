@@ -55,12 +55,12 @@ namespace tainicom.Aether.Core.Walkers
             return base.MoveNext();
         }
 
-        protected override IList<IAether> GetParticles(IPlasma plasma)
+        protected override IEnumerator<IAether> GetParticles(IPlasma plasma)
         {
             IPhotonPlasma photonPlasma = plasma as IPhotonPlasma;
             if (photonPlasma != null)
                 return photonPlasma.VisibleParticles;
-            return plasma;
+            return plasma.GetEnumerator();
         }
 
         public void Render(GameTime gameTime)
