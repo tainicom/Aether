@@ -26,12 +26,10 @@ namespace tainicom.Aether.Core.Walkers
 
         protected struct Breadcrumb
         {
-            public IPlasma Plasma;
             public IEnumerator Enumerator;
 
-            public Breadcrumb(IPlasma plasma, IEnumerator Enumerator)
+            public Breadcrumb(IEnumerator Enumerator)
             {
-                this.Plasma = plasma;
                 this.Enumerator = Enumerator;
             }
         }
@@ -47,7 +45,6 @@ namespace tainicom.Aether.Core.Walkers
 
         public override void Reset()
         {
-            currentNode.Plasma = null;
             currentNode.Enumerator = null;
             Current = null;
         }
@@ -60,12 +57,12 @@ namespace tainicom.Aether.Core.Walkers
         //this method is used to break Recursive through the Super class when DepthFirstWalker is inherited
         private bool internalMoveNext()
         {
-            if (currentNode.Plasma == null)
+            if (currentNode.Enumerator == null)
             {
                 Current = startingElement;
                 BreadcrumbQueue.Clear();
-                IEnumerator<IAether> enumerator = GetParticles((IPlasma)Current);
-                currentNode = new Breadcrumb((IPlasma)Current, enumerator);
+                var enumerator = GetParticles((IPlasma)Current);
+                currentNode = new Breadcrumb(enumerator);
                 return true;
             }
 
@@ -77,8 +74,8 @@ namespace tainicom.Aether.Core.Walkers
                 if (plasma != null)
                 {
                     BreadcrumbQueue.Enqueue(currentNode);
-                    IEnumerator<IAether> enumerator = GetParticles(plasma);
-                    currentNode = new Breadcrumb(plasma, enumerator);
+                    var enumerator = GetParticles(plasma);
+                    currentNode = new Breadcrumb(enumerator);
                 }
                 return true;
             }
