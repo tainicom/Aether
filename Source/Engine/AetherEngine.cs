@@ -31,8 +31,6 @@ namespace tainicom.Aether.Engine
         
         internal AetherEngineData EngineData;
 
-        internal IPlasma Root;
-
         #endregion
 
         public AetherContext Context { get { return _context; } }

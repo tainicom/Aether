@@ -70,7 +70,7 @@ namespace tainicom.Aether.Core.Walkers
             {
                 Current = (IAether)currentNode.Enumerator.Current;
 
-                IPlasma plasma = Current as IPlasma;
+                var plasma = Current as IPlasma;
                 if (plasma != null)
                 {
                     BreadcrumbQueue.Enqueue(currentNode);
