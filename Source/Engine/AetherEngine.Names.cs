@@ -49,6 +49,9 @@ namespace tainicom.Aether.Engine
             if (oldName != String.Empty)
                 _names.Remove(oldName);
             
+            if (String.IsNullOrEmpty(name))
+                return;
+
             // set name
             _names[name] = particle;
             return;
