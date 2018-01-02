@@ -28,13 +28,13 @@ namespace tainicom.Aether.Core
             Debug.Assert(!this.Contains(item));
             base.InsertItem(index, item);
             
-            IAetherNotify notify = item as IAetherNotify;
+            var notify = item as IAetherNotify;
             if (notify != null) notify.OnAttachedTo(this);
         }
 
         protected override void RemoveItem(int index)
         {
-            IAetherNotify notify = this[index] as IAetherNotify;
+            var notify = this[index] as IAetherNotify;
             if (notify != null) notify.OnDettachedFrom(this);
 
             base.RemoveItem(index);

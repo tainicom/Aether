@@ -20,7 +20,7 @@ using System.Text;
 
 namespace tainicom.Aether.Elementary.Leptons
 {
-    public interface ILeptonPlasma: IPlasma, IWorldTransform
+    public interface ILeptonPlasma: IPlasma<IAether>, IWorldTransform
     {
         
     }

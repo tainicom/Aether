@@ -61,7 +61,7 @@ namespace tainicom.Aether.Core.Walkers
             {
                 Current = startingElement;
                 BreadcrumbQueue.Clear();
-                var enumerator = GetParticles((IPlasma)Current);
+                var enumerator = GetParticles((IPlasma<IAether>)Current);
                 currentNode = new Breadcrumb(enumerator);
                 return true;
             }
@@ -70,7 +70,7 @@ namespace tainicom.Aether.Core.Walkers
             {
                 Current = (IAether)currentNode.Enumerator.Current;
 
-                var plasma = Current as IPlasma;
+                var plasma = Current as IPlasma<IAether>;
                 if (plasma != null)
                 {
                     BreadcrumbQueue.Enqueue(currentNode);
@@ -92,7 +92,7 @@ namespace tainicom.Aether.Core.Walkers
             return false;
         }
 
-        protected virtual IEnumerator<IAether> GetParticles(IPlasma plasma)
+        protected virtual IEnumerator<IAether> GetParticles(IPlasma<IAether> plasma)
         {
             return plasma.GetEnumerator();
         }

@@ -55,7 +55,7 @@ namespace tainicom.Aether.Core.Walkers
             return base.MoveNext();
         }
 
-        protected override IEnumerator<IAether> GetParticles(IPlasma plasma)
+        protected override IEnumerator<IAether> GetParticles(IPlasma<IAether> plasma)
         {
             IPhotonPlasma photonPlasma = plasma as IPhotonPlasma;
             if (photonPlasma != null)
