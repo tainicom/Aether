@@ -26,7 +26,8 @@ namespace tainicom.Aether.Elementary
     {
     }
     
-    public interface IPlasmaList : IAether, IPlasma<IAether>, IList<IAether>
+    public interface IPlasmaList<TPlasma> : IAether, IPlasma<TPlasma>, IList<TPlasma>
+        where TPlasma : IAether
     {
     }
 

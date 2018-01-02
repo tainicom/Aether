@@ -33,7 +33,7 @@ namespace tainicom.Aether.Engine
         #region Public Properties
         public bool IsEnabled { get; set; }
         public string Name {get; private set;}
-        public IPlasmaList Root {get; protected set; }
+        public IPlasmaList<IAether> Root { get; protected set; }
         #endregion
 
         #region Constructors

@@ -21,7 +21,7 @@ using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core
 {
-    public class BasePlasma : Collection<IAether>, IPlasmaList, IAetherSerialization
+    public class BasePlasma : Collection<IAether>, IPlasmaList<IAether>, IAetherSerialization
     {
         protected override void InsertItem(int index, IAether item)
         {
