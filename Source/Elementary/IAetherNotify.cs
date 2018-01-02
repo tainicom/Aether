@@ -17,9 +17,10 @@
 
 namespace tainicom.Aether.Elementary
 {
-    public interface IAetherNotify
+    public interface IAetherNotify<TPlasma>
+        where TPlasma : IAether
     {
-        void OnDettachedFrom(IPlasma<IAether> plasma);
-        void OnAttachedTo(IPlasma<IAether> plasma);
+        void OnDettachedFrom(IPlasma<TPlasma> plasma);
+        void OnAttachedTo(IPlasma<TPlasma> plasma);
     }
 }
