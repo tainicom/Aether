@@ -21,20 +21,21 @@ using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core
 {
-    public class BasePlasma : Collection<IAether>, IPlasmaList<IAether>, IAetherSerialization
+    public class BasePlasma<TPlasma> : Collection<TPlasma>, IPlasmaList<TPlasma>, IAetherSerialization
+        where TPlasma : IAether
     {
-        protected override void InsertItem(int index, IAether item)
+        protected override void InsertItem(int index, TPlasma item)
         {
             Debug.Assert(!this.Contains(item));
             base.InsertItem(index, item);
             
-            IAetherNotify<IAether> notify = item as IAetherNotify<IAether>;
+            IAetherNotify<TPlasma> notify = item as IAetherNotify<TPlasma>;
             if (notify != null) notify.OnAttachedTo(this);
         }
 
         protected override void RemoveItem(int index)
         {
-            IAetherNotify<IAether> notify = this[index] as IAetherNotify<IAether>;
+            IAetherNotify<TPlasma> notify = this[index] as IAetherNotify<TPlasma>;
             if (notify != null) notify.OnDettachedFrom(this);
 
             base.RemoveItem(index);

@@ -22,7 +22,7 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class GluonPlasma: BasePlasma, ITickable
+    public class GluonPlasma: BasePlasma<IAether>, ITickable
     {
         EnabledList<IAether> _enabledParticles;
         private bool isEnumerating = false; 

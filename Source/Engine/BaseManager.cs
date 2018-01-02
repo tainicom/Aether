@@ -50,7 +50,7 @@ namespace tainicom.Aether.Engine
         public virtual void Initialize(AetherEngine engine)
         {
             this._engine = engine;
-            this.Root = new BasePlasma();
+            this.Root = new BasePlasma<IAether>();
         }
 
         Type[] GetTypeList()
