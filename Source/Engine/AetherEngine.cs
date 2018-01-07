@@ -117,17 +117,20 @@ namespace tainicom.Aether.Engine
             RenderManagers(gameTime);
         }
         
-        public virtual void AddChild(IPlasmaList<IAether> parent, IAether child)
+        public virtual void AddChild<TPlasma>(IPlasmaList<TPlasma> parent, TPlasma child)
+            where TPlasma : IAether
         {
             parent.Add(child);
         }
 
-        public virtual void InsertChild(IPlasmaList<IAether> parent, int index, IAether child)
+        public virtual void InsertChild<TPlasma>(IPlasmaList<TPlasma> parent, int index, TPlasma child)
+            where TPlasma : IAether
         {
                 parent.Insert(index, child);
         }
 
-        public virtual void RemoveChild(IPlasmaList<IAether> parent, IAether child)
+        public virtual void RemoveChild<TPlasma>(IPlasmaList<TPlasma> parent, TPlasma child)
+            where TPlasma : IAether
         {
             parent.Remove(child);
         }
