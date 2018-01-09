@@ -14,11 +14,11 @@
 //   limitations under the License.
 #endregion
 
-using tainicom.Aether.Engine;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
-using tainicom.Aether.Elementary.Data;
 using tainicom.Aether.Elementary.Cameras;
+using tainicom.Aether.Elementary.Data;
+using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
