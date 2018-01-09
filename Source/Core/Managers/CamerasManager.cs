@@ -22,7 +22,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class CamerasManager : BaseManager<ICamera>
+    public class CamerasManager : BaseManager<ICameraNode>
     {
         public CamerasManager(): base("Cameras")
         {
@@ -53,14 +53,14 @@ namespace tainicom.Aether.Core.Managers
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is ICamera);
-            ICamera item = particle as ICamera;
+            System.Diagnostics.Debug.Assert(particle is ICameraNode);
+            ICameraNode item = particle as ICameraNode;
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is ICamera);
-            ICamera item = particle as ICamera;
+            System.Diagnostics.Debug.Assert(particle is ICameraNode);
+            ICameraNode item = particle as ICameraNode;
         }
         
     }

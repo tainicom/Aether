@@ -19,7 +19,7 @@ using tainicom.Aether.Elementary.Leptons;
 
 namespace tainicom.Aether.Elementary.Cameras
 {
-    public interface ICamera: IPosition, IAether
+    public interface ICamera: IPosition, IAether, ICameraNode
     {
         //fundamental
         Matrix View { get; }

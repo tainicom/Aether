@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Core\BasePlasma.cs" />
     <Compile Include="Core\BaseWalker.cs" />
+    <Compile Include="Core\CameraPlasma.cs" />
     <Compile Include="Core\Cameras\Camera.cs" />
     <Compile Include="Core\Cameras\OrthographicCamera.cs" />
     <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Core\Walkers\WireframePhotonsWalker.cs" />
 	<Compile Include="Elementary\Audio\ISound.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
+    <Compile Include="Elementary\Cameras\ICameraNode.cs" />
     <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
     <Compile Include="Elementary\Data\UniqueID.cs" />
