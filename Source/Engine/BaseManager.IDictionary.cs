@@ -102,7 +102,7 @@ namespace tainicom.Aether.Engine
 
         public IEnumerator<KeyValuePair<UniqueID, IAether>> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return particles.GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
