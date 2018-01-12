@@ -14,12 +14,11 @@
 //   limitations under the License.
 #endregion
 
-using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Cameras;
 
 namespace tainicom.Aether.Core
 {
-    public class CameraPlasma : BasePlasma<IAether>, ICameraNode
+    public class CameraPlasma : BasePlasma<ICameraNode>, ICameraNode
     {
     }
 }

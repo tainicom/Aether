@@ -25,7 +25,7 @@ namespace tainicom.Aether.Core.Managers
 {
     public class CamerasManager : BaseManager<ICameraNode>
     {
-        public IPlasmaList<IAether> Root { get; protected set; }
+        public IPlasmaList<ICameraNode> Root { get; protected set; }
 
         public CamerasManager(): base("Cameras")
         {
@@ -34,7 +34,7 @@ namespace tainicom.Aether.Core.Managers
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            this.Root = new BasePlasma<IAether>();
+            this.Root = new CameraPlasma();
         }
         
         //protected override void Dispose(bool disposing)
