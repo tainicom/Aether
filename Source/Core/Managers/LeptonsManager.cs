@@ -19,12 +19,15 @@ using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Data;
 using tainicom.Aether.Elementary.Gluon;
 using tainicom.Aether.Elementary.Leptons;
+using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
     public class LeptonsManager : BaseManager<ILepton>
     {
+        public IPlasmaList<IAether> Root { get; protected set; }
+
         public LeptonsManager(): base("Leptons")
         {
             
@@ -32,7 +35,7 @@ namespace tainicom.Aether.Core.Managers
 
         public override void Initialize(AetherEngine engine)
         {
-            this._engine = engine;
+            base.Initialize(engine);
             Root = new LeptonPlasma();
         }
         
@@ -101,6 +104,26 @@ namespace tainicom.Aether.Core.Managers
             }
             
             world = Matrix.Identity;
+        }
+
+#if (WINDOWS)
+        public override void Save(IAetherWriter writer)
+        {
+            base.Save(writer);
+
+            //write root
+            if (Root is IAetherSerialization)
+                writer.Write("Root", (IAetherSerialization)Root);
+        }
+#endif
+
+        public override void Load(IAetherReader reader)
+        {
+            base.Load(reader);
+
+            //read root
+            if (Root is IAetherSerialization)
+                reader.Read("Root", (IAetherSerialization)Root);
         }
     }
 

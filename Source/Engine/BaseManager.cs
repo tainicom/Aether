@@ -33,7 +33,6 @@ namespace tainicom.Aether.Engine
         #region Public Properties
         public bool IsEnabled { get; set; }
         public string Name {get; private set;}
-        public IPlasmaList<IAether> Root { get; protected set; }
         #endregion
 
         #region Constructors
@@ -50,7 +49,6 @@ namespace tainicom.Aether.Engine
         public virtual void Initialize(AetherEngine engine)
         {
             this._engine = engine;
-            this.Root = new BasePlasma<IAether>();
         }
 
         Type[] GetTypeList()

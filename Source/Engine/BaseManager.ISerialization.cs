@@ -30,10 +30,6 @@ namespace tainicom.Aether.Engine
         {
             //write particles
             writer.WriteParticles("Particles", particles);
-            //write root
-            IAetherSerialization serialisablePlasma = Root as IAetherSerialization;
-            if (serialisablePlasma != null)
-                writer.Write("Root", serialisablePlasma);
         }
         #endif
 
@@ -41,10 +37,6 @@ namespace tainicom.Aether.Engine
         {            
             //read particles
             reader.ReadParticles("Particles", particles);
-            //read root
-            IAetherSerialization serialisablePlasma = Root as IAetherSerialization;
-            if (serialisablePlasma != null)
-                reader.Read("Root", serialisablePlasma);
         }
 
     }

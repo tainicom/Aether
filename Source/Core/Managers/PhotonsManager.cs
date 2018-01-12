@@ -21,12 +21,15 @@ using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Data;
 using tainicom.Aether.Elementary.Gluon;
 using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
     public class PhotonsManager: BaseManager<IPhoton>, IRenderableManager
     {
+        public IPlasmaList<IAether> Root { get; protected set; }
+
         public IAetherWalker DefaultWalker { get; set; }
 
         public PhotonsManager(): base("Photons")
@@ -35,7 +38,7 @@ namespace tainicom.Aether.Core.Managers
 
         public override void Initialize(AetherEngine engine)
         {
-            this._engine = engine;
+            base.Initialize(engine);
             Root = new PhotonPlasma();
             //Root = engine.RegisterParticle(new PhotonPlasma(), "Root");
 
@@ -81,5 +84,24 @@ namespace tainicom.Aether.Core.Managers
             _engine.RemoveChild(Root, particle);
         }
 
+#if (WINDOWS)
+        public override void Save(IAetherWriter writer)
+        {
+            base.Save(writer);
+
+            //write root
+            if (Root is IAetherSerialization)
+                writer.Write("Root", (IAetherSerialization)Root);
+        }
+#endif
+
+        public override void Load(IAetherReader reader)
+        {
+            base.Load(reader);
+
+            //read root
+            if (Root is IAetherSerialization)
+                reader.Read("Root", (IAetherSerialization)Root);
+        }
     }
 }

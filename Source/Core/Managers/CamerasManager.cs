@@ -18,15 +18,23 @@ using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Cameras;
 using tainicom.Aether.Elementary.Data;
+using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
     public class CamerasManager : BaseManager<ICameraNode>
     {
+        public IPlasmaList<IAether> Root { get; protected set; }
+
         public CamerasManager(): base("Cameras")
         {
             
+        }
+        public override void Initialize(AetherEngine engine)
+        {
+            base.Initialize(engine);
+            this.Root = new BasePlasma<IAether>();
         }
         
         //protected override void Dispose(bool disposing)
@@ -63,6 +71,25 @@ namespace tainicom.Aether.Core.Managers
             ICameraNode item = particle as ICameraNode;
         }
         
+#if (WINDOWS)
+        public override void Save(IAetherWriter writer)
+        {
+            base.Save(writer);
+
+            //write root
+            if (Root is IAetherSerialization)
+                writer.Write("Root", (IAetherSerialization)Root);
+        }
+#endif
+
+        public override void Load(IAetherReader reader)
+        {
+            base.Load(reader);
+
+            //read root
+            if (Root is IAetherSerialization)
+                reader.Read("Root", (IAetherSerialization)Root);
+        }
     }
 
 }
