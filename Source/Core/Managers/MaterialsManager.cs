@@ -25,7 +25,7 @@ namespace tainicom.Aether.Core.Managers
 {
     public class MaterialsManager : BaseManager<IMaterial>
     {
-        public IPlasmaList<IAether> Root { get; protected set; }
+        public IPlasmaList<IMaterial> Root { get; protected set; }
 
         public MaterialsManager(): base("Materials")
         {
@@ -34,7 +34,7 @@ namespace tainicom.Aether.Core.Managers
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            this.Root = new BasePlasma<IAether>();
+            this.Root = new BasePlasma<IMaterial>();
         }
         
         //protected override void Dispose(bool disposing)
