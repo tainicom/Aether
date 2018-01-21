@@ -126,6 +126,7 @@
     <Compile Include="Elementary\Photons\ILightSource.cs" />
     <Compile Include="Elementary\Photons\IMaterial.cs" />
     <Compile Include="Elementary\Photons\IPhoton.cs" />
+    <Compile Include="Elementary\Photons\IPhotonNode.cs" />
     <Compile Include="Elementary\Photons\IRenderable.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
     <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />

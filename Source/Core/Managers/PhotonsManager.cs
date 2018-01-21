@@ -26,7 +26,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class PhotonsManager: BaseManager<IPhoton>, IRenderableManager
+    public class PhotonsManager: BaseManager<IPhotonNode>, IRenderableManager
     {
         public IPlasmaList<IAether> Root { get; protected set; }
 
@@ -74,14 +74,14 @@ namespace tainicom.Aether.Core.Managers
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IPhoton);
-            _engine.AddChild(Root, particle);
+            System.Diagnostics.Debug.Assert(particle is IPhotonNode);
+            _engine.AddChild(Root, (IPhotonNode)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IPhoton);
-            _engine.RemoveChild(Root, particle);
+            System.Diagnostics.Debug.Assert(particle is IPhotonNode);
+            _engine.RemoveChild(Root, (IPhotonNode)particle);
         }
 
 #if (WINDOWS)

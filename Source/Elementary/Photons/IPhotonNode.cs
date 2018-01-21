@@ -14,14 +14,9 @@
 //   limitations under the License.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace tainicom.Aether.Elementary.Photons
 {
-    public interface IPhotonPlasma: IPhotonNode
+    public interface IPhotonNode: IAether
     {
-        IEnumerator<IAether> VisibleParticles { get; }
     }
 }

@@ -36,7 +36,7 @@ namespace tainicom.Aether.Elementary.Photons
     /// Now we confine functions like VertexBuffer.SetData<IVertexType>(...) and 
     /// GraphicsDevice.DrawUserPrimitives<IVertexType>(...) once inside the visitor.
     /// </remarks>
-    public interface IPhoton : IAether
+    public interface IPhoton : IAether, IPhotonNode
     {
         void Accept(IGeometryVisitor geometryVisitor);
         IMaterial Material { get; }
