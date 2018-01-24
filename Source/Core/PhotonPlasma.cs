@@ -25,13 +25,13 @@ namespace tainicom.Aether.Core
 {
     public class PhotonPlasma: BasePlasma<IAether>, IPhotonPlasma, ITickable
     {
-        protected EnabledList<IAether> _enabledParticles;
+        protected EnabledList<IPhotonNode> _enabledParticles;
 
-        public IEnumerator<IAether> VisibleParticles { get { return _enabledParticles.GetEnumerator(); } }
+        public IEnumerator<IPhotonNode> VisibleParticles { get { return _enabledParticles.GetEnumerator(); } }
 
         public PhotonPlasma()
         {
-            _enabledParticles = new EnabledList<IAether>();
+            _enabledParticles = new EnabledList<IPhotonNode>();
         }
         
         public void Tick(GameTime gameTime)
@@ -43,15 +43,15 @@ namespace tainicom.Aether.Core
         protected override void InsertItem(int index, IAether item)
         {
             base.InsertItem(index, item);
-            _enabledParticles.Add((IPhoton)item);
+            _enabledParticles.Add((IPhotonNode)item);
             return;
         }
 
         protected override void RemoveItem(int index)
         {
             IAether item = this[index];
-            if (_enabledParticles.Contains((IPhoton)item))
-                _enabledParticles.Remove((IPhoton)item);
+            if (_enabledParticles.Contains((IPhotonNode)item))
+                _enabledParticles.Remove((IPhotonNode)item);
             base.RemoveItem(index);
         }
         
