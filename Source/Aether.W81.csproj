@@ -104,7 +104,8 @@
     <Compile Include="Elementary\Photons\IMaterial.cs" />
     <Compile Include="Elementary\Photons\IPhoton.cs" />
     <Compile Include="Elementary\Photons\IPhotonNode.cs" />
-    <Compile Include="Elementary\Photons\IRenderable.cs" />
+    <Compile Include="Elementary\Photons\IPhotonWalker.cs" />
+    <Compile Include="Elementary\Photons\IRenderableManager.cs" />
     <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
     <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
     <Compile Include="Elementary\Photons\ITexture.cs" />

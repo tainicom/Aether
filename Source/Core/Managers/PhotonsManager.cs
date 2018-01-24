@@ -30,7 +30,7 @@ namespace tainicom.Aether.Core.Managers
     {
         public IPlasmaList<IAether> Root { get; protected set; }
 
-        public IAetherWalker DefaultWalker { get; set; }
+        public IPhotonWalker DefaultWalker { get; set; }
 
         public PhotonsManager(): base("Photons")
         {
@@ -65,11 +65,11 @@ namespace tainicom.Aether.Core.Managers
             Render(gameTime, DefaultWalker);
         }
 
-        public void Render(GameTime gameTime, IAetherWalker walker)
+        public void Render(GameTime gameTime, IPhotonWalker walker)
         {
             walker.Reset();
             while (walker.MoveNext())
-                ((IRenderableWalker)walker).Render(gameTime);
+                walker.Render(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)

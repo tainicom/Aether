@@ -28,7 +28,7 @@ using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class WireframePhotonsWalker : DepthFirstWalker, IInitializable, ILepton, IRenderableWalker, IShaderMatrices
+    public class WireframePhotonsWalker : DepthFirstWalker, IInitializable, ILepton, IPhotonWalker, IShaderMatrices
     {
         private AetherEngine engine;
         BasicMaterial material;

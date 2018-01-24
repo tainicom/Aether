@@ -14,10 +14,6 @@
 //   limitations under the License.
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Elementary
@@ -27,10 +23,4 @@ namespace tainicom.Aether.Elementary
         void Render(GameTime gameTime);
         void PreRender(GameTime gameTime);
     }
-
-    public interface IRenderableWalker
-    {
-        void Render(GameTime gameTime);
-    }
-
 }
