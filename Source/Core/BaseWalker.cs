@@ -21,10 +21,11 @@ using tainicom.Aether.Elementary.Managers;
 
 namespace tainicom.Aether.Core
 {
-    public class BaseWalker: IAetherWalker
+    public class BaseWalker<T>: IAetherWalker<T>
+        where T : IAether
     {
         #region Public Properties
-        public IAether Current { get; protected set; }
+        public T Current { get; protected set; }
         object IEnumerator.Current { get { return this.Current; } }
         public IAetherManager Manager { get; set; }
         #endregion
@@ -46,7 +47,7 @@ namespace tainicom.Aether.Core
 
         public virtual void Dispose()
         {
-            Current = null;
+            Current = default(T);
         }
         
         public virtual bool MoveNext()

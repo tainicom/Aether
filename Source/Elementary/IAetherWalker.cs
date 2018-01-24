@@ -18,7 +18,8 @@ using System.Collections.Generic;
 
 namespace tainicom.Aether.Elementary
 {
-    public interface IAetherWalker: IEnumerator<IAether>
+    public interface IAetherWalker<T> : IEnumerator<T>
+        where T : IAether
     {
     }
 }

@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Elementary.Photons
 {
-    public interface IPhotonWalker : IAetherWalker
+    public interface IPhotonWalker : IAetherWalker<IAether>
     {
         void Render(GameTime gameTime);
     }

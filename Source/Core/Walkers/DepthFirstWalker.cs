@@ -20,9 +20,10 @@ using tainicom.Aether.Elementary;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class DepthFirstWalker : BaseWalker
+    public class DepthFirstWalker<T> : BaseWalker<T>
+        where T : IAether
     {
-        protected IAether startingElement;
+        protected T startingElement;
 
         protected struct Breadcrumb
         {
@@ -37,7 +38,7 @@ namespace tainicom.Aether.Core.Walkers
         protected Breadcrumb currentNode;
         protected Queue<Breadcrumb> BreadcrumbQueue;
 
-        public DepthFirstWalker(IAether startingElement)
+        public DepthFirstWalker(T startingElement)
         {
             this.startingElement = startingElement;
             BreadcrumbQueue = new Queue<Breadcrumb>(16);
@@ -46,7 +47,7 @@ namespace tainicom.Aether.Core.Walkers
         public override void Reset()
         {
             currentNode.Enumerator = null;
-            Current = null;
+            Current = default(T);
         }
 
         public override bool MoveNext()
@@ -61,16 +62,16 @@ namespace tainicom.Aether.Core.Walkers
             {
                 Current = startingElement;
                 BreadcrumbQueue.Clear();
-                var enumerator = GetParticles((IPlasma<IAether>)Current);
+                var enumerator = GetParticles((IPlasma<T>)Current);
                 currentNode = new Breadcrumb(enumerator);
                 return true;
             }
 
             if (currentNode.Enumerator.MoveNext())
             {
-                Current = (IAether)currentNode.Enumerator.Current;
+                Current = (T)currentNode.Enumerator.Current;
 
-                var plasma = Current as IPlasma<IAether>;
+                var plasma = Current as IPlasma<T>;
                 if (plasma != null)
                 {
                     BreadcrumbQueue.Enqueue(currentNode);
@@ -92,7 +93,7 @@ namespace tainicom.Aether.Core.Walkers
             return false;
         }
 
-        protected virtual IEnumerator<IAether> GetParticles(IPlasma<IAether> plasma)
+        protected virtual IEnumerator<T> GetParticles(IPlasma<T> plasma)
         {
             return plasma.GetEnumerator();
         }
