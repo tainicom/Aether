@@ -25,7 +25,7 @@ using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class PhotonsWalker : DepthFirstWalker<IAether>, IPhotonWalker, IInitializable, ILepton, IShaderMatrices
+    public class PhotonsWalker : DepthFirstWalker<IPhotonNode>, IPhotonWalker, IInitializable, ILepton, IShaderMatrices
     {
         private AetherEngine engine;
         PhotonPlasma PhotonRoot { get { return (PhotonPlasma)engine.PhotonsMgr.Root;  } }
@@ -42,7 +42,7 @@ namespace tainicom.Aether.Core.Walkers
         {
             this.engine = engine;
             this.Manager = engine.PhotonsMgr;
-            this.startingElement = engine.PhotonsMgr.Root;
+            this.startingElement = (IPhotonNode)engine.PhotonsMgr.Root;
         }
 
         public override void Reset()
@@ -55,7 +55,7 @@ namespace tainicom.Aether.Core.Walkers
             return base.MoveNext();
         }
 
-        protected override IEnumerator<IAether> GetParticles(IPlasma<IAether> plasma)
+        protected override IEnumerator<IPhotonNode> GetParticles(IPlasma<IPhotonNode> plasma)
         {
             IPhotonPlasma photonPlasma = plasma as IPhotonPlasma;
             if (photonPlasma != null)

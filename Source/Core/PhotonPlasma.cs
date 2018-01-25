@@ -23,7 +23,7 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class PhotonPlasma: BasePlasma<IAether>, IPhotonPlasma, ITickable
+    public class PhotonPlasma: BasePlasma<IPhotonNode>, IPhotonPlasma, ITickable
     {
         protected EnabledList<IPhotonNode> _enabledParticles;
 
@@ -40,10 +40,10 @@ namespace tainicom.Aether.Core
             return;
         }
 
-        protected override void InsertItem(int index, IAether item)
+        protected override void InsertItem(int index, IPhotonNode item)
         {
             base.InsertItem(index, item);
-            _enabledParticles.Add((IPhotonNode)item);
+            _enabledParticles.Add(item);
             return;
         }
 

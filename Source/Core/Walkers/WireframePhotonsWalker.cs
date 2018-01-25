@@ -28,7 +28,7 @@ using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class WireframePhotonsWalker : DepthFirstWalker<IAether>, IPhotonWalker, IInitializable, ILepton, IShaderMatrices
+    public class WireframePhotonsWalker : DepthFirstWalker<IPhotonNode>, IPhotonWalker, IInitializable, ILepton, IShaderMatrices
     {
         private AetherEngine engine;
         BasicMaterial material;
@@ -45,7 +45,7 @@ namespace tainicom.Aether.Core.Walkers
         {
             this.engine = engine;
             this.Manager = engine.PhotonsMgr;
-            this.startingElement = engine.PhotonsMgr.Root;
+            this.startingElement = (IPhotonNode)engine.PhotonsMgr.Root;
             
             //create material
             material = new BasicMaterial();
