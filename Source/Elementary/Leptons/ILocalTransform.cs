@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Elementary.Leptons
 {
-    public interface ILocalTransform: IAether
+    public interface ILocalTransform: ILeptonNode, IAether
     {
         Matrix LocalTransform { get; }
     }

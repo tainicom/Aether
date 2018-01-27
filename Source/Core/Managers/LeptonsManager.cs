@@ -24,7 +24,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class LeptonsManager : BaseManager<ILepton>
+    public class LeptonsManager : BaseManager<ILeptonNode>
     {
         public IPlasmaList<IAether> Root { get; protected set; }
 
@@ -65,14 +65,14 @@ namespace tainicom.Aether.Core.Managers
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is ILepton);
-            //_engine.AddChild(Root, particle);
+            System.Diagnostics.Debug.Assert(particle is ILeptonNode);
+            //_engine.AddChild(Root, (ILeptonNode)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is ILepton);
-            //_engine.RemoveChild(Root, particle);
+            System.Diagnostics.Debug.Assert(particle is ILeptonNode);
+            //_engine.RemoveChild(Root, (ILeptonNode)particle);
         }
 
         public static Matrix GetWorldTransform(IAether particle)

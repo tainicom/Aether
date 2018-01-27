@@ -18,7 +18,7 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Elementary.Leptons
 {
-    public interface IPosition : IAether
+    public interface IPosition : ILeptonNode, IAether
     {
         Vector3 Position { get; set; }
     }

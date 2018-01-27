@@ -99,6 +99,7 @@
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
     <Compile Include="Elementary\Leptons\IChildLepton.cs" />
     <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILeptonNode.cs" />
     <Compile Include="Elementary\Leptons\ILeptonPlasma.cs" />
     <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
     <Compile Include="Elementary\Leptons\IPosition.cs" />
