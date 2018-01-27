@@ -22,14 +22,14 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class GluonPlasma: BasePlasma<IAether>, IGluon
+    public class GluonPlasma: BasePlasma<IGluon>, IGluon
     {
-        EnabledList<IAether> _enabledParticles;
+        EnabledList<IGluon> _enabledParticles;
         private bool isEnumerating = false; 
 
         public GluonPlasma()
         {
-            _enabledParticles = new EnabledList<IAether>();
+            _enabledParticles = new EnabledList<IGluon>();
         }
         
         public void Tick(GameTime gameTime)
@@ -44,7 +44,7 @@ namespace tainicom.Aether.Core
             return;
         }
 
-        protected override void InsertItem(int index, IAether item)
+        protected override void InsertItem(int index, IGluon item)
         {
             if (isEnumerating)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
@@ -57,7 +57,7 @@ namespace tainicom.Aether.Core
         {
             if (isEnumerating)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
-            IAether item = this[index];
+            IGluon item = this[index];
             if (_enabledParticles.Contains(item)) _enabledParticles.Remove(item);
             base.RemoveItem(index);
         }

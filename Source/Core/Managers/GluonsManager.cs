@@ -26,7 +26,7 @@ namespace tainicom.Aether.Core.Managers
 {
     public class GluonsManager : BaseManager<IGluon>
     {
-        public IPlasmaList<IAether> Root { get; protected set; }
+        public IPlasmaList<IGluon> Root { get; protected set; }
 
         public GluonsManager(): base("Gluons")
         {
@@ -64,13 +64,13 @@ namespace tainicom.Aether.Core.Managers
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
             System.Diagnostics.Debug.Assert(particle is IGluon);
-            Root.Add(particle);
+            Root.Add((IGluon)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
             System.Diagnostics.Debug.Assert(particle is IGluon);
-            Root.Remove(particle);
+            Root.Remove((IGluon)particle);
         }
         
         
