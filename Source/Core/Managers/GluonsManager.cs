@@ -58,7 +58,7 @@ namespace tainicom.Aether.Core.Managers
         /// <permission cref=""></permission>        
         public override void Tick(GameTime gameTime)
         {
-			((ITickable)Root).Tick(gameTime);
+			((IGluon)Root).Tick(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
