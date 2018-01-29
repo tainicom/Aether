@@ -26,7 +26,7 @@ namespace tainicom.Aether.Core.Managers
 {
     public class LeptonsManager : BaseManager<ILeptonNode>
     {
-        public IPlasmaList<IAether> Root { get; protected set; }
+        public IPlasmaList<ILeptonNode> Root { get; protected set; }
 
         public LeptonsManager(): base("Leptons")
         {
