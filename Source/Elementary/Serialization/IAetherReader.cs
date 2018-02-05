@@ -55,6 +55,7 @@ namespace tainicom.Aether.Elementary.Serialization
 
         void ReadVector2(string name, out Vector2 value);
         void ReadVector3(string name, out Vector3 value);
+        void ReadVector4(string name, out Vector4 value);
         void ReadMatrix(string name, out Matrix value);
         void ReadQuaternion(string name, out Quaternion value);
 

@@ -276,6 +276,19 @@ namespace tainicom.Aether.Core.Serialization
             value.Y = reader.ReadSingle();
             value.Z = reader.ReadSingle();
         }
+        
+        public void ReadVector4(string name, out Vector4 value)
+        {
+            //string name2 = reader.ReadString();
+            //System.Diagnostics.Debug.Assert(name == name2);
+#if WP7
+            value = new Vector4();
+#endif
+            value.X = reader.ReadSingle();
+            value.Y = reader.ReadSingle();
+            value.Z = reader.ReadSingle();
+            value.W = reader.ReadSingle();
+        }
 
         public void ReadMatrix(string name, out Matrix value)
         {

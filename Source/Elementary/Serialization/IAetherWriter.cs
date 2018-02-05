@@ -55,6 +55,7 @@ namespace tainicom.Aether.Elementary.Serialization
 
         void WriteVector2(string name, Vector2 value);
         void WriteVector3(string name, Vector3 value);
+        void WriteVector4(string name, Vector4 value);
         void WriteMatrix(string name, Matrix value);
         void WriteQuaternion(string name, Quaternion value);
 

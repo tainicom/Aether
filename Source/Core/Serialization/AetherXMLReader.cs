@@ -421,6 +421,36 @@ namespace tainicom.Aether.Core.Serialization
             else reader.ReadEndElement();
         }
         
+        public void ReadVector4(string name, out Vector4 value)
+        {
+            value = Vector4.Zero; // assign a default value because 'value' is 'out' modifier 
+
+            while (!reader.IsStartElement())
+                reader.Read();
+
+            if (reader.Name != name)
+                throw new XmlException(String.Format("Element '{0}' was not found", name));
+            //read attribute
+            while (reader.MoveToNextAttribute())
+            {
+                switch (reader.Name)
+                {
+                    case "X": value.X = reader.ReadContentAsFloat();
+                        break;
+                    case "Y": value.Y = reader.ReadContentAsFloat();
+                        break;
+                    case "Z": value.Z = reader.ReadContentAsFloat();
+                        break;
+                    case "W": value.W = reader.ReadContentAsFloat();
+                        break;
+                }
+            }
+
+            reader.MoveToElement();
+            if (reader.IsEmptyElement) reader.Read();
+            else reader.ReadEndElement();
+        }
+        
         public void ReadMatrix(string name, out Matrix value)
         {
             value = Matrix.Identity; // assign a default value because 'value' is 'out' modifier 

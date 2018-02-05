@@ -268,6 +268,15 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteStartAttribute("Z"); writer.WriteValue(value.Z); writer.WriteEndAttribute();
             writer.WriteEndElement();
         }
+        public void WriteVector4(string name, Vector4 value)
+        {
+            writer.WriteStartElement(name);
+            writer.WriteStartAttribute("X"); writer.WriteValue(value.X); writer.WriteEndAttribute();
+            writer.WriteStartAttribute("Y"); writer.WriteValue(value.Y); writer.WriteEndAttribute();
+            writer.WriteStartAttribute("Z"); writer.WriteValue(value.Z); writer.WriteEndAttribute();
+            writer.WriteStartAttribute("W"); writer.WriteValue(value.W); writer.WriteEndAttribute();
+            writer.WriteEndElement();
+        }
 
         public void WriteMatrix(string name, Matrix value)
         {
