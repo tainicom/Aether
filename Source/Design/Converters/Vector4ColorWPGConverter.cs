@@ -17,6 +17,7 @@
 using System;
 using System.ComponentModel;
 using Microsoft.Xna.Framework;
+using System.Globalization;
 
 namespace tainicom.Aether.Design.Converters
 {
@@ -41,6 +42,8 @@ namespace tainicom.Aether.Design.Converters
             {
                 if(value is String)
                 {
+                    return FromHexColor((string)value);
+  
                     TypeConverter typeConverter = TypeDescriptor.GetConverter(typeof(Vector4));
                     Vector4 vec = (Vector4)typeConverter.ConvertFromString(context, culture, (String)value);
                     vec = vec / 255f;
@@ -54,6 +57,8 @@ namespace tainicom.Aether.Design.Converters
             {
                 if (value is Vector4 && destinationType == typeof(String))
                 {
+                    return ToHexColor(value);
+
                     Vector4 vec = (Vector4)value;
                     vec.X = (int)Math.Round(vec.X * 255);
                     vec.Y = (int)Math.Round(vec.Y * 255);
@@ -67,6 +72,26 @@ namespace tainicom.Aether.Design.Converters
             
                 return base.ConvertTo(context, culture, value, destinationType);
             }
+
+            private object ToHexColor(object value)
+            {           
+                Vector4 vec = (Vector4)value;
+                vec = vec * 255;
+                return String.Format("#{0:X2}{1:X2}{2:X2}{3:X2}", (int)vec.W, (int)vec.X, (int)vec.Y, (int)vec.Z);
+            }
+
+            private object FromHexColor(string value)
+            {   
+                string val = value;
+                val = val.Trim().Replace("#", "");
+                int a = byte.Parse(val.Substring(0,2), NumberStyles.HexNumber);
+                int r = byte.Parse(val.Substring(2,2), NumberStyles.HexNumber);
+                int g = byte.Parse(val.Substring(4,2), NumberStyles.HexNumber);
+                int b = byte.Parse(val.Substring(6,2), NumberStyles.HexNumber);
+
+                return (object)(new Vector4(r,g,b,a)/255f);
+            }
+
     }
 }
 
