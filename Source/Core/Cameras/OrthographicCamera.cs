@@ -24,8 +24,8 @@ namespace tainicom.Aether.Core.Cameras
     {
         #region Fields
         //projection (orthographic)
-        float _width;
-        float _height;
+        float _width = 1280;
+        float _height = 720;
         //updates
         //int updateLock = 0;
         #endregion fields
@@ -40,6 +40,10 @@ namespace tainicom.Aether.Core.Cameras
         {
             get { return _height; }
             set { _height = value; if (updateLock == 0) UpdateProjection(); }
+        }
+
+        public OrthographicCamera()
+        {
         }
 
         public OrthographicCamera(float width, float height): base()
