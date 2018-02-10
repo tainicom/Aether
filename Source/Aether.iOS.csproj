@@ -86,6 +86,7 @@
     <Compile Include="Elementary\Leptons\IWorldTransformUpdateable.cs" />
     <Compile Include="Elementary\Managers\IAetherManager.cs" />
     <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
+    <Compile Include="Elementary\Photons\IReadonlyCameraMatrices.cs" />
     <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
     <Compile Include="Elementary\Photons\ILightCone.cs" />
     <Compile Include="Elementary\Photons\ILightDirection.cs" />

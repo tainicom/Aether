@@ -16,14 +16,15 @@
 
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary.Leptons;
+using tainicom.Aether.Elementary.Photons;
 
 namespace tainicom.Aether.Elementary.Cameras
 {
-    public interface ICamera: IPosition, IAether, ICameraNode
+    public interface ICamera: IReadonlyCameraMatrices, IPosition, IAether, ICameraNode
     {
         //fundamental
-        Matrix View { get; }
-        Matrix Projection { get; }
+        //Matrix View { get; } // Defined in IReadonlyCameraMatrices
+        //Matrix Projection { get; } // Defined in IReadonlyCameraMatrices
 
         //view related
         //Vector3 Position { get; set; } //Defined in IPosition

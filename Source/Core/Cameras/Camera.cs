@@ -25,6 +25,7 @@ namespace tainicom.Aether.Core.Cameras
     abstract public class Camera: ICamera, IAetherSerialization
     {
         #region Fields
+        
         //inner view & projection matrix 
         protected Matrix _view;
         protected Matrix _projection;
@@ -54,12 +55,12 @@ namespace tainicom.Aether.Core.Cameras
         #if(WINDOWS)
         [Browsable(false)]
         #endif
-        public Matrix View { get { return _view; } set { _view = value; } }
+        public Matrix View { get { return _view; } }
         #if(WINDOWS)
         [Browsable(false)]
         #endif
         public Matrix Projection { get { return _projection; } }
-
+        
         #if(WINDOWS)
         [Category("Positioning")]
         #endif
