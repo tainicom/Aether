@@ -25,14 +25,13 @@ using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class PhotonsWalker : DepthFirstWalker<IPhotonNode>, IPhotonWalker, IInitializable, ILepton, IShaderMatrices
+    public class PhotonsWalker : DepthFirstWalker<IPhotonNode>, IPhotonWalker, IInitializable, ILepton
     {
         private AetherEngine engine;
         PhotonPlasma PhotonRoot { get { return (PhotonPlasma)engine.PhotonsMgr.Root;  } }
         
         public Matrix Projection { get; set; }
         public Matrix View { get; set; }
-        public Matrix World { get; set; }
 
         public PhotonsWalker(): base(null)
         {
@@ -73,7 +72,7 @@ namespace tainicom.Aether.Core.Walkers
 
             return;
         }
-
+        
         private void Render(GameTime gameTime, IAether particle)
         {
             Matrix worldTransform;

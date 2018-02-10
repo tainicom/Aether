@@ -19,7 +19,11 @@ using Microsoft.Xna.Framework;
 namespace tainicom.Aether.Elementary.Photons
 {
     public interface IPhotonWalker : IAetherWalker<IPhotonNode>
+        , IReadonlyCameraMatrices
     {
         void Render(GameTime gameTime);
+
+        Matrix Projection { get; set; }
+        Matrix View { get; set; }
     }
 }
