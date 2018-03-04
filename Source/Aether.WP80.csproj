@@ -98,6 +98,7 @@
     <Compile Include="Core\Cameras\OrthographicCamera.cs" />
     <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
+    <Compile Include="Elementary\Extensions.cs" />
     <Compile Include="Core\GluonPlasma.cs" />
     <Compile Include="Core\Gluons\AetherPhasor.cs" />
     <Compile Include="Core\Gluons\AetherTimer.cs" />

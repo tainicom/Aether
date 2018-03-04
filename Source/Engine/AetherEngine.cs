@@ -135,13 +135,5 @@ namespace tainicom.Aether.Engine
             parent.Remove(child);
         }
 
-        public static T GetComponent<T>(IAether element) where T: class
-        {
-            T result = null;
-            try { return (T)element; }
-            catch(InvalidCastException ice) { }
-            
-            return result;
-        }
     }
 }
