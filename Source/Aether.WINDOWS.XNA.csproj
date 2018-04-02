@@ -93,7 +93,6 @@
     <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
     <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
     <Compile Include="Core\Walkers\PhotonsWalker.cs" />
-    <Compile Include="Core\Walkers\WireframePhotonsWalker.cs" />
     <Compile Include="Design\Converters\QuaternionWPGConverter.cs" />
     <Compile Include="Design\Converters\Vector3ColorWPGConverter.cs" />
     <Compile Include="Design\Converters\Vector3WPGConverter.cs" />
