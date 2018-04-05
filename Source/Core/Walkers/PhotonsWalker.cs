@@ -15,26 +15,44 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using tainicom.Aether.Core.Managers;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Leptons;
 using tainicom.Aether.Elementary.Photons;
 using tainicom.Aether.Engine;
-using tainicom.Aether.Core.Managers;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class PhotonsWalker : DepthFirstWalker<IPhotonNode>, IPhotonWalker, IInitializable, ILepton
+    public class PhotonsWalker : BaseWalker<IPhotonNode>, IPhotonWalker, IInitializable, ILepton
     {
+        protected IPhotonNode startingElement;
+
+        protected struct Breadcrumb
+        {
+            public IEnumerator Enumerator;
+
+            public Breadcrumb(IEnumerator Enumerator)
+            {
+                this.Enumerator = Enumerator;
+            }
+        }
+
+        protected Breadcrumb currentNode;
+        protected Queue<Breadcrumb> BreadcrumbQueue;
+
         private AetherEngine engine;
         PhotonPlasma PhotonRoot { get { return (PhotonPlasma)engine.PhotonsMgr.Root;  } }
         
         public Matrix Projection { get; set; }
         public Matrix View { get; set; }
 
-        public PhotonsWalker(): base(null)
+        public PhotonsWalker(): base()
         {
+            this.startingElement = null;
+            BreadcrumbQueue = new Queue<Breadcrumb>(16);
         }
 
         void IInitializable.Initialize(AetherEngine engine)
@@ -46,15 +64,54 @@ namespace tainicom.Aether.Core.Walkers
 
         public override void Reset()
         {
-            base.Reset();
+            currentNode.Enumerator = null;
+            Current = default(IPhotonNode);
         }
 
         public override bool MoveNext()
         {
-            return base.MoveNext();
+            return internalMoveNext();
+        }
+        
+        //this method is used to break Recursive through the Super class when DepthFirstWalker is inherited
+        private bool internalMoveNext()
+        {
+            if (currentNode.Enumerator == null)
+            {
+                Current = startingElement;
+                BreadcrumbQueue.Clear();
+                var enumerator = GetParticles((IPlasma<IPhotonNode>)Current);
+                currentNode = new Breadcrumb(enumerator);
+                return true;
+            }
+
+            if (currentNode.Enumerator.MoveNext())
+            {
+                Current = (IPhotonNode)currentNode.Enumerator.Current;
+
+                var plasma = Current as IPlasma<IPhotonNode>;
+                if (plasma != null)
+                {
+                    BreadcrumbQueue.Enqueue(currentNode);
+                    var enumerator = GetParticles(plasma);
+                    currentNode = new Breadcrumb(enumerator);
+                }
+                return true;
+            }
+            else
+            {
+                if (BreadcrumbQueue.Count > 0)
+                {
+                    currentNode = BreadcrumbQueue.Dequeue();
+                    internalMoveNext(); //MoveNext();
+                    return true;
+                }
+            }
+
+            return false;
         }
 
-        protected override IEnumerator<IPhotonNode> GetParticles(IPlasma<IPhotonNode> plasma)
+        private IEnumerator<IPhotonNode> GetParticles(IPlasma<IPhotonNode> plasma)
         {
             IPhotonPlasma photonPlasma = plasma as IPhotonPlasma;
             if (photonPlasma != null)
