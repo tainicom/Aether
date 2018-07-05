@@ -147,6 +147,7 @@
     <Compile Include="Elementary\IAether.cs" />
     <Compile Include="Elementary\IAetherNotify.cs" />
     <Compile Include="Elementary\IAetherWalker.cs" />
+    <Compile Include="Elementary\Photons\IDeviceContext.cs" />
     <Compile Include="Elementary\IInitializable.cs" />
     <Compile Include="Elementary\IPlasma.cs" />
     <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="Maths\Line3.cs" />
     <Compile Include="Maths\Tau.cs" />
     <Compile Include="MonoGame\AetherContextMG.cs" />
+    <Compile Include="MonoGame\DeviceContextMG.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.WindowsUniversal.csproj">

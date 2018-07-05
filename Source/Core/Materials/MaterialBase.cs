@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2015 Kastellanos Nikolaos
+//   Copyright 2015-2018 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -44,6 +44,7 @@ namespace tainicom.Aether.Core.Materials
         #endregion
 
         protected GraphicsDevice GraphicsDevice { get; private set; }
+        IDeviceContext DeviceContext;
         protected Effect _effect;
 
         #if(WINDOWS)
@@ -80,6 +81,7 @@ namespace tainicom.Aether.Core.Materials
         public virtual void Initialize(AetherEngine engine)
         {
             this.GraphicsDevice = AetherContextMG.GetDevice(engine);
+            this.DeviceContext = engine.Context.DeviceContext;
             CreateEffect();
         }
 
@@ -119,34 +121,32 @@ namespace tainicom.Aether.Core.Materials
 
         public void SetVertices<T>(IPhoton photon, T[] data) where T : struct
         {
-            throw new NotImplementedException();
+            ((DeviceContextMG)DeviceContext).PrimitiveType = this.PrimitiveType;
+            DeviceContext.SetVertices(photon, data);
         }
 
         public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
-                GraphicsDevice.DrawUserPrimitives<T>(this.PrimitiveType,
-                    vertexData, vertexOffset, primitiveCount,                    
-                    vertexDeclaration);
+            DeviceContext.PrimitiveType = this.PrimitiveType;            
+            DeviceContext.SetVertices(photon, vertexData, vertexOffset, primitiveCount, vertexDeclaration);            
             }
 
         public void SetVertices<T>(IPhoton photon, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
         {
-            throw new NotImplementedException();
+            DeviceContext.PrimitiveType = this.PrimitiveType;
+            DeviceContext.SetVertices(photon, offsetInBytes, data, startIndex, elementCount, vertexStride);
         }
 
         public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
-                GraphicsDevice.DrawUserIndexedPrimitives<T>(this.PrimitiveType,
-                    vertexData, vertexOffset, numVertices,
-                    indexData, indexOffset, primitiveCount,
-                    vertexDeclaration);
+            DeviceContext.PrimitiveType = this.PrimitiveType;
+            DeviceContext.SetVertices(photon, vertexData, vertexOffset, numVertices, indexData, indexOffset, primitiveCount, vertexDeclaration);            
             }
 
         public void SetVertices(IPhoton photon, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
         {
-                GraphicsDevice.SetVertexBuffer(vertexBuffer);
-                GraphicsDevice.Indices = indexBuffer;
-                GraphicsDevice.DrawIndexedPrimitives(this.PrimitiveType, baseVertex, 0, numVertices, startIndex, primitiveCount);
+            DeviceContext.PrimitiveType = this.PrimitiveType;
+            DeviceContext.SetVertices(photon, vertexBuffer, baseVertex, minVertexIndex, numVertices, indexBuffer, startIndex, primitiveCount);            
             }
 
         public override string ToString()
