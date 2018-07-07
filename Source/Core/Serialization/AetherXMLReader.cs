@@ -551,7 +551,7 @@ namespace tainicom.Aether.Core.Serialization
             if (val[idx] == '#') 
             {
                 idx++;                
-                if (val.Length == 8)
+                if ((val.Length-idx) == 8)
                 {                    
                     a = int.Parse(val.Substring(idx, 2), System.Globalization.NumberStyles.HexNumber);
                     idx += 2;
