@@ -16,14 +16,14 @@
 
 using System;
 using System.ComponentModel;
-using Microsoft.Xna.Framework;
 using System.Globalization;
+using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Design.Converters
 {
-    public class Vector3ColorWPGConverter : TypeConverter
+    public class Vector3EditAsColorConverter : TypeConverter
     {
-            public Vector3ColorWPGConverter()
+            public Vector3EditAsColorConverter()
             {
             }
 

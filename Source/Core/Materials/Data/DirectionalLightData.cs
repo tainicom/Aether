@@ -38,15 +38,15 @@ namespace tainicom.Aether.Core.Materials.Data
     public class DirectionalLightData
     {              
         #if (WINDOWS)
-        [TypeConverter(typeof(Vector3ColorWPGConverter))]
+        [TypeConverter(typeof(Vector3EditAsColorConverter))]
         #endif
         public Vector3 DiffuseColor { get; set; }
         #if (WINDOWS)
-        [TypeConverter(typeof(Vector3ColorWPGConverter))]
+        [TypeConverter(typeof(Vector3EditAsColorConverter))]
         #endif
         public Vector3 SpecularColor { get; set; }
         #if (WINDOWS)
-        [TypeConverter(typeof(Vector3WPGConverter))]
+        [TypeConverter(typeof(Vector3EditConverter))]
         #endif
         public Vector3 Direction { get; set; }
         public bool Enabled { get; set; }

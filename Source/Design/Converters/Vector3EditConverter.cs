@@ -20,9 +20,9 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Design.Converters
 {
-    public class Vector3WPGConverter : TypeConverter
+    public class Vector3EditConverter : TypeConverter
     {
-            public Vector3WPGConverter()
+            public Vector3EditConverter()
             {
             }
 

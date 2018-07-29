@@ -32,17 +32,17 @@ namespace tainicom.Aether.Core.Materials
                
         #if (WINDOWS)
         [Category("Lighting")]
-        [TypeConverter(typeof(Vector3ColorWPGConverter))]
+        [TypeConverter(typeof(Vector3EditAsColorConverter))]
         #endif
         public Vector3 DiffuseColor { get; set; }
         #if (WINDOWS)
         [Category("Lighting")]
-        [TypeConverter(typeof(Vector3ColorWPGConverter))]
+        [TypeConverter(typeof(Vector3EditAsColorConverter))]
         #endif
         public Vector3 AmbientLightColor { get; set; }
         #if (WINDOWS)
         [Category("Lighting")]
-        [TypeConverter(typeof(Vector3ColorWPGConverter))]
+        [TypeConverter(typeof(Vector3EditAsColorConverter))]
         #endif
         public Vector3 EmissiveColor { get; set; }
 

@@ -15,15 +15,15 @@
 #endregion
 
 using System;
+using System.Globalization;
 using System.ComponentModel;
 using Microsoft.Xna.Framework;
-using System.Globalization;
 
 namespace tainicom.Aether.Design.Converters
 {
-    public class Vector4ColorWPGConverter : TypeConverter
+    public class Vector4EditAsColorConverter : TypeConverter
     {
-            public Vector4ColorWPGConverter()
+            public Vector4EditAsColorConverter()
             {
             }
 

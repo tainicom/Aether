@@ -30,7 +30,7 @@ namespace tainicom.Aether.Core.Photons
         public Vector3 Position { get; set; }
         
         #if WINDOWS
-        [Category("Light"), TypeConverter(typeof(Vector3ColorWPGConverter))]
+        [Category("Light"), TypeConverter(typeof(Vector3EditAsColorConverter))]
         #endif
         public Vector3 LightSourceColor { get; set; }
 

@@ -21,9 +21,9 @@ using tainicom.Aether.Maths;
 
 namespace tainicom.Aether.Design.Converters
 {
-    public class QuaternionWPGConverter : TypeConverter
+    public class QuaternionEditAsYawPitchRollConverter : TypeConverter
     {
-        public QuaternionWPGConverter()
+        public QuaternionEditAsYawPitchRollConverter()
         {
         }
 

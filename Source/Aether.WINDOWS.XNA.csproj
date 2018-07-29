@@ -93,10 +93,10 @@
     <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
     <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
     <Compile Include="Core\Walkers\PhotonsWalker.cs" />
-    <Compile Include="Design\Converters\QuaternionWPGConverter.cs" />
-    <Compile Include="Design\Converters\Vector3ColorWPGConverter.cs" />
-    <Compile Include="Design\Converters\Vector3WPGConverter.cs" />
-    <Compile Include="Design\Converters\Vector4ColorWPGConverter.cs" />
+    <Compile Include="Design\Converters\QuaternionEditAsYawPitchRollConverter.cs" />
+    <Compile Include="Design\Converters\Vector3EditAsColorConverter.cs" />
+    <Compile Include="Design\Converters\Vector3EditConverter.cs" />
+    <Compile Include="Design\Converters\Vector4EditAsColorConverter.cs" />
     <Compile Include="Elementary\Audio\ISound.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
     <Compile Include="Elementary\Cameras\ICameraNode.cs" />
