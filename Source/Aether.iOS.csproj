@@ -104,6 +104,7 @@
     <Compile Include="Elementary\Serialization\IAetherReader.cs" />
     <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
     <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
+    <Compile Include="Elementary\Serialization\IAetherWriter.cs" />
     <Compile Include="Engine\AetherContext.cs" />
     <Compile Include="Engine\AetherEngine.cs" />
     <Compile Include="Engine\AetherEngine.IDictionary.cs" />
