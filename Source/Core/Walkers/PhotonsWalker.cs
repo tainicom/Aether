@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2015 Kastellanos Nikolaos
+//   Copyright 2015-2018 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -135,12 +135,16 @@ namespace tainicom.Aether.Core.Walkers
             Matrix worldTransform;
             LeptonsManager.GetWorldTransform(particle, out worldTransform);
 
-            IDrawable drawable = particle as IDrawable;
             IPhoton photon = particle as IPhoton;
             IMaterial material = (photon != null) ? photon.Material : null;
 
-            if (photon != null && material != null && (drawable==null || drawable.Visible))
+            if (photon != null && material != null)
             {
+                //TODO: remove legacy code
+                IDrawable drawable = particle as IDrawable;
+                if (drawable != null && !drawable.Visible)
+                    return;
+
                 ((IShaderMatrices)material).World = worldTransform;
                 ((IShaderMatrices)material).View = this.View;
                 ((IShaderMatrices)material).Projection = this.Projection;
@@ -148,10 +152,6 @@ namespace tainicom.Aether.Core.Walkers
                 material.ApplyTextures(photon.Textures);
                 photon.Accept(material);
                 return;
-            }
-            else if (drawable != null)
-            {
-                //drawable.Draw(gameTime);
             }
             
             return;
