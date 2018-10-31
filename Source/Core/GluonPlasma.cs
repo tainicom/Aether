@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2015 Kastellanos Nikolaos
+//   Copyright 2015-2018 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace tainicom.Aether.Core
     public class GluonPlasma: BasePlasma<IGluon>, IGluon
     {
         EnabledList<IGluon> _enabledParticles;
-        private bool isEnumerating = false; 
+        private bool isTicking = false; 
 
         public GluonPlasma()
         {
@@ -35,18 +35,18 @@ namespace tainicom.Aether.Core
         public void Tick(GameTime gameTime)
         {
             _enabledParticles.Process();
-            isEnumerating = true;
+            isTicking = true;
             foreach (IGluon item in _enabledParticles)
             {
                 item.Tick(gameTime);
             }
-            isEnumerating = false;
+            isTicking = false;
             return;
         }
 
         protected override void InsertItem(int index, IGluon item)
         {
-            if (isEnumerating)
+            if (isTicking)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
             base.InsertItem(index, item);
             _enabledParticles.Add(item);
@@ -55,7 +55,7 @@ namespace tainicom.Aether.Core
 
         protected override void RemoveItem(int index)
         {
-            if (isEnumerating)
+            if (isTicking)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
             IGluon item = this[index];
             if (_enabledParticles.Contains(item)) _enabledParticles.Remove(item);

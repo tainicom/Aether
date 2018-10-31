@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 namespace tainicom.Aether.Engine.Data
 {
-    public class EnabledList<T>: List<T>, IEnumerable<T>
+    internal class EnabledList<T>: List<T>, IEnumerable<T>
     {
         List<T> enableList = new List<T>();
         List<T> disableList = new List<T>();

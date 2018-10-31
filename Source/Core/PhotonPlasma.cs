@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2015 Kastellanos Nikolaos
+//   Copyright 2015-2018 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ namespace tainicom.Aether.Core
 {
     public class PhotonPlasma: BasePlasma<IPhotonNode>, IPhotonPlasma, ITickable
     {
-        protected EnabledList<IPhotonNode> _enabledParticles;
+        EnabledList<IPhotonNode> _enabledParticles;
 
         public IEnumerator<IPhotonNode> VisibleParticles { get { return _enabledParticles.GetEnumerator(); } }
 
