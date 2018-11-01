@@ -51,9 +51,6 @@ namespace tainicom.Aether.Core.Managers
         public override void Tick(GameTime gameTime)
         {
             /*see Render()*/
-            ITickable tickableRoot = Root as ITickable;
-            if(tickableRoot !=null)
-                tickableRoot.Tick(gameTime);
             return;
         }
         public void PreRender(GameTime gameTime)

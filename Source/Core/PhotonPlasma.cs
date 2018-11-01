@@ -25,22 +25,17 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class PhotonPlasma: BasePlasma<IPhotonNode>, IPhotonPlasma, ITickable
+    public class PhotonPlasma: BasePlasma<IPhotonNode>, IPhotonPlasma
     {
-        List<IPhotonNode> _visibleParticles;
+        HashSet<IPhotonNode> _visibleParticles;
 
-        public IEnumerator<IPhotonNode> VisibleParticles { get { return _visibleParticles.GetEnumerator(); } }
+        public virtual IEnumerator<IPhotonNode> VisibleParticles { get { return _visibleParticles.GetEnumerator(); } }
 
         public PhotonPlasma()
         {
-            _visibleParticles = new EnabledList<IPhotonNode>();
+            _visibleParticles = new HashSet<IPhotonNode>();
         }
         
-        public void Tick(GameTime gameTime)
-        {
-            return; // TODO: remove
-        }
-
         protected override void InsertItem(int index, IPhotonNode item)
         {
             base.InsertItem(index, item);
@@ -51,21 +46,18 @@ namespace tainicom.Aether.Core
         protected override void RemoveItem(int index)
         {
             IAether item = this[index];
-            if (_visibleParticles.Contains((IPhotonNode)item))
-                _visibleParticles.Remove((IPhotonNode)item);
+            _visibleParticles.Remove((IPhotonNode)item);
             base.RemoveItem(index);
         }
         
-        public void Enable(IPhoton item)
+        public virtual void Enable(IPhoton item)
         {
-            if(!_visibleParticles.Contains(item))
-                _visibleParticles.Add(item);
+            _visibleParticles.Add(item);
         }
 
-        public void Disable(IPhoton item)
+        public virtual void Disable(IPhoton item)
         {
-            if(_visibleParticles.Contains(item))
-                _visibleParticles.Remove(item);
+            _visibleParticles.Remove(item);
         }
 
         public bool IsEnabled(IPhoton item)
@@ -81,7 +73,8 @@ namespace tainicom.Aether.Core
             writer.WriteInt32("Version", 1);
 
             base.Save(writer);
-            writer.WriteParticles("VisibleParticles", _visibleParticles);
+            // TODO: add IAetherWriter.WriteParticles(string, new ISet<T>)
+            writer.WriteParticles("VisibleParticles", new List<IPhotonNode>(_visibleParticles));
         }
 #endif
 
@@ -94,11 +87,13 @@ namespace tainicom.Aether.Core
             {
                 case 1:
                 base.Load(reader);
-                _visibleParticles.Clear();
-                  reader.ReadParticles("VisibleParticles", _visibleParticles);
-                  break;
+                    _visibleParticles.Clear();
+                    var visibleParticles = new List<IPhotonNode>();
+                    // TODO: add IAetherWriter.WriteParticles(string, new ISet<T>)
+                    reader.ReadParticles("VisibleParticles", visibleParticles); _visibleParticles = new HashSet<IPhotonNode>(visibleParticles);
+                    break;
                 default:
-                  throw new InvalidOperationException("unknown version " + version);
+                    throw new InvalidOperationException("unknown version " + version);
             }
         }
         #endregion
