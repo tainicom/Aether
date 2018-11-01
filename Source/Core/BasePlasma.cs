@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2015 Kastellanos Nikolaos
+//   Copyright 2015-2018 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
 //   limitations under the License.
 #endregion
 
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using tainicom.Aether.Elementary;
@@ -44,13 +45,25 @@ namespace tainicom.Aether.Core
         #if (WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
+            writer.WriteInt32("Version", 1);
+
             writer.WriteParticles("Particles", this);
         }
         #endif
 
         public virtual void Load(IAetherReader reader)
         {
-            reader.ReadParticles("Particles", this);
+            int version;
+            reader.ReadInt32("Version", out version);
+            
+            switch (version)
+            {
+                case 1:
+                  reader.ReadParticles("Particles", this);
+                  break;
+                default:
+                  throw new InvalidOperationException("unknown version " + version);
+            }
         }
     }
 }

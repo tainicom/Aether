@@ -18,6 +18,7 @@ using System;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Gluon;
+using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
@@ -25,7 +26,7 @@ namespace tainicom.Aether.Core
     public class GluonPlasma: BasePlasma<IGluon>, IGluon
     {
         EnabledList<IGluon> _enabledParticles;
-        private bool isTicking = false; 
+        private bool isTicking = false;
 
         public GluonPlasma()
         {
@@ -71,6 +72,33 @@ namespace tainicom.Aether.Core
         {
             _enabledParticles.Disable(item);
         }
+
+        #region Implement IAetherSerialization
+#if (WINDOWS)
+        public override void Save(IAetherWriter writer)
+        {
+            writer.WriteInt32("Version", 1);
+
+            base.Save(writer);
+        }
+#endif
+
+        public override void Load(IAetherReader reader)
+        {
+            int version;
+            reader.ReadInt32("Version", out version);
+
+            switch (version)
+            {
+                case 1:
+                    base.Load(reader);
+                  break;
+                default:
+                  throw new InvalidOperationException("unknown version " + version);
+            }
+        }
+        #endregion
+
 
     }
 }

@@ -14,60 +14,95 @@
 //   limitations under the License.
 #endregion
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Gluon;
 using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
     public class PhotonPlasma: BasePlasma<IPhotonNode>, IPhotonPlasma, ITickable
     {
-        EnabledList<IPhotonNode> _enabledParticles;
+        List<IPhotonNode> _visibleParticles;
 
-        public IEnumerator<IPhotonNode> VisibleParticles { get { return _enabledParticles.GetEnumerator(); } }
+        public IEnumerator<IPhotonNode> VisibleParticles { get { return _visibleParticles.GetEnumerator(); } }
 
         public PhotonPlasma()
         {
-            _enabledParticles = new EnabledList<IPhotonNode>();
+            _visibleParticles = new EnabledList<IPhotonNode>();
         }
         
         public void Tick(GameTime gameTime)
         {
-            _enabledParticles.Process();
-            return;
+            return; // TODO: remove
         }
 
         protected override void InsertItem(int index, IPhotonNode item)
         {
             base.InsertItem(index, item);
-            _enabledParticles.Add(item);
+            _visibleParticles.Add(item);
             return;
         }
 
         protected override void RemoveItem(int index)
         {
             IAether item = this[index];
-            if (_enabledParticles.Contains((IPhotonNode)item))
-                _enabledParticles.Remove((IPhotonNode)item);
+            if (_visibleParticles.Contains((IPhotonNode)item))
+                _visibleParticles.Remove((IPhotonNode)item);
             base.RemoveItem(index);
         }
         
         public void Enable(IPhoton item)
         {
-            _enabledParticles.Enable(item);
+            if(!_visibleParticles.Contains(item))
+                _visibleParticles.Add(item);
         }
 
         public void Disable(IPhoton item)
         {
-            _enabledParticles.Disable(item);
+            if(_visibleParticles.Contains(item))
+                _visibleParticles.Remove(item);
         }
 
-        public bool IsEnabled(IPhoton photon, bool includePending)
+        public bool IsEnabled(IPhoton item)
         {
-            return _enabledParticles.Contains(photon, includePending);
+            return _visibleParticles.Contains(item);
         }
+
+
+        #region Implement IAetherSerialization
+#if (WINDOWS)
+        public override void Save(IAetherWriter writer)
+        {
+            writer.WriteInt32("Version", 1);
+
+            base.Save(writer);
+            writer.WriteParticles("VisibleParticles", _visibleParticles);
+        }
+#endif
+
+        public override void Load(IAetherReader reader)
+        {
+            int version;
+            reader.ReadInt32("Version", out version);
+
+            switch (version)
+            {
+                case 1:
+                base.Load(reader);
+                _visibleParticles.Clear();
+                  reader.ReadParticles("VisibleParticles", _visibleParticles);
+                  break;
+                default:
+                  throw new InvalidOperationException("unknown version " + version);
+            }
+        }
+        #endregion
+
+
     }
 }

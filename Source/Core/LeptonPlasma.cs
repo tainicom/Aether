@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2015-2017 Kastellanos Nikolaos
+//   Copyright 2015-2018 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -14,6 +14,7 @@
 //   limitations under the License.
 #endregion
 
+using System;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Leptons;
@@ -88,15 +89,28 @@ namespace tainicom.Aether.Core
 
         
         #region Implement IAetherSerialization
-#if(WINDOWS)
-        public void Save(IAetherWriter writer)
+#if (WINDOWS)
+        public override void Save(IAetherWriter writer)
         {
+            writer.WriteInt32("Version", 1);
+
             base.Save(writer);
         }
 #endif
-        public void Load(IAetherReader reader)
+
+        public override void Load(IAetherReader reader)
         {
-            base.Load(reader);
+            int version;
+            reader.ReadInt32("Version", out version);
+
+            switch (version)
+            {
+                case 1:
+                    base.Load(reader);
+                  break;
+                default:
+                  throw new InvalidOperationException("unknown version " + version);
+            }
         }
         #endregion
 
