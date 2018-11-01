@@ -140,11 +140,6 @@ namespace tainicom.Aether.Core.Walkers
 
             if (photon != null && material != null)
             {
-                //TODO: remove legacy code
-                IDrawable drawable = particle as IDrawable;
-                if (drawable != null && !drawable.Visible)
-                    return;
-
                 ((IShaderMatrices)material).World = worldTransform;
                 ((IShaderMatrices)material).View = this.View;
                 ((IShaderMatrices)material).Projection = this.Projection;
