@@ -37,7 +37,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <ProjectReference Include="..\..\Monogame\MonoGame.Framework\MonoGame.Framework.Windows8_1.csproj">
-      <Project>{22e695a8-455a-437f-b80b-b71f85ded19d}</Project>
+      <Project>{0518563C-ACCA-4A14-8C5D-DDBE93E2605F}</Project>
       <Name>MonoGame.Framework.Windows8_1</Name>
       <Private>False</Private>
     </ProjectReference>
