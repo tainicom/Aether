@@ -14,10 +14,13 @@
 //   limitations under the License.
 #endregion
 
+using Microsoft.Xna.Framework;
 
-namespace tainicom.Aether.Elementary.Gluon
+namespace tainicom.Aether.Elementary.Chronons
 {
-    public interface IGluon : ITickable, IAether
+    public interface ITickable
     {
+        void Tick(GameTime gameTime);
+        //void Tick(float totalSeconds, float elapsedSeconds);
     }
 }

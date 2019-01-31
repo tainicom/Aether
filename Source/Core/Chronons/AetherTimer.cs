@@ -15,12 +15,12 @@
 #endregion
 
 using System;
-using tainicom.Aether.Elementary.Gluon;
+using tainicom.Aether.Elementary.Chronons;
 using Microsoft.Xna.Framework;
 
-namespace tainicom.Aether.Core.Gluons
+namespace tainicom.Aether.Core.Chronons
 {
-    public class AetherTimer : IGluon
+    public class AetherTimer : IChronon
     {
         protected TimeSpan elapsedTime;
 

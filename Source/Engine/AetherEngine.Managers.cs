@@ -30,7 +30,7 @@ namespace tainicom.Aether.Engine
         
         //Managers
         public LeptonsManager LeptonsMgr;
-        public GluonsManager GluonsMgr;
+        public ChrononsManager ChrononsMgr;
         public PhotonsManager PhotonsMgr;
         public CamerasManager CamerasMgr;
         public MaterialsManager MaterialsMgr;
@@ -40,13 +40,13 @@ namespace tainicom.Aether.Engine
         private void CreateManagers()
         {
             LeptonsMgr = new LeptonsManager();
-            GluonsMgr = new GluonsManager();
+            ChrononsMgr = new ChrononsManager();
             CamerasMgr = new CamerasManager();
             MaterialsMgr = new MaterialsManager();
             PhotonsMgr = new PhotonsManager();
             
             Managers.Add(LeptonsMgr);
-            Managers.Add(GluonsMgr);
+            Managers.Add(ChrononsMgr);
             Managers.Add(PhotonsMgr);
             Managers.Add(CamerasMgr);
             Managers.Add(MaterialsMgr);

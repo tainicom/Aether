@@ -14,21 +14,21 @@
 //   limitations under the License.
 #endregion
 
-using tainicom.Aether.Elementary.Gluon;
 using tainicom.Aether.Engine;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
+using tainicom.Aether.Elementary.Chronons;
 using tainicom.Aether.Elementary.Data;
 using System;
 using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class GluonsManager : BaseManager<IGluon>
+    public class ChrononsManager : BaseManager<IChronon>
     {
-        public IPlasmaList<IGluon> Root { get; protected set; }
+        public IPlasmaList<IChronon> Root { get; protected set; }
 
-        public GluonsManager(): base("Gluons")
+        public ChrononsManager(): base("Chronons")
         {
             
         }
@@ -36,7 +36,7 @@ namespace tainicom.Aether.Core.Managers
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            Root = new GluonPlasma();
+            Root = new ChrononPlasma();
         }
         
         //protected override void Dispose(bool disposing)
@@ -58,19 +58,19 @@ namespace tainicom.Aether.Core.Managers
         /// <permission cref=""></permission>        
         public override void Tick(GameTime gameTime)
         {
-			((IGluon)Root).Tick(gameTime);
+            ((IChronon)Root).Tick(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IGluon);
-            Root.Add((IGluon)particle);
+            System.Diagnostics.Debug.Assert(particle is IChronon);
+            Root.Add((IChronon)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IGluon);
-            Root.Remove((IGluon)particle);
+            System.Diagnostics.Debug.Assert(particle is IChronon);
+            Root.Remove((IChronon)particle);
         }
         
         
