@@ -15,9 +15,9 @@
 #endregion
 
 
-namespace tainicom.Aether.Elementary.Gluon
+namespace tainicom.Aether.Elementary.Chronons
 {
-    public interface IGluon : ITickable, IAether
+    public interface IChronon : ITickable, IAether
     {
     }
 }

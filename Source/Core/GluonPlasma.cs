@@ -17,27 +17,27 @@
 using System;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
-using tainicom.Aether.Elementary.Gluon;
+using tainicom.Aether.Elementary.Chronons;
 using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class GluonPlasma: BasePlasma<IGluon>, IGluon
+    public class ChrononPlasma: BasePlasma<IChronon>, IChronon
     {
-        EnabledList<IGluon> _enabledParticles;
+        EnabledList<IChronon> _enabledParticles;
         private bool isTicking = false;
 
-        public GluonPlasma()
+        public ChrononPlasma()
         {
-            _enabledParticles = new EnabledList<IGluon>();
+            _enabledParticles = new EnabledList<IChronon>();
         }
         
         public void Tick(GameTime gameTime)
         {
             _enabledParticles.Process();
             isTicking = true;
-            foreach (IGluon item in _enabledParticles)
+            foreach (IChronon item in _enabledParticles)
             {
                 item.Tick(gameTime);
             }
@@ -45,7 +45,7 @@ namespace tainicom.Aether.Core
             return;
         }
 
-        protected override void InsertItem(int index, IGluon item)
+        protected override void InsertItem(int index, IChronon item)
         {
             if (isTicking)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
@@ -58,17 +58,17 @@ namespace tainicom.Aether.Core
         {
             if (isTicking)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
-            IGluon item = this[index];
+            IChronon item = this[index];
             if (_enabledParticles.Contains(item)) _enabledParticles.Remove(item);
             base.RemoveItem(index);
         }
         
-        public void Enable(IGluon item)
+        public void Enable(IChronon item)
         {
             _enabledParticles.Enable(item);
         }
 
-        public void Disable(IGluon item)
+        public void Disable(IChronon item)
         {
             _enabledParticles.Disable(item);
         }
