@@ -21,13 +21,18 @@ namespace tainicom.Aether.Elementary
     /// <summary>
     /// Plasma is a group of other particles
     /// </summary>
-    public interface IPlasma<TPlasma> : IAether, IEnumerable<TPlasma>
-        where TPlasma : IAether
+    public interface IPlasma<TAether> : IAether, IEnumerable<TAether>
+        where TAether : IAether
     {
     }
     
-    public interface IPlasmaList<TPlasma> : IAether, IPlasma<TPlasma>, IList<TPlasma>
-        where TPlasma : IAether
+    public interface IPlasmaCollection<TAether> : IAether, IPlasma<TAether>, ICollection<TAether>
+        where TAether : IAether
+    {
+    }
+    
+    public interface IPlasmaList<TAether> : IAether, IPlasmaCollection<TAether>, IList<TAether>
+        where TAether : IAether
     {
     }
 
