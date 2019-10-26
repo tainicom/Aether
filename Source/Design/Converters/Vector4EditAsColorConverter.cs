@@ -15,8 +15,8 @@
 #endregion
 
 using System;
-using System.Globalization;
 using System.ComponentModel;
+using System.Globalization;
 using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Design.Converters

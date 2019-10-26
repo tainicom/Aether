@@ -129,7 +129,7 @@ namespace tainicom.Aether.Core.Materials
         {
             DeviceContext.PrimitiveType = this.PrimitiveType;            
             DeviceContext.SetVertices(photon, vertexData, vertexOffset, primitiveCount, vertexDeclaration);            
-            }
+        }
 
         public void SetVertices<T>(IPhoton photon, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
         {
@@ -141,13 +141,13 @@ namespace tainicom.Aether.Core.Materials
         {
             DeviceContext.PrimitiveType = this.PrimitiveType;
             DeviceContext.SetVertices(photon, vertexData, vertexOffset, numVertices, indexData, indexOffset, primitiveCount, vertexDeclaration);            
-            }
+        }
 
         public void SetVertices(IPhoton photon, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
         {
             DeviceContext.PrimitiveType = this.PrimitiveType;
             DeviceContext.SetVertices(photon, vertexBuffer, baseVertex, minVertexIndex, numVertices, indexBuffer, startIndex, primitiveCount);            
-            }
+        }
 
         public override string ToString()
         {

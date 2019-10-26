@@ -106,7 +106,7 @@ namespace tainicom.Aether.Engine
             EngineData.TotalTime += gameTime.ElapsedGameTime.TotalSeconds;
             return;
         }
-                
+
         public void PreRender(GameTime gameTime)
         {
             PreRenderManagers(gameTime);
