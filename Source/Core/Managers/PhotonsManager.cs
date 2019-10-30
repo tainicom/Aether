@@ -72,13 +72,13 @@ namespace tainicom.Aether.Core.Managers
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
             System.Diagnostics.Debug.Assert(particle is IPhotonNode);
-            _engine.AddChild(Root, (IPhotonNode)particle);
+            _engine.AddChild<IPhotonNode>(Root, (IPhotonNode)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
             System.Diagnostics.Debug.Assert(particle is IPhotonNode);
-            _engine.RemoveChild(Root, (IPhotonNode)particle);
+            _engine.RemoveChild<IPhotonNode>(Root, (IPhotonNode)particle);
         }
 
 #if (WINDOWS)
