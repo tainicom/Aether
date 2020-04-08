@@ -139,6 +139,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="MonoGame.Framework">
       <HintPath>packages\MonoGame.Framework.Android.3.6.0.1625\lib\MonoAndroid\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
