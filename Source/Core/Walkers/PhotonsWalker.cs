@@ -132,23 +132,22 @@ namespace tainicom.Aether.Core.Walkers
         
         private void Render(GameTime gameTime, IAether particle)
         {
+            IPhoton photon = particle as IPhoton;
+            if (photon == null) return;
+
+            IMaterial material = photon.Material;
+            if (material == null) return;
+
             Matrix worldTransform;
             LeptonsManager.GetWorldTransform(particle, out worldTransform);
 
-            IPhoton photon = particle as IPhoton;
-            IMaterial material = (photon != null) ? photon.Material : null;
+            ((IShaderMatrices)material).Projection = this.Projection;
+            ((IShaderMatrices)material).View = this.View;
+            ((IShaderMatrices)material).World = worldTransform;
+            material.Apply();
+            material.ApplyTextures(photon.Textures);
+            photon.Accept(material);
 
-            if (photon != null && material != null)
-            {
-                ((IShaderMatrices)material).World = worldTransform;
-                ((IShaderMatrices)material).View = this.View;
-                ((IShaderMatrices)material).Projection = this.Projection;
-                material.Apply();
-                material.ApplyTextures(photon.Textures);
-                photon.Accept(material);
-                return;
-            }
-            
             return;
         }
 
