@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using tainicom.Aether.Core.ECS;
 using tainicom.Aether.Core.Managers;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Leptons;
@@ -127,8 +128,19 @@ namespace tainicom.Aether.Core.Walkers
             IMaterial material = photon.Material;
             if (material == null) return;
 
+            var component = photonNode as Component;
+            if (component != null)
             {
-            Matrix worldTransform;
+                foreach (var leptonNode in engine.Entities.GetEntityComponents<ILeptonNode>(component))
+                {
+                    Matrix worldTransform;
+                    LeptonsManager.GetWorldTransform(leptonNode, out worldTransform);
+                    RenderPhoton(photon, material, ref worldTransform);
+                }
+            }
+            else
+            {
+                Matrix worldTransform;
                 LeptonsManager.GetWorldTransform(photon, out worldTransform);
                 RenderPhoton(photon, material, ref worldTransform);
             }
@@ -136,12 +148,12 @@ namespace tainicom.Aether.Core.Walkers
 
         void RenderPhoton(IPhoton photon, IMaterial material, ref Matrix worldTransform)
         {
-            ((IShaderMatrices)material).Projection = this.Projection;
-            ((IShaderMatrices)material).View = this.View;
-            ((IShaderMatrices)material).World = worldTransform;
-            material.Apply();
-            material.ApplyTextures(photon.Textures);
-            photon.Accept(material);
+                ((IShaderMatrices)material).Projection = this.Projection;
+                ((IShaderMatrices)material).View = this.View;
+                ((IShaderMatrices)material).World = worldTransform;
+                material.Apply();
+                material.ApplyTextures(photon.Textures);
+                photon.Accept(material);
         }
 
         public Matrix LocalTransform { get { return Matrix.Identity; } }

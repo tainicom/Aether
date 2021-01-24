@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2019 Kastellanos Nikolaos
+//   Copyright 2020-2021 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -14,22 +14,19 @@
 //   limitations under the License.
 #endregion
 
-
-using System;
 using System.Collections.Generic;
 
-namespace tainicom.Aether.Elementary
+namespace tainicom.Aether.Elementary.ECS
 {
-    public static class Extensions
+    public interface IComponent :
+        IECSNode, IAether
     {
-        [Obsolete]
-        public static T GetComponent<T>(this IAether element) where T : class
-        {
-            T result = null;
-            try { return (T)element; }
-            catch (InvalidCastException ice) { }
+        //void AttachComponent<T>(T component)
+        //    where T : class, IAether;
 
-            return result;
-        }
+        //void DettachComponent<T>(T component)
+        //    where T : class, IAether;
+
+
     }
 }

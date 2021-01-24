@@ -27,6 +27,7 @@ namespace tainicom.Aether.Engine
         public virtual void Save(IAetherWriter writer)
         {   
             writer.Write("EngineData", (IAetherSerialization)EngineData);
+            //writer.Write("Entities", (IAetherSerialization)Entities);
 
             //write particles
             writer.WriteParticles("Particles", particles);   
