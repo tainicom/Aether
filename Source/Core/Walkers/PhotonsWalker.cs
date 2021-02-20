@@ -119,36 +119,29 @@ namespace tainicom.Aether.Core.Walkers
             return plasma.GetEnumerator();
         }
 
-        public void Render(GameTime gameTime)
+        public void Render(GameTime gameTime, IPhotonNode photonNode)
         {
-            try 
-            { 
-                Render(gameTime, Current);
-            }
-            catch(Exception e) { throw e; }
-
-            return;
-        }
-        
-        private void Render(GameTime gameTime, IAether particle)
-        {
-            IPhoton photon = particle as IPhoton;
+            IPhoton photon = photonNode as IPhoton;
             if (photon == null) return;
 
             IMaterial material = photon.Material;
             if (material == null) return;
 
+            {
             Matrix worldTransform;
-            LeptonsManager.GetWorldTransform(particle, out worldTransform);
+                LeptonsManager.GetWorldTransform(photon, out worldTransform);
+                RenderPhoton(photon, material, ref worldTransform);
+            }
+        }
 
+        void RenderPhoton(IPhoton photon, IMaterial material, ref Matrix worldTransform)
+        {
             ((IShaderMatrices)material).Projection = this.Projection;
             ((IShaderMatrices)material).View = this.View;
             ((IShaderMatrices)material).World = worldTransform;
             material.Apply();
             material.ApplyTextures(photon.Textures);
             photon.Accept(material);
-
-            return;
         }
 
         public Matrix LocalTransform { get { return Matrix.Identity; } }

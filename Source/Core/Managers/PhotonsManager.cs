@@ -15,6 +15,7 @@
 #endregion
 
 
+using System;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Core.Walkers;
 using tainicom.Aether.Elementary;
@@ -28,6 +29,9 @@ namespace tainicom.Aether.Core.Managers
 {
     public class PhotonsManager: BaseManager<IPhotonNode>, IRenderableManager
     {
+        public delegate void OnRenderError(GameTime gameTime, IPhotonWalker walker, IPhotonNode current, ref bool handled);
+        public OnRenderError RenderError;
+
         public IPlasmaList<IPhotonNode> Root { get; protected set; }
 
         public IPhotonWalker DefaultWalker { get; set; }
@@ -66,7 +70,24 @@ namespace tainicom.Aether.Core.Managers
         {
             walker.Reset();
             while (walker.MoveNext())
-                walker.Render(gameTime);
+            {
+                var photonNode = walker.Current as IPhotonNode;
+
+                try
+                {
+                    walker.Render(gameTime, photonNode);
+                }
+                catch
+                {
+                    bool handled = false;
+                    var handler = RenderError;
+                    if (handler != null)
+                        handler(gameTime, walker, photonNode, ref handled);
+
+                    if (!handled)
+                    throw;
+                }
+            }
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)

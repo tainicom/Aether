@@ -21,7 +21,7 @@ namespace tainicom.Aether.Elementary.Photons
     public interface IPhotonWalker : IAetherWalker<IPhotonNode>
         , IReadonlyCameraMatrices
     {
-        void Render(GameTime gameTime);
+        void Render(GameTime gameTime, IPhotonNode photonNode);
 
         Matrix Projection { get; set; }
         Matrix View { get; set; }
