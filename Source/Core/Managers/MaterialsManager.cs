@@ -74,7 +74,6 @@ namespace tainicom.Aether.Core.Managers
 
         }
         
-#if (WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             base.Save(writer);
@@ -83,7 +82,6 @@ namespace tainicom.Aether.Core.Managers
             if (Root is IAetherSerialization)
                 writer.Write("Root", (IAetherSerialization)Root);
         }
-#endif
 
         public override void Load(IAetherReader reader)
         {

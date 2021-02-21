@@ -24,7 +24,6 @@ namespace tainicom.Aether.Engine
 {
     public partial class AetherEngine : IAetherSerialization
     {        
-        #if (WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {   
             writer.Write("EngineData", (IAetherSerialization)EngineData);
@@ -34,7 +33,6 @@ namespace tainicom.Aether.Engine
             //write managers
             writer.WriteParticleManagers("Managers", Managers);
         }
-        #endif
 
         public virtual void Load(IAetherReader reader)
         {

@@ -23,9 +23,7 @@ namespace tainicom.Aether.Elementary.Serialization
 {
     public interface IAetherSerialization
     {
-        #if (WINDOWS)
         void Save(IAetherWriter writer);
-        #endif
         void Load(IAetherReader reader);
     }
 }

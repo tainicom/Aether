@@ -38,7 +38,6 @@ namespace tainicom.Aether.Core.Photons
             InnerAngle = OuterAngle = Tau.HALFQUARTER;
         }
 
-#if(WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             base.Save(writer);
@@ -46,7 +45,7 @@ namespace tainicom.Aether.Core.Photons
             writer.WriteFloat("OuterAngle", OuterAngle);
             writer.WriteVector3("Direction", Direction);
         }
-#endif
+
         public override void Load(IAetherReader reader)
         {
             base.Load(reader);

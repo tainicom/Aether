@@ -34,14 +34,13 @@ namespace tainicom.Aether.Engine
             TotalTime = 0;
         }
 
-        #if (WINDOWS)
         public void Save(IAetherWriter writer)
         {
             writer.WriteUInt64("UniqueIdCounter", UniqueIdCounter);
             writer.Write("NextUniqueId", NextUniqueID);
             writer.WriteDouble("TotalTime", TotalTime);
         }
-        #endif
+
         public void Load(IAetherReader reader)
         {
             reader.ReadUInt64("UniqueIdCounter", out UniqueIdCounter);

@@ -137,13 +137,11 @@ namespace tainicom.Aether.Core.Cameras
         #endregion
 
         
-        #if(WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             base.Save(writer);
             writer.WriteFloat("FieldOfView", _fieldOfView);
         }        
-        #endif
 
         public override void Load(IAetherReader reader)
         {

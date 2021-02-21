@@ -48,7 +48,6 @@ namespace tainicom.Aether.Elementary.Data
             return uid.ToString("X16");
         }
 
-        #if(WINDOWS)
         public void Save(IAetherWriter writer)
         {
             writer.WriteUInt64(uid);
@@ -58,7 +57,6 @@ namespace tainicom.Aether.Elementary.Data
         {
             throw new NotImplementedException();
         }
-        #endif
     }
     */
 
@@ -95,12 +93,11 @@ namespace tainicom.Aether.Elementary.Data
             return uid.ToString("D");
         }
 
-#if(WINDOWS)
         public void Save(IAetherWriter writer)
         {
             writer.WriteGuid(uid);
         }
-#endif
+
         public void Load(IAetherReader reader)
         {
             reader.ReadGuid(out uid);

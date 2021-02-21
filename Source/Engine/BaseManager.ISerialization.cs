@@ -25,13 +25,11 @@ namespace tainicom.Aether.Engine
 {
     abstract public partial class BaseManager<TValue> : IAetherSerialization
     {   
-        #if (WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
             //write particles
             writer.WriteParticles("Particles", particles);
         }
-        #endif
 
         public virtual void Load(IAetherReader reader)
         {            

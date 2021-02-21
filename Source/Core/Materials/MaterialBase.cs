@@ -156,7 +156,6 @@ namespace tainicom.Aether.Core.Materials
         
         #region Aether.Elementary.Serialization.IAetherSerialization Members
 
-        #if (WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
             writer.WriteInt64("PrimitiveType", (int)PrimitiveType);
@@ -237,7 +236,6 @@ namespace tainicom.Aether.Core.Materials
                 writer.WriteFloat("MipMapLevelOfDetailBias", samplerState.MipMapLevelOfDetailBias);
             }
         }
-        #endif
 
         public virtual void Load(IAetherReader reader)
         {

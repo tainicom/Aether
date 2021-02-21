@@ -128,7 +128,6 @@ namespace tainicom.Aether.Core.Materials
         
         #region Aether.Elementary.Serialization.IAetherSerialization Members
 
-        #if(WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             base.Save(writer);
@@ -150,7 +149,6 @@ namespace tainicom.Aether.Core.Materials
             writer.WriteVector3(name + "Direction", directionalLight.Direction);
             writer.WriteBoolean(name + "Enabled", directionalLight.Enabled);
         }
-        #endif
 
         public override void Load(IAetherReader reader)
         {

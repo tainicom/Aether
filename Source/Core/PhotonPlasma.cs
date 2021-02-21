@@ -67,7 +67,6 @@ namespace tainicom.Aether.Core
 
 
         #region Implement IAetherSerialization
-#if (WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             writer.WriteInt32("Version", 1);
@@ -76,7 +75,6 @@ namespace tainicom.Aether.Core
             // TODO: add IAetherWriter.WriteParticles(string, new ISet<T>)
             writer.WriteParticles("VisibleParticles", new List<IPhotonNode>(_visibleParticles));
         }
-#endif
 
         public override void Load(IAetherReader reader)
         {

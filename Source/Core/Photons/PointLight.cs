@@ -53,7 +53,6 @@ namespace tainicom.Aether.Core.Photons
             MaximumRadius = float.MaxValue;
         }
         
-#if(WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
             writer.WriteVector3("Position", Position);
@@ -61,7 +60,7 @@ namespace tainicom.Aether.Core.Photons
             writer.WriteFloat("Intensity", Intensity);
             writer.WriteFloat("MaximumRadius", MaximumRadius);
         }
-#endif
+
         public virtual void Load(IAetherReader reader)
         {
             string str; Vector3 v3; float f;

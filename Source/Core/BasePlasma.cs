@@ -42,14 +42,12 @@ namespace tainicom.Aether.Core
             base.RemoveItem(index);
         }
         
-        #if (WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
             writer.WriteInt32("Version", 1);
 
             writer.WriteParticles("Particles", this);
         }
-        #endif
 
         public virtual void Load(IAetherReader reader)
         {

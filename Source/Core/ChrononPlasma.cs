@@ -74,14 +74,12 @@ namespace tainicom.Aether.Core
         }
 
         #region Implement IAetherSerialization
-#if (WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             writer.WriteInt32("Version", 1);
 
             base.Save(writer);
         }
-#endif
 
         public override void Load(IAetherReader reader)
         {
