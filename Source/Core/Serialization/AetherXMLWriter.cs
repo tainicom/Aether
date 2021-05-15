@@ -202,6 +202,7 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteValue((Int64)value);
             //writer.WriteValue(Convert.ToString(value));
         }
+
         public void WriteFloat(string name, float value)
         {
             writer.WriteStartElement(name);

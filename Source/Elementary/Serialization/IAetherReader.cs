@@ -48,6 +48,7 @@ namespace tainicom.Aether.Elementary.Serialization
         void ReadDouble(out double value);
         void ReadString(string name, out string value);
         void ReadString(out string value);
+
         [Obsolete("Use ReadBytes. Base64 will be used for text serializers.")]
         void ReadBase64(string name, out byte[] buffer);
         

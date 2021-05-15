@@ -269,13 +269,13 @@ namespace tainicom.Aether.Core.Serialization
             value = reader.ReadContentAsLong();
         }
         
-        public void ReadInt32(string name, out Int32 value)
+        public void ReadInt32(string name, out int value)
         {
             reader.ReadStartElement(name);
             ReadInt32(out value);
             reader.ReadEndElement();
         }
-        public void ReadInt32(out Int32 value)
+        public void ReadInt32(out int value)
         {
             value = reader.ReadContentAsInt();
         }

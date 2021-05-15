@@ -175,14 +175,14 @@ namespace tainicom.Aether.Core.Serialization
             value = reader.ReadBoolean();
         }
 
-        public void ReadInt64(string name, out long value)
+        public void ReadInt64(string name, out Int64 value)
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
             value = reader.ReadInt64();
         }
 
-        public void ReadInt64(out long value)
+        public void ReadInt64(out Int64 value)
         {
             value = reader.ReadInt64();
         }
@@ -199,14 +199,14 @@ namespace tainicom.Aether.Core.Serialization
             value = reader.ReadInt32();
         }
 
-        public void ReadUInt64(string name, out ulong value)
+        public void ReadUInt64(string name, out UInt64 value)
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
             value = reader.ReadUInt64();
         }
 
-        public void ReadUInt64(out ulong value)
+        public void ReadUInt64(out UInt64 value)
         {
             value = reader.ReadUInt64();
         }

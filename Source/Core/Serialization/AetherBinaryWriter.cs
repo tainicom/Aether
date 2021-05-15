@@ -166,13 +166,13 @@ namespace tainicom.Aether.Core.Serialization
             writer.Write((Int32)value);
         }
 
-        public void WriteUInt64(string name, ulong value)
+        public void WriteUInt64(string name, UInt64 value)
         {
             //writer.Write(name);
             writer.Write((UInt64)value);
         }
 
-        public void WriteUInt64(ulong value)
+        public void WriteUInt64(UInt64 value)
         {
             writer.Write((UInt64)value);
         }
