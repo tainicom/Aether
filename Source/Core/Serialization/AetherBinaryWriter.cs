@@ -188,6 +188,52 @@ namespace tainicom.Aether.Core.Serialization
             writer.Write((UInt32)value);
         }
 
+        public void WritePackedInt64(string name, Int64 value)
+        {
+            //writer.Write(name);
+            value = ((value << 1) ^ (value >> 63));
+            Write7BitEncodedUInt64((UInt64)value);
+        }
+
+        public void WritePackedInt64(Int64 value)
+        {
+            value = ((value << 1) ^ (value >> 63));
+            Write7BitEncodedUInt64((UInt64)value);
+        }
+
+        private void Write7BitEncodedUInt64(UInt64 value)
+        {
+            while (value > 0x7f)
+            {
+                writer.Write((byte)(value | 0x80));
+                value >>= 7;
+            }
+            writer.Write((byte)value);
+        }
+
+        public void WritePackedInt32(string name, int value)
+        {
+            //writer.Write(name);
+            value = (value << 1) ^ (value >> 31);
+            Write7BitEncodedUInt32((uint)value);
+        }
+        
+        public void WritePackedInt32(int value)
+        {
+            value = (value << 1) ^ (value >> 31);
+            Write7BitEncodedUInt32((uint)value);
+        }
+
+        private void Write7BitEncodedUInt32(uint value)
+        {
+            while (value > 0x7f)
+            {
+                writer.Write((byte)(value | 0x80));
+                value >>= 7;
+            }
+            writer.Write((byte)value);
+        }
+
         public void WriteFloat(string name, float value)
         {
             //writer.Write(name);

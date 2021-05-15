@@ -215,6 +215,30 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteValue((Int32)value);
         }
 
+        public void WritePackedInt64(string name, Int64 value)
+        {
+            writer.WriteStartElement(name);
+            WritePackedInt64(value);
+            writer.WriteEndElement();
+        }
+
+        public void WritePackedInt64(Int64 value)
+        {
+            WriteInt64(value);
+        }
+
+        public void WritePackedInt32(string name, int value)
+        {
+            writer.WriteStartElement(name);
+            WritePackedInt32(value);
+            writer.WriteEndElement();
+        }
+
+        public void WritePackedInt32(int value)
+        {
+            WriteInt32(value);
+        }
+
         public void WriteFloat(string name, float value)
         {
             writer.WriteStartElement(name);

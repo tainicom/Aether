@@ -223,6 +223,66 @@ namespace tainicom.Aether.Core.Serialization
             value = reader.ReadUInt32();
         }
 
+        public void ReadPackedInt64(string name, out Int64 value)
+        {
+            //string name2 = reader.ReadString();
+            //System.Diagnostics.Debug.Assert(name == name2);
+            value = (Int64)Read7BitEncodedUInt32();
+            value = (Int64)((UInt64)value >> 1) ^ (-(value & 1));
+        }
+
+        public void ReadPackedInt64(out Int64 value)
+        {
+            value = (Int64)Read7BitEncodedUInt32();
+            value = (Int64)((UInt64)value >> 1) ^ (-(value & 1));
+        }
+        
+        private UInt64 Read7BitEncodedUInt64()
+        {
+            Int64 value = 0;
+            int shift = 0;
+            byte current = 0;
+            do
+            {
+                current = reader.ReadByte();
+                value |= (Int64)((current & 0x7f) << shift);
+                shift += 7;
+            }
+            while ((shift <= 7*8) && ((current & 0x80) != 0));
+
+            return (UInt64)value;
+        }
+
+        public void ReadPackedInt32(string name, out int value)
+        {
+            //string name2 = reader.ReadString();
+            //System.Diagnostics.Debug.Assert(name == name2);
+            value = (int)Read7BitEncodedUInt32();
+            value = (int)((uint)value >> 1) ^ (-(value & 1));
+        }
+
+        public void ReadPackedInt32(out int value)
+        {
+            value = (int)Read7BitEncodedUInt32();
+            value = (int)((uint)value >> 1) ^ (-(value & 1));
+        }
+        
+        private uint Read7BitEncodedUInt32()
+        {
+            int value = 0;
+            int shift = 0;
+            byte current = 0;
+            do
+            {
+                current = reader.ReadByte();
+                value |= (current & 0x7f) << shift;
+                shift += 7;
+            }
+            while ((shift <= 7*4) && ((current & 0x80) != 0));
+            
+            return (uint)value;
+        }
+
         public void ReadFloat(string name, out float value)
         {
             //string name2 = reader.ReadString();
