@@ -42,6 +42,8 @@ namespace tainicom.Aether.Elementary.Serialization
         void ReadInt32(out int value);
         void ReadUInt64(string name, out UInt64 value);
         void ReadUInt64(out UInt64 value);
+        void ReadUInt32(string name, out uint value);
+        void ReadUInt32(out uint value);
         void ReadFloat(string name, out float value);
         void ReadFloat(out float value);
         void ReadDouble(string name, out double value);

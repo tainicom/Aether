@@ -293,6 +293,18 @@ namespace tainicom.Aether.Core.Serialization
             //value = Convert.ToUInt64(reader.Value);
         }
         
+        public void ReadUInt32(string name, out uint value)
+        {
+            reader.ReadStartElement(name);
+            ReadUInt32(out value);
+            reader.ReadEndElement();
+        }
+
+        public void ReadUInt32(out uint value)
+        {
+            value = (uint)reader.ReadContentAsInt();
+        }
+
         public void ReadFloat(string name, out float value)
         {
             reader.ReadStartElement(name);

@@ -177,6 +177,17 @@ namespace tainicom.Aether.Core.Serialization
             writer.Write((UInt64)value);
         }
 
+        public void WriteUInt32(string name, uint value)
+        {
+            //writer.Write(name);
+            writer.Write((UInt32)value);
+        }
+
+        public void WriteUInt32(uint value)
+        {
+            writer.Write((UInt32)value);
+        }
+
         public void WriteFloat(string name, float value)
         {
             //writer.Write(name);

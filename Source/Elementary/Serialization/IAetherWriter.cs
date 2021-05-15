@@ -41,6 +41,8 @@ namespace tainicom.Aether.Elementary.Serialization
         void WriteInt32(int value);
         void WriteUInt64(string name, UInt64 value);
         void WriteUInt64(UInt64 value);
+        void WriteUInt32(string name, uint value);
+        void WriteUInt32(uint value);
         void WriteFloat(string name, float value);
         void WriteFloat(float value);
         void WriteDouble(string name, double value);
