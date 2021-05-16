@@ -17,9 +17,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Elementary.Data;
-using System.IO;
 using tainicom.Aether.Engine;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Managers;
@@ -27,7 +27,7 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Core.Serialization
 {
-    #if (WINDOWS)
+#if (WINDOWS)
     public class AetherBinaryWriter : IAetherWriter
     {
         public readonly AetherEngine Engine;
@@ -39,7 +39,7 @@ namespace tainicom.Aether.Core.Serialization
         public AetherBinaryWriter(AetherEngine engine, Stream stream)
         {
             this.Engine = engine;
-            this.stream = stream;            
+            this.stream = stream;
             writer = new BinaryWriter(stream, Encoding.UTF8);
         }
 
@@ -96,7 +96,7 @@ namespace tainicom.Aether.Core.Serialization
             bool isParticleSerialized = serialisedParticles.Contains(uid);
             writer.Write(isParticleSerialized);
             if (!isParticleSerialized)
-            {   
+            {
                 if (!uid.Equals(UniqueID.Unknown))
                     serialisedParticles.Add(uid);
 
@@ -104,6 +104,7 @@ namespace tainicom.Aether.Core.Serialization
                 Type particleType = particle.GetType();
                 string typeName = particleType.FullName + ", " + particleType.Assembly.GetName().Name;
                 writer.Write(typeName); //type
+
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 bool isSerialisableParticle = serialisableParticle != null;
                 writer.Write(isSerialisableParticle); //mark whether Particle has data to serialize
@@ -130,12 +131,12 @@ namespace tainicom.Aether.Core.Serialization
             Type managerType = manager.GetType();
             string typeName = managerType.FullName + ", " + managerType.Assembly.GetName().Name;
             writer.Write(typeName);
+
             IAetherSerialization serialisableParticle = manager as IAetherSerialization;
             bool isSerialisableParticle = serialisableParticle != null;
             writer.Write(isSerialisableParticle);
             if (isSerialisableParticle)
                 serialisableParticle.Save(this);
-            
         }
 
         public void WriteBoolean(string name, bool value)
@@ -217,7 +218,7 @@ namespace tainicom.Aether.Core.Serialization
             value = (value << 1) ^ (value >> 31);
             Write7BitEncodedUInt32((uint)value);
         }
-        
+
         public void WritePackedInt32(int value)
         {
             value = (value << 1) ^ (value >> 31);

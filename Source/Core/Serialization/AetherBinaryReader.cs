@@ -98,37 +98,40 @@ namespace tainicom.Aether.Core.Serialization
         {
             uid = new UniqueID();
             uid.Load(this);
+
             bool isParticleSerialized = reader.ReadBoolean();
-            if (isParticleSerialized)
+            if (!isParticleSerialized)
             {
-                particle = deserialisedParticles[uid];
-                return;
-            }
+                string particleName = reader.ReadString();
+                string typeName = reader.ReadString();
+                Type particleType = TypeResolver.ResolveType(typeName));
 
-            string particleName = reader.ReadString();
-            string AssemblyQualifiedName = reader.ReadString();
+                if (Engine.ContainsName(particleName))
+                {
+                    particle = Engine[particleName];
+                }
+                else
+                {
+                    particle = (IAether)Activator.CreateInstance(particleType);
+                }
 
-            if (Engine.ContainsName(particleName))
-            {
-                particle = Engine[particleName];
+                if (!uid.Equals(UniqueID.Unknown))
+                    deserialisedParticles.Add(uid, particle);
+
+                bool isSerialisableParticle = reader.ReadBoolean();
+                if (isSerialisableParticle)
+                {
+                    IAetherSerialization serialisableParticle = particle as IAetherSerialization;
+                    serialisableParticle.Load(this);
+                }
+
+                if (particleName != string.Empty)
+                    Engine.SetParticleName(particle, particleName);
             }
             else
             {
-                particle = TypeResolver.CreateInstance(AssemblyQualifiedName);
+                particle = deserialisedParticles[uid];
             }
-
-            if (!uid.Equals(UniqueID.Unknown))
-                deserialisedParticles.Add(uid, particle);
-
-            bool isSerialisableParticle = reader.ReadBoolean();
-            if (isSerialisableParticle)
-            {
-                IAetherSerialization serialisableParticle = particle as IAetherSerialization;
-                serialisableParticle.Load(this);
-            }
-
-            if (particleName != string.Empty)
-                Engine.SetParticleName(particle, particleName);
 
             return;
         }

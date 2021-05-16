@@ -14,12 +14,13 @@
 //   limitations under the License.
 #endregion
 
+using System;
 
 namespace tainicom.Aether.Elementary.Serialization
 {
     public interface IAetherTypeResolver
     {
-        IAether CreateInstance(string type);
+        Type ResolveType(string typeName);
         IAether Convert(IAether particle);
     }
 }

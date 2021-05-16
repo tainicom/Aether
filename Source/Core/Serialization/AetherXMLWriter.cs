@@ -16,10 +16,10 @@
 
 using System;
 using System.Collections.Generic;
-using tainicom.Aether.Elementary.Serialization;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Elementary.Data;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Engine;
@@ -27,7 +27,7 @@ using tainicom.Aether.Elementary.Managers;
 
 namespace tainicom.Aether.Core.Serialization
 {
-    #if (WINDOWS)
+#if (WINDOWS)
     public class AetherXMLWriter : IAetherWriter
     {
         public readonly AetherEngine Engine;
@@ -106,15 +106,8 @@ namespace tainicom.Aether.Core.Serialization
         {
             string particleName = Engine.GetParticleName(particle);
 
-            if (serialisedParticles.Contains(uid))
-            {
-                writer.WriteStartElement("AetherParticleRef");
-                writer.WriteStartAttribute("UID"); uid.Save(this); writer.WriteEndAttribute();
-                if (particleName != String.Empty) writer.WriteAttributeString("Name", particleName);
-                writer.WriteEndElement();
-                return;
-            }
-            else
+            bool isParticleSerialized = serialisedParticles.Contains(uid);
+            if (!isParticleSerialized)
             {
                 Type particleType = particle.GetType();
                 if (!uid.Equals(UniqueID.Unknown))
@@ -127,6 +120,13 @@ namespace tainicom.Aether.Core.Serialization
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 if (serialisableParticle != null)
                     serialisableParticle.Save(this);
+                writer.WriteEndElement();
+            }
+            else
+            {
+                writer.WriteStartElement("AetherParticleRef");
+                writer.WriteStartAttribute("UID"); uid.Save(this); writer.WriteEndAttribute();
+                if (particleName != String.Empty) writer.WriteAttributeString("Name", particleName);
                 writer.WriteEndElement();
             }
 
@@ -423,5 +423,5 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteEndElement();
         }
     }
-    #endif
+#endif
 }

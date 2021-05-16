@@ -153,11 +153,7 @@ namespace tainicom.Aether.Core.Serialization
             bool isEmptyElement = reader.IsEmptyElement;
             reader.ReadStartElement();
 
-            if (elementName == "AetherParticleRef")
-            {
-                particle = deserialisedParticles[uid];
-            }
-            else if (elementName == "AetherParticle")
+            if (elementName == "AetherParticle")
             {
                 if (Engine.ContainsName(particleName))
                 {
@@ -168,7 +164,8 @@ namespace tainicom.Aether.Core.Serialization
                 }
                 else
                 {
-                    particle = TypeResolver.CreateInstance(typeName);
+                    Type particleType = TypeResolver.ResolveType(typeName);
+                    particle = (IAether)Activator.CreateInstance(particleType);
                 }
                 
                 if (!uid.Equals(UniqueID.Unknown))
@@ -186,6 +183,10 @@ namespace tainicom.Aether.Core.Serialization
                     Engine.SetParticleName(particle, particleName);
 
                 if (!isEmptyElement) reader.ReadEndElement();
+            }
+            else if (elementName == "AetherParticleRef")
+            {
+                particle = deserialisedParticles[uid];
             }
 
             return;
