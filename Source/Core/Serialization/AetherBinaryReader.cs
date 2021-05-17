@@ -36,6 +36,7 @@ namespace tainicom.Aether.Core.Serialization
         private BinaryReader reader;        
 
         Dictionary<UniqueID, IAether> deserialisedParticles = new Dictionary<UniqueID, IAether>();
+        List<Type> knownTypes = new List<Type>();
 
         public AetherBinaryReader(AetherEngine engine, Stream stream)
         {
@@ -103,8 +104,7 @@ namespace tainicom.Aether.Core.Serialization
             if (!isParticleSerialized)
             {
                 string particleName = reader.ReadString();
-                string typeName = reader.ReadString();
-                Type particleType = TypeResolver.ResolveType(typeName));
+                Type particleType = ReadType();
 
                 if (Engine.ContainsName(particleName))
                 {
@@ -134,6 +134,27 @@ namespace tainicom.Aether.Core.Serialization
             }
 
             return;
+        }
+
+        private Type ReadType()
+        {
+            Type particleType;
+            int typeIndex;
+            ReadInt32(out typeIndex);
+            bool isKnownType = typeIndex < knownTypes.Count;
+            if (isKnownType)
+            {
+                particleType = knownTypes[typeIndex];
+            }
+            else
+            {
+                System.Diagnostics.Debug.Assert(typeIndex == knownTypes.Count);
+                string AssemblyQualifiedName = reader.ReadString();
+                particleType = TypeResolver.ResolveType(AssemblyQualifiedName);
+                knownTypes.Add(particleType);
+            }
+
+            return particleType;
         }
 
         public void ReadParticleManagers(string name, IList<IAetherManager> particleManagers)

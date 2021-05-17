@@ -35,6 +35,7 @@ namespace tainicom.Aether.Core.Serialization
         private BinaryWriter writer;
 
         HashSet<UniqueID> serialisedParticles = new HashSet<UniqueID>();
+        Dictionary<Type, int> knownTypes = new Dictionary<Type, int>();
 
         public AetherBinaryWriter(AetherEngine engine, Stream stream)
         {
@@ -101,9 +102,7 @@ namespace tainicom.Aether.Core.Serialization
                     serialisedParticles.Add(uid);
 
                 writer.Write(particleName); //name
-                Type particleType = particle.GetType();
-                string typeName = particleType.FullName + ", " + particleType.Assembly.GetName().Name;
-                writer.Write(typeName); //type
+                WriteType(particle.GetType()); //type
 
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 bool isSerialisableParticle = serialisableParticle != null;
@@ -113,6 +112,23 @@ namespace tainicom.Aether.Core.Serialization
             }
 
             return;
+        }
+
+        private void WriteType(Type particleType)
+        {
+            int typeIndex;
+            if (knownTypes.TryGetValue(particleType, out typeIndex))
+            {
+                WriteInt32(typeIndex);
+            }
+            else
+            {
+                typeIndex = knownTypes.Count;
+                knownTypes.Add(particleType, typeIndex);
+                WriteInt32(typeIndex);
+                string typeName = particleType.FullName + ", " + particleType.Assembly.GetName().Name;
+                writer.Write(typeName);
+            }
         }
 
         public void WriteParticleManagers(string name, IList<IAetherManager> particleManagers)
