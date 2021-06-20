@@ -1,0 +1,124 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>tainicom.Aether</RootNamespace>
+    <AssemblyName>tainicom.Aether</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Core\BasePlasma.cs" />
+    <Compile Include="Core\BaseWalker.cs" />
+    <Compile Include="Core\CameraPlasma.cs" />
+    <Compile Include="Core\Cameras\Camera.cs" />
+    <Compile Include="Core\Cameras\OrthographicCamera.cs" />
+    <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Core\ChrononPlasma.cs" />
+    <Compile Include="Core\Chronons\AetherPhasor.cs" />
+    <Compile Include="Core\Chronons\AetherTimer.cs" />
+    <Compile Include="Core\Data\EnabledCollection.cs" />
+    <Compile Include="Core\ECS\Component.cs" />
+    <Compile Include="Core\Managers\ChrononsManager.cs" />
+    <Compile Include="Core\Managers\ECSManager.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
+    <Compile Include="Core\Serialization\AetherXMLReader.cs" />
+    <Compile Include="Core\Serialization\AetherXMLWriter.cs" />
+    <Compile Include="Elementary\Chronons\IChronon.cs" />
+    <Compile Include="Elementary\Chronons\ITickable.cs" />
+    <Compile Include="Elementary\Extensions.cs" />
+    <Compile Include="Core\LeptonPlasma.cs" />
+    <Compile Include="Core\Managers\CamerasManager.cs" />
+    <Compile Include="Core\Managers\LeptonsManager.cs" />
+    <Compile Include="Core\Managers\MaterialsManager.cs" />
+    <Compile Include="Core\Managers\PhotonsManager.cs" />
+    <Compile Include="Core\Materials\AlphaTestMaterial.cs" />
+    <Compile Include="Core\Materials\BasicMaterial.cs" />
+    <Compile Include="Core\Materials\Data\DirectionalLightData.cs" />
+    <Compile Include="Core\Materials\EnvironmentMapMaterial.cs" />
+    <Compile Include="Core\Materials\MaterialBase.cs" />
+    <Compile Include="Core\Materials\SkinnedMaterial.cs" />
+    <Compile Include="Core\PhotonPlasma.cs" />
+    <Compile Include="Core\Photons\AetherTexture.cs" />
+    <Compile Include="Core\Photons\PointLight.cs" />
+    <Compile Include="Core\Photons\SpotLight.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
+    <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
+    <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
+    <Compile Include="Core\Walkers\PhotonsWalker.cs" />
+    <Compile Include="Elementary\Audio\ISound.cs" />
+    <Compile Include="Elementary\Cameras\ICamera.cs" />
+    <Compile Include="Elementary\Cameras\ICameraNode.cs" />
+    <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
+    <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
+    <Compile Include="Elementary\Data\UniqueID.cs" />
+    <Compile Include="Elementary\ECS\IComponent.cs" />
+    <Compile Include="Elementary\ECS\IECSNode.cs" />
+    <Compile Include="Elementary\IAether.cs" />
+    <Compile Include="Elementary\IAetherNotify.cs" />
+    <Compile Include="Elementary\IAetherWalker.cs" />
+    <Compile Include="Elementary\Photons\IDeviceContext.cs" />
+    <Compile Include="Elementary\IInitializable.cs" />
+    <Compile Include="Elementary\IPlasma.cs" />
+    <Compile Include="Elementary\Leptons\IBoundingBox.cs" />
+    <Compile Include="Elementary\Leptons\IChildLepton.cs" />
+    <Compile Include="Elementary\Leptons\ILepton.cs" />
+    <Compile Include="Elementary\Leptons\ILeptonNode.cs" />
+    <Compile Include="Elementary\Leptons\ILeptonPlasma.cs" />
+    <Compile Include="Elementary\Leptons\ILocalTransform.cs" />
+    <Compile Include="Elementary\Leptons\IPosition.cs" />
+    <Compile Include="Elementary\Leptons\IWorldTransform.cs" />
+    <Compile Include="Elementary\Leptons\IWorldTransformUpdateable.cs" />
+    <Compile Include="Elementary\Managers\IAetherManager.cs" />
+    <Compile Include="Elementary\miscellaneous\IInterpolatable.cs" />
+    <Compile Include="Elementary\Photons\IReadonlyCameraMatrices.cs" />
+    <Compile Include="Elementary\Photons\IGeometryVisitor.cs" />
+    <Compile Include="Elementary\Photons\ILightCone.cs" />
+    <Compile Include="Elementary\Photons\ILightDirection.cs" />
+    <Compile Include="Elementary\Photons\ILightSource.cs" />
+    <Compile Include="Elementary\Photons\IMaterial.cs" />
+    <Compile Include="Elementary\Photons\IPhoton.cs" />
+    <Compile Include="Elementary\Photons\IPhotonNode.cs" />
+    <Compile Include="Elementary\Photons\IPhotonWalker.cs" />
+    <Compile Include="Elementary\Photons\IRenderableManager.cs" />
+    <Compile Include="Elementary\Photons\IShaderMatrices.cs" />
+    <Compile Include="Elementary\Photons\IPhotonPlasma.cs" />
+    <Compile Include="Elementary\Photons\ITexture.cs" />
+    <Compile Include="Elementary\Radiums\IRadium.cs" />
+    <Compile Include="Elementary\Serialization\IAetherReader.cs" />
+    <Compile Include="Elementary\Serialization\IAetherSerialization.cs" />
+    <Compile Include="Elementary\Serialization\IAetherTypeResolver.cs" />
+    <Compile Include="Elementary\Serialization\IAetherWriter.cs" />
+    <Compile Include="Engine\AetherContext.cs" />
+    <Compile Include="Engine\AetherEngine.cs" />
+    <Compile Include="Engine\AetherEngine.IDictionary.cs" />
+    <Compile Include="Engine\AetherEngine.IDisposable.cs" />
+    <Compile Include="Engine\AetherEngine.ISerialization.cs" />
+    <Compile Include="Engine\AetherEngine.Managers.cs" />
+    <Compile Include="Engine\AetherEngine.Names.cs" />
+    <Compile Include="Engine\AetherException.cs" />
+    <Compile Include="Engine\BaseManager.cs" />
+    <Compile Include="Engine\BaseManager.IDictionary.cs" />
+    <Compile Include="Engine\BaseManager.IDisposable.cs" />
+    <Compile Include="Engine\BaseManager.ISerialization.cs" />
+    <Compile Include="Engine\Data\AetherEngineData.cs" />
+    <Compile Include="Engine\Data\ManagerCollection.cs" />
+    <Compile Include="Engine\Data\ManagerCollection.IDisposable.cs" />
+    <Compile Include="Engine\EC\ComponentEnumerator.cs" />
+    <Compile Include="Engine\EC\Entities.cs" />
+    <Compile Include="Maths\Extensions.cs" />
+    <Compile Include="Maths\Line3.cs" />
+    <Compile Include="Maths\Tau.cs" />
+    <Compile Include="MonoGame\AetherContextMG.cs" />
+    <Compile Include="MonoGame\DeviceContextMG.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.Portable.9000" Version="3.8.9009">
+      <PrivateAssets>All</PrivateAssets> 
+      <NoWarn>NU1701</NoWarn>
+    </PackageReference>
+  </ItemGroup>
+
+
+</Project>
