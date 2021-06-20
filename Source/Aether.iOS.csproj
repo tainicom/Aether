@@ -7,7 +7,7 @@
     <ProjectGuid>{E86DC7B9-42F2-4BBC-B267-327988014A61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>tainicom.Aether</RootNamespace>
-    <AssemblyName>tainicom.Aether</AssemblyName>
+    <AssemblyName>Aether</AssemblyName>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>

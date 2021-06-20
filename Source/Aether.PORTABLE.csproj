@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tainicom.Aether</RootNamespace>
-    <AssemblyName>tainicom.Aether</AssemblyName>
+    <AssemblyName>Aether</AssemblyName>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>

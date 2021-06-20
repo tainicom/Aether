@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tainicom.Aether</RootNamespace>
-    <AssemblyName>tainicom.Aether</AssemblyName>
+    <AssemblyName>Aether</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
