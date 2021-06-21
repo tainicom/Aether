@@ -17,7 +17,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary.Visual;
 using tainicom.Aether.Engine;
 using System.ComponentModel;
 using tainicom.Aether.Elementary;

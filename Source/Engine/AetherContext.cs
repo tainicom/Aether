@@ -15,7 +15,7 @@
 #endregion
 
 using System;
-using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary.Visual;
 
 namespace tainicom.Aether.Engine
 {

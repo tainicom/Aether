@@ -16,7 +16,7 @@
 
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary.Visual;
 
 namespace tainicom.Aether.MonoGame
 {

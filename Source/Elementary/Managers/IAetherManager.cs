@@ -15,7 +15,7 @@
 #endregion
 
 using System;
-using tainicom.Aether.Elementary.Chronons;
+using tainicom.Aether.Elementary.Temporal;
 using tainicom.Aether.Elementary.Data;
 
 namespace tainicom.Aether.Elementary.Managers

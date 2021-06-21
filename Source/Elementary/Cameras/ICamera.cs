@@ -15,8 +15,8 @@
 #endregion
 
 using Microsoft.Xna.Framework;
-using tainicom.Aether.Elementary.Leptons;
-using tainicom.Aether.Elementary.Photons;
+using tainicom.Aether.Elementary.Spatial;
+using tainicom.Aether.Elementary.Visual;
 
 namespace tainicom.Aether.Elementary.Cameras
 {

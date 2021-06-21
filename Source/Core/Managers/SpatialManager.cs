@@ -14,27 +14,29 @@
 //   limitations under the License.
 #endregion
 
-using tainicom.Aether.Engine;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
+using tainicom.Aether.Elementary.Temporal;
 using tainicom.Aether.Elementary.Data;
-using tainicom.Aether.Elementary.Visual;
+using tainicom.Aether.Elementary.Spatial;
 using tainicom.Aether.Elementary.Serialization;
+using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class MaterialsManager : BaseManager<IMaterial>
+    public class SpatialManager : BaseManager<ISpatialNode>
     {
-        public IPlasmaList<IMaterial> Root { get; protected set; }
+        public IPlasmaList<ISpatialNode> Root { get; protected set; }
 
-        public MaterialsManager(): base("Materials")
+        public SpatialManager(): base("Leptons")
         {
             
         }
+
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            this.Root = new BasePlasma<IMaterial>();
+            Root = new LeptonPlasma();
         }
         
         //protected override void Dispose(bool disposing)
@@ -55,29 +57,59 @@ namespace tainicom.Aether.Core.Managers
         /// <remarks>Do not access this Method directly. Only AetherEngine should call it during the game loop.</remarks>
         /// <permission cref=""></permission>        
         public override void Tick(GameTime gameTime)
-        {
-            //TODO: apply Camera.Current View & Projection
-
+        {            
+            ITickable tickableRoot = Root as ITickable;
+            if (tickableRoot != null)
+                tickableRoot.Tick(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IMaterial);
-            IMaterial item = particle as IMaterial;
-
+            System.Diagnostics.Debug.Assert(particle is ISpatialNode);
+            //_engine.AddChild(Root, (ISpatialNode)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IMaterial);
-            IMaterial item = particle as IMaterial;
-
+            System.Diagnostics.Debug.Assert(particle is ISpatialNode);
+            //_engine.RemoveChild(Root, (ISpatialNode)particle);
         }
-        
+
+        public static Matrix GetWorldTransform(IAether particle)
+        {
+            Matrix result;
+            GetWorldTransform(particle, out result);
+            return result;
+        }
+
+        public static void GetWorldTransform(IAether particle, out Matrix world)
+        {
+            var worldTransform = particle as IWorldTransform;
+            if (worldTransform != null)
+            {
+                world = worldTransform.WorldTransform;
+                return;
+            }
+            var localTransform = particle as ILocalTransform;
+            if (localTransform != null)
+            {
+                world = localTransform.LocalTransform;
+                return;
+            }
+            var position = particle as IPosition;
+            if (position != null)
+            {
+                world = Matrix.CreateTranslation(position.Position);
+                return;
+            }
+            
+            world = Matrix.Identity;
+        }
+
         public override void Save(IAetherWriter writer)
         {
             base.Save(writer);
-            
+
             //write root
             if (Root is IAetherSerialization)
                 writer.Write("Root", (IAetherSerialization)Root);

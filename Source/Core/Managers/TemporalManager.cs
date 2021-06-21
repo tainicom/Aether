@@ -17,24 +17,26 @@
 using tainicom.Aether.Engine;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary;
+using tainicom.Aether.Elementary.Temporal;
 using tainicom.Aether.Elementary.Data;
-using tainicom.Aether.Elementary.Visual;
+using System;
 using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class MaterialsManager : BaseManager<IMaterial>
+    public class TemporalManager : BaseManager<IChronon>
     {
-        public IPlasmaList<IMaterial> Root { get; protected set; }
+        public IPlasmaList<IChronon> Root { get; protected set; }
 
-        public MaterialsManager(): base("Materials")
+        public TemporalManager(): base("Chronons")
         {
             
         }
+
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            this.Root = new BasePlasma<IMaterial>();
+            Root = new ChrononPlasma();
         }
         
         //protected override void Dispose(bool disposing)
@@ -56,28 +58,26 @@ namespace tainicom.Aether.Core.Managers
         /// <permission cref=""></permission>        
         public override void Tick(GameTime gameTime)
         {
-            //TODO: apply Camera.Current View & Projection
-
+            ((IChronon)Root).Tick(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IMaterial);
-            IMaterial item = particle as IMaterial;
-
+            System.Diagnostics.Debug.Assert(particle is IChronon);
+            Root.Add((IChronon)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IMaterial);
-            IMaterial item = particle as IMaterial;
-
+            System.Diagnostics.Debug.Assert(particle is IChronon);
+            Root.Remove((IChronon)particle);
         }
+        
         
         public override void Save(IAetherWriter writer)
         {
             base.Save(writer);
-            
+
             //write root
             if (Root is IAetherSerialization)
                 writer.Write("Root", (IAetherSerialization)Root);

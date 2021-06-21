@@ -29,9 +29,9 @@ namespace tainicom.Aether.Engine
         public ManagerCollection Managers { get; private set; }
         
         //Managers
-        public LeptonsManager LeptonsMgr;
-        public ChrononsManager ChrononsMgr;
-        public PhotonsManager PhotonsMgr;
+        public SpatialManager SpatialMgr;
+        public TemporalManager TemporalMgr;
+        public VisualManager VisualMgr;
         public CamerasManager CamerasMgr;
         public MaterialsManager MaterialsMgr;
         
@@ -39,15 +39,15 @@ namespace tainicom.Aether.Engine
         
         private void CreateManagers()
         {
-            LeptonsMgr = new LeptonsManager();
-            ChrononsMgr = new ChrononsManager();
+            SpatialMgr = new SpatialManager();
+            TemporalMgr = new TemporalManager();
             CamerasMgr = new CamerasManager();
             MaterialsMgr = new MaterialsManager();
-            PhotonsMgr = new PhotonsManager();
+            VisualMgr = new VisualManager();
             
-            Managers.Add(LeptonsMgr);
-            Managers.Add(ChrononsMgr);
-            Managers.Add(PhotonsMgr);
+            Managers.Add(SpatialMgr);
+            Managers.Add(TemporalMgr);
+            Managers.Add(VisualMgr);
             Managers.Add(CamerasMgr);
             Managers.Add(MaterialsMgr);
 
