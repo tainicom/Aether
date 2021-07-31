@@ -15,9 +15,9 @@
 #endregion
 
 using System;
+using System.ComponentModel;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary.Cameras;
-using System.ComponentModel;
 using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core.Cameras

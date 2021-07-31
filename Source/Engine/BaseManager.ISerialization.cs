@@ -24,7 +24,7 @@ using tainicom.Aether.Elementary.Serialization;
 namespace tainicom.Aether.Engine
 {
     abstract public partial class BaseManager<TValue> : IAetherSerialization
-    {   
+    {
         public virtual void Save(IAetherWriter writer)
         {
             //write particles

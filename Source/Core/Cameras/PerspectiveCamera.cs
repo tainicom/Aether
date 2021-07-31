@@ -141,7 +141,7 @@ namespace tainicom.Aether.Core.Cameras
         {
             base.Save(writer);
             writer.WriteFloat("FieldOfView", _fieldOfView);
-        }        
+        }
 
         public override void Load(IAetherReader reader)
         {

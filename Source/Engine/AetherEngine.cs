@@ -56,7 +56,7 @@ namespace tainicom.Aether.Engine
             SetParticleName(particle, name);
             return particle;
         }
-                
+
         public UniqueID RegisterParticle(IAether particle)
         {
             // check if particle is allready registered
@@ -118,7 +118,7 @@ namespace tainicom.Aether.Engine
         {
             RenderManagers(gameTime);
         }
-        
+
         public virtual void AddChild<TAether>(IPlasmaList<TAether> parent, TAether child)
             where TAether : IAether
         {

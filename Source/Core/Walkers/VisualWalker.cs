@@ -148,12 +148,12 @@ namespace tainicom.Aether.Core.Walkers
 
         void RenderPhoton(IPhoton photon, IMaterial material, ref Matrix worldTransform)
         {
-                ((IShaderMatrices)material).Projection = this.Projection;
-                ((IShaderMatrices)material).View = this.View;
-                ((IShaderMatrices)material).World = worldTransform;
-                material.Apply();
-                material.ApplyTextures(photon.Textures);
-                photon.Accept(material);
+            ((IShaderMatrices)material).Projection = this.Projection;
+            ((IShaderMatrices)material).View = this.View;
+            ((IShaderMatrices)material).World = worldTransform;
+            material.Apply();
+            material.ApplyTextures(photon.Textures);
+            photon.Accept(material);
         }
 
         public Matrix LocalTransform { get { return Matrix.Identity; } }

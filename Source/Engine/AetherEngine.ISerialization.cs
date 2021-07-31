@@ -23,7 +23,7 @@ using tainicom.Aether.Elementary.Serialization;
 namespace tainicom.Aether.Engine
 {
     public partial class AetherEngine : IAetherSerialization
-    {        
+    {
         public virtual void Save(IAetherWriter writer)
         {   
             writer.Write("EngineData", (IAetherSerialization)EngineData);

@@ -27,7 +27,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class VisualManager: BaseManager<IVisualNode>, IRenderableManager
+    public class VisualManager : BaseManager<IVisualNode>, IRenderableManager
     {
         public delegate void OnRenderError(GameTime gameTime, IVisualWalker walker, IVisualNode current, ref bool handled);
         public OnRenderError RenderError;
