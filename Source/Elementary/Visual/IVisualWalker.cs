@@ -21,7 +21,7 @@ namespace tainicom.Aether.Elementary.Visual
     public interface IVisualWalker : IAetherWalker<IVisualNode>
         , IReadonlyCameraMatrices
     {
-        void Render(GameTime gameTime, IVisualNode photonNode);
+        void Render(GameTime gameTime, IVisualNode visualNode);
 
         Matrix Projection { get; set; }
         Matrix View { get; set; }

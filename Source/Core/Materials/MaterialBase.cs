@@ -119,34 +119,34 @@ namespace tainicom.Aether.Core.Materials
             }
         }
 
-        public void SetVertices<T>(IPhoton photon, T[] data) where T : struct
+        public void SetVertices<T>(IVisual visual, T[] data) where T : struct
         {
             ((DeviceContextMG)DeviceContext).PrimitiveType = this.PrimitiveType;
-            DeviceContext.SetVertices(photon, data);
+            DeviceContext.SetVertices(visual, data);
         }
 
-        public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
-        {
-            DeviceContext.PrimitiveType = this.PrimitiveType;            
-            DeviceContext.SetVertices(photon, vertexData, vertexOffset, primitiveCount, vertexDeclaration);            
-        }
-
-        public void SetVertices<T>(IPhoton photon, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
+        public void SetVertices<T>(IVisual visual, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
             DeviceContext.PrimitiveType = this.PrimitiveType;
-            DeviceContext.SetVertices(photon, offsetInBytes, data, startIndex, elementCount, vertexStride);
+            DeviceContext.SetVertices(visual, vertexData, vertexOffset, primitiveCount, vertexDeclaration);            
         }
 
-        public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
+        public void SetVertices<T>(IVisual visual, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
         {
             DeviceContext.PrimitiveType = this.PrimitiveType;
-            DeviceContext.SetVertices(photon, vertexData, vertexOffset, numVertices, indexData, indexOffset, primitiveCount, vertexDeclaration);            
+            DeviceContext.SetVertices(visual, offsetInBytes, data, startIndex, elementCount, vertexStride);
         }
 
-        public void SetVertices(IPhoton photon, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
+        public void SetVertices<T>(IVisual visual, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
             DeviceContext.PrimitiveType = this.PrimitiveType;
-            DeviceContext.SetVertices(photon, vertexBuffer, baseVertex, minVertexIndex, numVertices, indexBuffer, startIndex, primitiveCount);            
+            DeviceContext.SetVertices(visual, vertexData, vertexOffset, numVertices, indexData, indexOffset, primitiveCount, vertexDeclaration);            
+        }
+
+        public void SetVertices(IVisual visual, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
+        {
+            DeviceContext.PrimitiveType = this.PrimitiveType;
+            DeviceContext.SetVertices(visual, vertexBuffer, baseVertex, minVertexIndex, numVertices, indexBuffer, startIndex, primitiveCount);            
         }
 
         public override string ToString()

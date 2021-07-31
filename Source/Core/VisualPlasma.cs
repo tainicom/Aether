@@ -50,17 +50,17 @@ namespace tainicom.Aether.Core
             base.RemoveItem(index);
         }
         
-        public virtual void Enable(IPhoton item)
+        public virtual void Enable(IVisual item)
         {
             _visibleParticles.Add(item);
         }
 
-        public virtual void Disable(IPhoton item)
+        public virtual void Disable(IVisual item)
         {
             _visibleParticles.Remove(item);
         }
 
-        public bool IsEnabled(IPhoton item)
+        public bool IsEnabled(IVisual item)
         {
             return _visibleParticles.Contains(item);
         }

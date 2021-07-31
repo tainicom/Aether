@@ -30,25 +30,25 @@ namespace tainicom.Aether.MonoGame
         {            
             this.GraphicsDevice = graphicsDevice;
         }
-        
-        public void SetVertices<T>(IPhoton photon, T[] vertexData) where T : struct
+
+        public void SetVertices<T>(IVisual visual, T[] vertexData) where T : struct
         {
             throw new NotImplementedException();
         }
 
-        public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
+        public void SetVertices<T>(IVisual visual, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
             GraphicsDevice.DrawUserPrimitives<T>(this.PrimitiveType,
                 vertexData, vertexOffset, primitiveCount,
                 vertexDeclaration);
         }
 
-        public void SetVertices<T>(IPhoton photon, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
+        public void SetVertices<T>(IVisual visual, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct
         {
             throw new NotImplementedException();
         }
 
-        public void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
+        public void SetVertices<T>(IVisual visual, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct
         {
             GraphicsDevice.DrawUserIndexedPrimitives<T>(this.PrimitiveType,
                 vertexData, vertexOffset, numVertices,
@@ -56,7 +56,7 @@ namespace tainicom.Aether.MonoGame
                 vertexDeclaration);
         }
 
-        public void SetVertices(IPhoton photon, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
+        public void SetVertices(IVisual visual, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount)
         {
             GraphicsDevice.SetVertexBuffer(vertexBuffer);
             GraphicsDevice.Indices = indexBuffer;

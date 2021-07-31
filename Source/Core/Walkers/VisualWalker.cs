@@ -114,46 +114,46 @@ namespace tainicom.Aether.Core.Walkers
 
         private IEnumerator<IVisualNode> GetParticles(IPlasma<IVisualNode> plasma)
         {
-            IVisualPlasma photonPlasma = plasma as IVisualPlasma;
-            if (photonPlasma != null)
-                return photonPlasma.VisibleParticles;
+            IVisualPlasma visualNodes = plasma as IVisualPlasma;
+            if (visualNodes != null)
+                return visualNodes.VisibleParticles;
             return plasma.GetEnumerator();
         }
 
-        public void Render(GameTime gameTime, IVisualNode photonNode)
+        public void Render(GameTime gameTime, IVisualNode visualNode)
         {
-            IPhoton photon = photonNode as IPhoton;
-            if (photon == null) return;
+            IVisual visual = visualNode as IVisual;
+            if (visual == null) return;
 
-            IMaterial material = photon.Material;
+            IMaterial material = visual.Material;
             if (material == null) return;
 
-            var component = photonNode as Component;
+            var component = visualNode as Component;
             if (component != null)
             {
                 foreach (var leptonNode in engine.Entities.GetEntityComponents<ISpatialNode>(component))
                 {
                     Matrix worldTransform;
                     SpatialManager.GetWorldTransform(leptonNode, out worldTransform);
-                    RenderPhoton(photon, material, ref worldTransform);
+                    RenderVisual(visual, material, ref worldTransform);
                 }
             }
             else
             {
                 Matrix worldTransform;
-                SpatialManager.GetWorldTransform(photon, out worldTransform);
-                RenderPhoton(photon, material, ref worldTransform);
+                SpatialManager.GetWorldTransform(visual, out worldTransform);
+                RenderVisual(visual, material, ref worldTransform);
             }
         }
 
-        void RenderPhoton(IPhoton photon, IMaterial material, ref Matrix worldTransform)
+        void RenderVisual(IVisual visual, IMaterial material, ref Matrix worldTransform)
         {
             ((IShaderMatrices)material).Projection = this.Projection;
             ((IShaderMatrices)material).View = this.View;
             ((IShaderMatrices)material).World = worldTransform;
             material.Apply();
-            material.ApplyTextures(photon.Textures);
-            photon.Accept(material);
+            material.ApplyTextures(visual.Textures);
+            visual.Accept(material);
         }
 
         public Matrix LocalTransform { get { return Matrix.Identity; } }

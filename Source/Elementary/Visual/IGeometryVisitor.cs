@@ -21,16 +21,16 @@ namespace tainicom.Aether.Elementary.Visual
     public interface IGeometryVisitor
     {
         //Vertex data
-        void SetVertices<T>(IPhoton photon, T[] vertexData) where T : struct;
-        void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct;        
-        void SetVertices<T>(IPhoton photon, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct;
-        void SetVertices<T>(IPhoton photon, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct;
+        void SetVertices<T>(IVisual visual, T[] vertexData) where T : struct;
+        void SetVertices<T>(IVisual visual, T[] vertexData, int vertexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct;
+        void SetVertices<T>(IVisual visual, int offsetInBytes, T[] data, int startIndex, int elementCount, int vertexStride) where T : struct;
+        void SetVertices<T>(IVisual visual, T[] vertexData, int vertexOffset, int numVertices, short[] indexData, int indexOffset, int primitiveCount, VertexDeclaration vertexDeclaration) where T : struct;
 
         //Vertex buffers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="photon"></param>
+        /// <param name="visual"></param>
         /// <param name="vertexBuffer"></param>
         /// <param name="baseVertex">Offset to add to each vertex index in the index buffer.</param>
         /// <param name="minVertexIndex">Minimum vertex index for vertices used during the call. The minVertexIndex parameter and all of the indices in the index stream are relative to the baseVertex parameter.</param>
@@ -38,7 +38,7 @@ namespace tainicom.Aether.Elementary.Visual
         /// <param name="indexBuffer"></param>
         /// <param name="startIndex">Location in the index array at which to start reading vertices.</param>
         /// <param name="primitiveCount">Number of primitives to render. The number of vertices used is a function of primitiveCount and primitiveType.</param>
-        void SetVertices(IPhoton photon, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount);
+        void SetVertices(IVisual visual, VertexBuffer vertexBuffer, int baseVertex, int minVertexIndex, int numVertices, IndexBuffer indexBuffer, int startIndex, int primitiveCount);
         
     }
 }

@@ -71,18 +71,18 @@ namespace tainicom.Aether.Core.Managers
             walker.Reset();
             while (walker.MoveNext())
             {
-                var photonNode = walker.Current as IVisualNode;
+                var visualNode = walker.Current as IVisualNode;
 
                 try
                 {
-                    walker.Render(gameTime, photonNode);
+                    walker.Render(gameTime, visualNode);
                 }
                 catch
                 {
                     bool handled = false;
                     var handler = RenderError;
                     if (handler != null)
-                        handler(gameTime, walker, photonNode, ref handled);
+                        handler(gameTime, walker, visualNode, ref handled);
 
                     if (!handled)
                         throw;
