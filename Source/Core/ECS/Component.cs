@@ -78,12 +78,10 @@ namespace tainicom.Aether.Core.ECS
             return new EntityComponents<T>(this);
         }
 
-#if (WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
 
         }
-#endif
 
         public virtual void Load(IAetherReader reader)
         {

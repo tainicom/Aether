@@ -56,7 +56,6 @@ namespace tainicom.Aether.Core.Managers
         }
 
 
-#if (WINDOWS)
         public override void Save(IAetherWriter writer)
         {
             writer.WriteInt32("Version", 1);
@@ -64,7 +63,6 @@ namespace tainicom.Aether.Core.Managers
             base.Save(writer);
 
         }
-#endif
 
         public override void Load(IAetherReader reader)
         {

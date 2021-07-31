@@ -166,7 +166,6 @@ namespace tainicom.Aether.Core.Cameras
         #endregion
 
 
-        #if(WINDOWS)
         public virtual void Save(IAetherWriter writer)
         {
             writer.WriteVector3("Position", _position);
@@ -175,7 +174,7 @@ namespace tainicom.Aether.Core.Cameras
             writer.WriteFloat("NearPlane", _nearPlane);
             writer.WriteFloat("FarPlane", _farPlane);
         }
-        #endif
+
         public virtual void Load(IAetherReader reader)
         {
             reader.ReadVector3("Position", out _position);
