@@ -18,7 +18,7 @@
 using tainicom.Aether.Elementary.Visual;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace tainicom.Aether.Core.Photons
+namespace tainicom.Aether.Core.Visual
 {
     public class AetherTexture : ITexture
     {

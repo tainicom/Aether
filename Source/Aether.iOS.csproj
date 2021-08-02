@@ -44,7 +44,7 @@
     <Compile Include="Core\ECS\Component.cs" />
     <Compile Include="Core\Managers\TemporalManager.cs" />
     <Compile Include="Core\Managers\ECSManager.cs" />
-    <Compile Include="Elementary\Temporal\IChronon.cs" />
+    <Compile Include="Elementary\Temporal\ITemporal.cs" />
     <Compile Include="Elementary\Temporal\ITickable.cs" />
     <Compile Include="Elementary\Extensions.cs" />
     <Compile Include="Core\SpatialPlasma.cs" />

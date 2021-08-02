@@ -23,7 +23,7 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class LeptonPlasma : BasePlasma<ISpatialNode>, ISpatialPlasma, ILepton, IPosition, ILocalTransform, IWorldTransform, IWorldTransformUpdateable
+    public class SpatialPlasma : BasePlasma<ISpatialNode>, ISpatialPlasma, ISpatial, IPosition, ILocalTransform, IWorldTransform, IWorldTransformUpdateable
     {
         Vector3 _position;
         Vector3 _scale = Vector3.One;
@@ -37,7 +37,7 @@ namespace tainicom.Aether.Core
         public Vector3 Scale { get { return _scale; } set { _scale = value; UpdateLocalTransform(); } }
         public Quaternion Rotation { get { return _rotation; } set { _rotation = value; UpdateLocalTransform(); } }
 
-        public LeptonPlasma()
+        public SpatialPlasma()
         {
         }
         

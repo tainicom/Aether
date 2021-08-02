@@ -28,7 +28,7 @@ namespace tainicom.Aether.Core.Managers
     {
         public IPlasmaList<ISpatialNode> Root { get; protected set; }
 
-        public SpatialManager(): base("Leptons")
+        public SpatialManager(): base("SpatialMgr")
         {
             
         }
@@ -36,7 +36,7 @@ namespace tainicom.Aether.Core.Managers
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            Root = new LeptonPlasma();
+            Root = new SpatialPlasma();
         }
         
         //protected override void Dispose(bool disposing)

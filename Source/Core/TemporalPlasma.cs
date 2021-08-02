@@ -23,21 +23,21 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class ChrononPlasma: BasePlasma<IChronon>, IChronon
+    public class TemporalCollection : BasePlasma<ITemporal>, ITemporal
     {
-        EnabledList<IChronon> _enabledParticles;
+        EnabledList<ITemporal> _enabledParticles;
         private bool isTicking = false;
 
-        public ChrononPlasma()
+        public TemporalCollection()
         {
-            _enabledParticles = new EnabledList<IChronon>();
+            _enabledParticles = new EnabledList<ITemporal>();
         }
         
         public void Tick(GameTime gameTime)
         {
             _enabledParticles.Process();
             isTicking = true;
-            foreach (IChronon item in _enabledParticles)
+            foreach (ITemporal item in _enabledParticles)
             {
                 item.Tick(gameTime);
             }
@@ -45,7 +45,7 @@ namespace tainicom.Aether.Core
             return;
         }
 
-        protected override void InsertItem(int index, IChronon item)
+        protected override void InsertItem(int index, ITemporal item)
         {
             if (isTicking)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
@@ -58,17 +58,17 @@ namespace tainicom.Aether.Core
         {
             if (isTicking)
                 throw new InvalidOperationException("Can't modify collection inside Tick() method.");
-            IChronon item = this[index];
+            ITemporal item = this[index];
             if (_enabledParticles.Contains(item)) _enabledParticles.Remove(item);
             base.RemoveItem(index);
         }
         
-        public void Enable(IChronon item)
+        public void Enable(ITemporal item)
         {
             _enabledParticles.Enable(item);
         }
 
-        public void Disable(IChronon item)
+        public void Disable(ITemporal item)
         {
             _enabledParticles.Disable(item);
         }

@@ -19,6 +19,6 @@ namespace tainicom.Aether.Elementary.Spatial
 {
     public interface ISpatialChild : IAether
     {
-        IWorldTransform ParentLepton { get; }
+        IWorldTransform ParentSpatial { get; }
     }
 }

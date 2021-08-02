@@ -36,15 +36,15 @@ namespace tainicom.Aether.Core.Managers
 
         public IVisualWalker DefaultWalker { get; set; }
 
-        public VisualManager(): base("Photons")
+        public VisualManager(): base("VisualMgr")
         {
         }
 
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            Root = new PhotonPlasma();
-            //Root = engine.RegisterParticle(new PhotonPlasma(), "Root");
+            Root = new VisualCollection();
+            //Root = engine.RegisterParticle(new VisualCollection(), "Root");
 
             DefaultWalker = new VisualWalker();
             ((IInitializable)DefaultWalker).Initialize(engine);

@@ -18,7 +18,7 @@ using System;
 using tainicom.Aether.Elementary.Temporal;
 using Microsoft.Xna.Framework;
 
-namespace tainicom.Aether.Core.Chronons
+namespace tainicom.Aether.Core.Temporal
 {
     public class AetherPhasor : AetherTimer
     {

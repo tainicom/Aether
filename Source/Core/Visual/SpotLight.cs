@@ -24,7 +24,7 @@ using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary.Spatial;
 using tainicom.Aether.Maths;
 
-namespace tainicom.Aether.Core.Photons
+namespace tainicom.Aether.Core.Visual
 {
     public class SpotLight : PointLight, ILightCone
     {

@@ -27,7 +27,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.Core.Walkers
 {
-    public class VisualWalker : BaseWalker<IVisualNode>, IVisualWalker, IInitializable, ILepton
+    public class VisualWalker : BaseWalker<IVisualNode>, IVisualWalker, IInitializable, ISpatial
     {
         protected IVisualNode startingElement;
 
@@ -45,7 +45,7 @@ namespace tainicom.Aether.Core.Walkers
         protected Queue<Breadcrumb> BreadcrumbQueue;
 
         private AetherEngine engine;
-        PhotonPlasma PhotonRoot { get { return (PhotonPlasma)engine.VisualMgr.Root;  } }
+        VisualCollection VisualRoot { get { return (VisualCollection)engine.VisualMgr.Root;  } }
         
         public Matrix Projection { get; set; }
         public Matrix View { get; set; }
@@ -131,10 +131,10 @@ namespace tainicom.Aether.Core.Walkers
             var component = visualNode as Component;
             if (component != null)
             {
-                foreach (var leptonNode in engine.Entities.GetEntityComponents<ISpatialNode>(component))
+                foreach (var spatialNode in engine.Entities.GetEntityComponents<ISpatialNode>(component))
                 {
                     Matrix worldTransform;
-                    SpatialManager.GetWorldTransform(leptonNode, out worldTransform);
+                    SpatialManager.GetWorldTransform(spatialNode, out worldTransform);
                     RenderVisual(visual, material, ref worldTransform);
                 }
             }

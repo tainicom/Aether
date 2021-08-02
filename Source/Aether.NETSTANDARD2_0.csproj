@@ -24,7 +24,7 @@
     <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
     <Compile Include="Core\Serialization\AetherXMLReader.cs" />
     <Compile Include="Core\Serialization\AetherXMLWriter.cs" />
-    <Compile Include="Elementary\Temporal\IChronon.cs" />
+    <Compile Include="Elementary\Temporal\ITemporal.cs" />
     <Compile Include="Elementary\Temporal\ITickable.cs" />
     <Compile Include="Elementary\Extensions.cs" />
     <Compile Include="Core\SpatialPlasma.cs" />

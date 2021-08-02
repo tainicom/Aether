@@ -23,7 +23,7 @@ using tainicom.Aether.Elementary.Serialization;
 using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary.Spatial;
 
-namespace tainicom.Aether.Core.Photons
+namespace tainicom.Aether.Core.Visual
 {
     public class PointLight : ILightSource, IPosition, IAetherSerialization
     {

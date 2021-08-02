@@ -24,11 +24,11 @@ using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core.Managers
 {
-    public class TemporalManager : BaseManager<IChronon>
+    public class TemporalManager : BaseManager<ITemporal>
     {
-        public IPlasmaList<IChronon> Root { get; protected set; }
+        public IPlasmaList<ITemporal> Root { get; protected set; }
 
-        public TemporalManager(): base("Chronons")
+        public TemporalManager(): base("TemporalMgr")
         {
             
         }
@@ -36,7 +36,7 @@ namespace tainicom.Aether.Core.Managers
         public override void Initialize(AetherEngine engine)
         {
             base.Initialize(engine);
-            Root = new ChrononPlasma();
+            Root = new TemporalCollection();
         }
         
         //protected override void Dispose(bool disposing)
@@ -58,19 +58,19 @@ namespace tainicom.Aether.Core.Managers
         /// <permission cref=""></permission>        
         public override void Tick(GameTime gameTime)
         {
-            ((IChronon)Root).Tick(gameTime);
+            ((ITemporal)Root).Tick(gameTime);
         }
 
         protected override void OnRegisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IChronon);
-            Root.Add((IChronon)particle);
+            System.Diagnostics.Debug.Assert(particle is ITemporal);
+            Root.Add((ITemporal)particle);
         }
 
         protected override void OnUnregisterParticle(UniqueID uid, IAether particle)
         {
-            System.Diagnostics.Debug.Assert(particle is IChronon);
-            Root.Remove((IChronon)particle);
+            System.Diagnostics.Debug.Assert(particle is ITemporal);
+            Root.Remove((ITemporal)particle);
         }
         
         

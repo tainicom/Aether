@@ -21,7 +21,7 @@ namespace tainicom.Aether.Elementary.Spatial
     /// <summary>
     /// Particle that have position, rotation and scale
     /// </summary>
-    public interface ILepton : ILocalTransform, IPosition, ISpatialNode, IAether
+    public interface ISpatial : ILocalTransform, IPosition, ISpatialNode, IAether
     {
         //Matrix LocalTransform { get; } //Defined in ILocalTransform 
         

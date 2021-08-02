@@ -17,7 +17,7 @@
 
 namespace tainicom.Aether.Elementary.Temporal
 {
-    public interface IChronon : ITickable, IAether
+    public interface ITemporal : ITickable, IAether
     {
     }
 }

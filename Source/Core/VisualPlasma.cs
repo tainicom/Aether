@@ -25,13 +25,13 @@ using tainicom.Aether.Engine.Data;
 
 namespace tainicom.Aether.Core
 {
-    public class PhotonPlasma: BasePlasma<IVisualNode>, IVisualPlasma
+    public class VisualCollection : BasePlasma<IVisualNode>, IVisualPlasma
     {
         HashSet<IVisualNode> _visibleParticles;
 
         public virtual IEnumerator<IVisualNode> VisibleParticles { get { return _visibleParticles.GetEnumerator(); } }
 
-        public PhotonPlasma()
+        public VisualCollection()
         {
             _visibleParticles = new HashSet<IVisualNode>();
         }
