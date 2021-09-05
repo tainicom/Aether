@@ -14,6 +14,7 @@
     <Compile Include="Core\Cameras\Camera.cs" />
     <Compile Include="Core\Cameras\OrthographicCamera.cs" />
     <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Core\Spatial\SpatialBase.cs" />
     <Compile Include="Core\TemporalPlasma.cs" />
     <Compile Include="Core\Temporal\AetherPhasor.cs" />
     <Compile Include="Core\Temporal\AetherTimer.cs" />
