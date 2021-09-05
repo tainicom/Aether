@@ -63,7 +63,7 @@ namespace tainicom.Aether.Core.Visual
 
         public virtual void Load(IAetherReader reader)
         {
-            string str; Vector3 v3; float f;
+            Vector3 v3; float f;
             reader.ReadVector3("Position", out v3); Position = v3;
             reader.ReadVector3("LightSourceColor", out v3); LightSourceColor = v3;
             reader.ReadFloat("Intensity", out f); Intensity = f;
