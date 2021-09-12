@@ -62,7 +62,6 @@
     <Compile Include="Elementary\IInitializable.cs" />
     <Compile Include="Elementary\IPlasma.cs" />
     <Compile Include="Elementary\Spatial\IBoundingBox.cs" />
-    <Compile Include="Elementary\Spatial\ISpatialChild.cs" />
     <Compile Include="Elementary\Spatial\ISpatial.cs" />
     <Compile Include="Elementary\Spatial\ISpatialNode.cs" />
     <Compile Include="Elementary\Spatial\ISpatialPlasma.cs" />
