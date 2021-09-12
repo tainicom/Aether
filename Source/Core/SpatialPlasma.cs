@@ -20,22 +20,17 @@ using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Spatial;
 using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine.Data;
+using tainicom.Aether.Core.Spatial;
 
 namespace tainicom.Aether.Core
 {
     public class SpatialPlasma : BasePlasma<ISpatialNode>, ISpatialPlasma, ISpatial, IPosition, ILocalTransform, IWorldTransform, IWorldTransformUpdateable
     {
-        Vector3 _position;
-        Vector3 _scale = Vector3.One;
-        Quaternion _rotation = Quaternion.Identity;
+        SpatialBase _spatialImpl = new SpatialBase();
 
-        Matrix _localTransform = Matrix.Identity;
-        Matrix _parentWorldTransform = Matrix.Identity;
-        Matrix _worldTransform = Matrix.Identity;
-
-        public Vector3 Position { get { return _position; } set { _position = value; UpdateLocalTransform(); } }
-        public Vector3 Scale { get { return _scale; } set { _scale = value; UpdateLocalTransform(); } }
-        public Quaternion Rotation { get { return _rotation; } set { _rotation = value; UpdateLocalTransform(); } }
+        public Vector3 Position { get { return _spatialImpl.Position; } set { _spatialImpl.Position = value; UpdateLocalTransform(); } }
+        public Vector3 Scale { get { return _spatialImpl.Scale; } set { _spatialImpl.Scale = value; UpdateLocalTransform(); } }
+        public Quaternion Rotation { get { return _spatialImpl.Rotation; } set { _spatialImpl.Rotation = value; UpdateLocalTransform(); } }
 
         public SpatialPlasma()
         {
@@ -50,38 +45,27 @@ namespace tainicom.Aether.Core
                 updatetable.UpdateWorldTransform(this);
         }
 
-        public Matrix LocalTransform
-        {
-            get { return _localTransform; }
-        }
+        public Matrix LocalTransform { get { return _spatialImpl.LocalTransform; } }
 
-        public Matrix WorldTransform
-        {
-            get { return _worldTransform; }
-        }
+        public Matrix WorldTransform { get { return _spatialImpl.WorldTransform; } }
 
         protected void UpdateLocalTransform()
         {
-            _localTransform = Matrix.CreateScale(_scale)
-                            * Matrix.CreateFromQuaternion(_rotation)
-                            * Matrix.CreateTranslation(_position);
-            
-            _worldTransform = _localTransform * _parentWorldTransform;
             UpdateChildrenTransform();
         }
 
         public void UpdateWorldTransform(IWorldTransform parentWorldTransform)
         {
-            _parentWorldTransform = parentWorldTransform.WorldTransform;
-            _worldTransform = _localTransform * _parentWorldTransform;
+            _spatialImpl.UpdateWorldTransform(parentWorldTransform);
             UpdateChildrenTransform();
         }
 
         private void UpdateChildrenTransform()
         {
-            foreach (var child in this)
+            var spatialNodes = (IPlasma<ISpatialNode>)this;
+            foreach (var spatialNode in spatialNodes)
             {
-                var updatetable = child as IWorldTransformUpdateable;
+                var updatetable = spatialNode as IWorldTransformUpdateable;
                 if (updatetable != null)
                     updatetable.UpdateWorldTransform(this);
             }

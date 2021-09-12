@@ -23,14 +23,17 @@ using tainicom.Aether.Elementary.Spatial;
 
 namespace tainicom.Aether.Core.Spatial
 {
-    public class SpatialBase : ISpatial,
+    public class SpatialBase : 
+        ISpatial, IWorldTransform, IWorldTransformUpdateable,
         IAetherSerialization, IAether
     {
-        protected Vector3 _scale = Vector3.One;
-        protected Quaternion _rotation = Quaternion.Identity;
-        protected Vector3 _position;
+        private Vector3 _scale = Vector3.One;
+        private Quaternion _rotation = Quaternion.Identity;
+        private Vector3 _position;
 
-        protected Matrix _localTransform = Matrix.Identity;
+        private Matrix _localTransform = Matrix.Identity;
+        private Matrix _parentWorldTransform = Matrix.Identity;
+        private Matrix _worldTransform = Matrix.Identity;
 
         #region Implement ISpatial Properties
 
@@ -56,13 +59,30 @@ namespace tainicom.Aether.Core.Spatial
 
         #endregion ISpatial Properties
 
+        #region Implement IWorldTransform, IWorldTransformUpdateable
+        public void UpdateWorldTransform(IWorldTransform parentWorldTransform)
+        {
+            _parentWorldTransform = parentWorldTransform.WorldTransform;
+            UpdateWorldTransform();
+        }
+
+        public Matrix WorldTransform { get { return _worldTransform; } }
+        #endregion
+
+
         protected virtual void UpdateLocalTransform()
         {
             _localTransform = Matrix.CreateScale(_scale)
                             * Matrix.CreateFromQuaternion(_rotation)
                             * Matrix.CreateTranslation(_position);
+
+            UpdateWorldTransform();
         }
 
+        private void UpdateWorldTransform()
+        {
+            _worldTransform = _localTransform * _parentWorldTransform;
+        }
 
         #region Implement IAetherSerialization
         public void Save(IAetherWriter writer)
