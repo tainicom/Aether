@@ -30,7 +30,6 @@ namespace tainicom.Aether.Engine
         private AetherContext _context;
         
         internal AetherEngineData EngineData;
-        public EC.Entities Entities { get; private set; }
 
         #endregion
 
@@ -44,7 +43,6 @@ namespace tainicom.Aether.Engine
             this._context = context;
             //initialize trivial data
             EngineData = new AetherEngineData();
-            Entities = new EC.Entities(this);
 
             Managers = new ManagerCollection(this);
             CreateManagers();

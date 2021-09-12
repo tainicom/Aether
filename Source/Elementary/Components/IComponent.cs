@@ -14,13 +14,15 @@
 //   limitations under the License.
 #endregion
 
-using System.Collections.Generic;
+using tainicom.Aether.Core.Components;
 
-namespace tainicom.Aether.Elementary.ECS
+namespace tainicom.Aether.Elementary.Components
 {
     public interface IComponent :
-        IECSNode, IAether
+        IAether
     {
+        ComponentNode Entity { get; }
+
         //void AttachComponent<T>(T component)
         //    where T : class, IAether;
 

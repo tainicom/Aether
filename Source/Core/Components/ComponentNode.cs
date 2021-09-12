@@ -1,5 +1,5 @@
 ﻿#region License
-//   Copyright 2020-2021 Kastellanos Nikolaos
+//   Copyright 2021 Kastellanos Nikolaos
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -15,37 +15,33 @@
 #endregion
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using tainicom.Aether.Core.ECS;
 using tainicom.Aether.Elementary;
+using tainicom.Aether.Elementary.Components;
 using tainicom.Aether.Elementary.Serialization;
 
-namespace tainicom.Aether.Engine.EC
+namespace tainicom.Aether.Core.Components
 {
-    public class Entities : IAetherSerialization
+    public sealed class ComponentNode
     {
-        private AetherEngine engine;
+        internal readonly IComponent _component;
+        internal ComponentNode _nextComponentNode;
+        internal ComponentNode _prevComponentNode;
 
-        public Entities(AetherEngine engine)
+        public ComponentNode(IComponent component)
         {
-            this.engine = engine;
+            if (component == null)
+                throw new ArgumentNullException("component");
+
+            _component = component;
+            _prevComponentNode = this;
+            _nextComponentNode = this;
         }
 
-        public EntityComponents<T> GetEntityComponents<T>(Component component)
-            where T : class, IAether
+        ~ComponentNode()
         {
-            return new EntityComponents<T>(component);
         }
-
-        void IAetherSerialization.Save(IAetherWriter writer)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IAetherSerialization.Load(IAetherReader reader)
-        {
-            throw new NotImplementedException();
-        }
-
     }
+
 }

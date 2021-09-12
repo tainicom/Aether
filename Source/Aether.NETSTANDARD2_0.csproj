@@ -14,14 +14,15 @@
     <Compile Include="Core\Cameras\Camera.cs" />
     <Compile Include="Core\Cameras\OrthographicCamera.cs" />
     <Compile Include="Core\Cameras\PerspectiveCamera.cs" />
+    <Compile Include="Core\Components\ComponentEnumerator.cs" />
+    <Compile Include="Core\Components\ComponentNode.cs" />
+    <Compile Include="Core\Components\Component.cs" />
     <Compile Include="Core\Spatial\SpatialBase.cs" />
     <Compile Include="Core\TemporalPlasma.cs" />
     <Compile Include="Core\Temporal\AetherPhasor.cs" />
     <Compile Include="Core\Temporal\AetherTimer.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
-    <Compile Include="Core\ECS\Component.cs" />
     <Compile Include="Core\Managers\TemporalManager.cs" />
-    <Compile Include="Core\Managers\ECSManager.cs" />
     <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
     <Compile Include="Core\Serialization\AetherXMLReader.cs" />
     <Compile Include="Core\Serialization\AetherXMLWriter.cs" />
@@ -53,8 +54,7 @@
     <Compile Include="Elementary\Cameras\IOrthographicCamera.cs" />
     <Compile Include="Elementary\Cameras\IPerspectiveCamera.cs" />
     <Compile Include="Elementary\Data\UniqueID.cs" />
-    <Compile Include="Elementary\ECS\IComponent.cs" />
-    <Compile Include="Elementary\ECS\IECSNode.cs" />
+    <Compile Include="Elementary\Components\IComponent.cs" />
     <Compile Include="Elementary\IAether.cs" />
     <Compile Include="Elementary\IAetherNotify.cs" />
     <Compile Include="Elementary\IAetherWalker.cs" />
@@ -104,8 +104,6 @@
     <Compile Include="Engine\Data\AetherEngineData.cs" />
     <Compile Include="Engine\Data\ManagerCollection.cs" />
     <Compile Include="Engine\Data\ManagerCollection.IDisposable.cs" />
-    <Compile Include="Engine\EC\ComponentEnumerator.cs" />
-    <Compile Include="Engine\EC\Entities.cs" />
     <Compile Include="Maths\Extensions.cs" />
     <Compile Include="Maths\Line3.cs" />
     <Compile Include="Maths\Tau.cs" />

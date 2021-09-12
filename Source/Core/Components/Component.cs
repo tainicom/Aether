@@ -17,21 +17,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using tainicom.Aether.Core.Managers;
 using tainicom.Aether.Elementary;
-using tainicom.Aether.Elementary.ECS;
-using tainicom.Aether.Elementary.Managers;
+using tainicom.Aether.Elementary.Components;
 using tainicom.Aether.Elementary.Serialization;
 
-namespace tainicom.Aether.Core.ECS
+namespace tainicom.Aether.Core.Components
 {
     public abstract class Component : IComponent, IAetherSerialization
     {
         internal Component _nextComponent;
         internal Component _prevComponent;
 
+        public ComponentNode Entity { get; private set; }
+
         public Component()
         {
+            Entity = new ComponentNode(this);
+
             _nextComponent = this;
             _prevComponent = this;
         }
@@ -71,13 +73,6 @@ namespace tainicom.Aether.Core.ECS
         //    }
         //}
 
-        [Obsolete("Use AetherEngine.Entities.GetEntityComponents<T>(Component)")]
-        public EntityComponents<T> GetEntityComponents<T>()
-            where T : class, IAether
-        {
-            return new EntityComponents<T>(this);
-        }
-
         public virtual void Save(IAetherWriter writer)
         {
 
@@ -88,6 +83,60 @@ namespace tainicom.Aether.Core.ECS
             
         }
 
+        #region static methods
+
+        [Obsolete("Use Component.GetComponents<T>(element)")]
+        public static T GetFirtComponent<T>(IAether element) where T : class
+        {
+            T result = null;
+            try { return (T)element; }
+            catch (InvalidCastException ice) { }
+
+            return result;
+        }
+
+        public static IEnumerator<T> GetComponents<T>(IAether element)
+           where T : class, IAether
+        {
+            var component = element as IComponent;
+            if (component != null)
+            {
+                return GetComponents<T>(component);
+            }
+            else
+            {
+                return GetInterface<T>(element);
+            }
+        }
+
+        public static IEnumerator<T> GetInterface<T>(IAether element)
+          where T : class, IAether
+        {
+            T result = null;
+            try { result = (T)element; }
+            catch (InvalidCastException) { yield break; }
+            yield return result;
+        }
+
+        public static IEnumerator<T> GetComponents<T>(IComponent component)
+            where T : class, IAether
+        {
+            var entityNode = component.Entity;
+            System.Diagnostics.Debug.Assert(Object.ReferenceEquals(component, entityNode._component));
+
+            if (entityNode._component is T)
+                yield return (T)entityNode._component;
+
+            yield break;
+        }
+
+        public static EntityComponents<T> GetEntityComponents<T>(Component component)
+            where T : class, IAether
+        {
+            return new EntityComponents<T>(component);
+        }
+
+        #endregion
     }
 
     internal sealed class ComponentProxy : Component

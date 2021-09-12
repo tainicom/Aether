@@ -22,14 +22,5 @@ namespace tainicom.Aether.Elementary
 {
     public static class Extensions
     {
-        [Obsolete]
-        public static T GetComponent<T>(this IAether element) where T : class
-        {
-            T result = null;
-            try { return (T)element; }
-            catch (InvalidCastException ice) { }
-
-            return result;
-        }
     }
 }

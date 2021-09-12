@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace tainicom.Aether.Core.ECS
+namespace tainicom.Aether.Core.Components
 {
     public struct EntityComponents<T>
         where T : class

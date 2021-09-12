@@ -18,7 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using tainicom.Aether.Core.ECS;
+using tainicom.Aether.Core.Components;
 using tainicom.Aether.Core.Managers;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Spatial;
@@ -131,7 +131,7 @@ namespace tainicom.Aether.Core.Walkers
             var component = visualNode as Component;
             if (component != null)
             {
-                foreach (var spatialNode in engine.Entities.GetEntityComponents<ISpatialNode>(component))
+                foreach (var spatialNode in Component.GetEntityComponents<ISpatialNode>(component))
                 {
                     Matrix worldTransform;
                     SpatialManager.GetWorldTransform(spatialNode, out worldTransform);
