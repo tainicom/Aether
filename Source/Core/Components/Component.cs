@@ -89,51 +89,53 @@ namespace tainicom.Aether.Core.Components
         public static T GetFirtComponent<T>(IAether element) where T : class
         {
             T result = null;
-            try { return (T)element; }
-            catch (InvalidCastException ice) { }
+            if (element is T)
+                return (T)element;
 
             return result;
-        }
-
-        public static IEnumerator<T> GetComponents<T>(IAether element)
-           where T : class, IAether
-        {
-            var component = element as IComponent;
-            if (component != null)
-            {
-                return GetComponents<T>(component);
-            }
-            else
-            {
-                return GetInterface<T>(element);
-            }
-        }
-
-        public static IEnumerator<T> GetInterface<T>(IAether element)
-          where T : class, IAether
-        {
-            T result = null;
-            try { result = (T)element; }
-            catch (InvalidCastException) { yield break; }
-            yield return result;
-        }
-
-        public static IEnumerator<T> GetComponents<T>(IComponent component)
-            where T : class, IAether
-        {
-            var entityNode = component.Entity;
-            System.Diagnostics.Debug.Assert(Object.ReferenceEquals(component, entityNode._component));
-
-            if (entityNode._component is T)
-                yield return (T)entityNode._component;
-
-            yield break;
         }
 
         public static EntityComponents<T> GetEntityComponents<T>(Component component)
             where T : class, IAether
         {
             return new EntityComponents<T>(component);
+        }
+
+        public static IEnumerable<T> GetComponents<T>(IAether element)
+            where T : class, IAether
+        {
+            var component = element as IComponent;
+            if (component != null)
+                return GetComponents<T>(component);
+            else
+                return GetInterface<T>(element);
+        }
+
+        private static IEnumerable<T> GetInterface<T>(IAether element)
+          where T : class, IAether
+        {
+            T result = null;
+            if (element is T)
+                result = (T)element;
+            yield return result;
+        }
+
+        public static IEnumerable<T> GetComponents<T>(IComponent component)
+            where T : class, IAether
+        {
+            System.Diagnostics.Debug.Assert(Object.ReferenceEquals(component, component.Entity._component));
+            var entityNode = component.Entity;
+
+            do
+            {
+                if (entityNode._component is T)
+                    yield return (T)entityNode._component;
+
+                entityNode = entityNode._nextComponentNode;
+            }
+            while (!Object.ReferenceEquals(entityNode, component.Entity));
+
+            yield break;
         }
 
         #endregion

@@ -17,7 +17,9 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using tainicom.Aether.Core.Components;
 using tainicom.Aether.Elementary;
+using tainicom.Aether.Elementary.Components;
 using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Elementary.Spatial;
 
@@ -34,6 +36,12 @@ namespace tainicom.Aether.Core.Spatial
         private Matrix _localTransform = Matrix.Identity;
         private Matrix _parentWorldTransform = Matrix.Identity;
         private Matrix _worldTransform = Matrix.Identity;
+
+
+        public SpatialBase()
+        {
+        }
+
 
         #region Implement ISpatial Properties
 

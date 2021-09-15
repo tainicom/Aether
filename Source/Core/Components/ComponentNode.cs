@@ -17,6 +17,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using tainicom.Aether.Core.Spatial;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Components;
 using tainicom.Aether.Elementary.Serialization;
@@ -41,6 +42,27 @@ namespace tainicom.Aether.Core.Components
 
         ~ComponentNode()
         {
+        }
+
+        public void Add(IComponent component)
+        {
+            if (component == null)
+                throw new ArgumentNullException("component");
+
+            var componentNode = component.Entity;
+            if (!Object.ReferenceEquals(componentNode, componentNode._nextComponentNode) ||
+                !Object.ReferenceEquals(componentNode, componentNode._prevComponentNode))
+                throw new ArgumentException("component");
+
+            componentNode._prevComponentNode = this._prevComponentNode;
+            componentNode._nextComponentNode = this;
+            this._prevComponentNode._nextComponentNode = componentNode;
+            this._prevComponentNode = componentNode;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{{ComponentNode: Component:{0}}}", _component.ToString());            
         }
     }
 

@@ -128,20 +128,10 @@ namespace tainicom.Aether.Core.Walkers
             IMaterial material = visual.Material;
             if (material == null) return;
 
-            var component = visualNode as Component;
-            if (component != null)
-            {
-                foreach (var spatialNode in Component.GetEntityComponents<ISpatialNode>(component))
-                {
-                    Matrix worldTransform;
-                    SpatialManager.GetWorldTransform(spatialNode, out worldTransform);
-                    RenderVisual(visual, material, ref worldTransform);
-                }
-            }
-            else
+            foreach (var spatialNode in Component.GetComponents<ISpatialNode>(visual))
             {
                 Matrix worldTransform;
-                SpatialManager.GetWorldTransform(visual, out worldTransform);
+                SpatialManager.GetWorldTransform(spatialNode, out worldTransform);
                 RenderVisual(visual, material, ref worldTransform);
             }
         }
