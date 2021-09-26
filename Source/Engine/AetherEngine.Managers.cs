@@ -62,8 +62,10 @@ namespace tainicom.Aether.Engine
 
         private void TickManagers(GameTime gameTime)
         {
-            foreach (IAetherManager particleManager in Managers)
+            for (int i = 0; i < Managers.Count; i++)
             {
+                IAetherManager particleManager = Managers[i];
+
                 if (!particleManager.IsEnabled) continue;
                 particleManager.Tick(gameTime);
             }
@@ -71,8 +73,10 @@ namespace tainicom.Aether.Engine
 
         private void PreRenderManagers(GameTime gameTime)
         {
-            foreach (IAetherManager particleManager in Managers)
+            for (int i = 0; i < Managers.Count; i++)
             {
+                IAetherManager particleManager = Managers[i];
+
                 if (!particleManager.IsEnabled) continue;
                 if (particleManager is IRenderableManager)
                     ((IRenderableManager)particleManager).PreRender(gameTime);
@@ -81,8 +85,10 @@ namespace tainicom.Aether.Engine
 
         private void RenderManagers(GameTime gameTime)
         {
-            foreach (IAetherManager particleManager in Managers)
+            for (int i =0; i<Managers.Count; i++)
             {
+                IAetherManager particleManager = Managers[i];
+
                 if (!particleManager.IsEnabled) continue;
                 if (particleManager is IRenderableManager)
                     ((IRenderableManager)particleManager).Render(gameTime);
