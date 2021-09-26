@@ -16,7 +16,6 @@
 
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Components;
 using tainicom.Aether.Elementary.Serialization;
@@ -42,37 +41,6 @@ namespace tainicom.Aether.Core.Components
         {
         }
 
-        //void IComponent.AttachComponent<T>(T component)
-        //{
-        //    Component newComponent = null;
-
-        //    if (component is Component)
-        //    {
-        //        newComponent = component as Component;
-        //    }
-        //    else
-        //    {
-        //        newComponent = new ComponentProxy(component);
-        //    }
-
-        //    newComponent._prevComponent = this;
-        //    newComponent._nextComponent = _nextComponent;
-        //    this._nextComponent._prevComponent = newComponent;
-        //    this._nextComponent = newComponent;
-        //}
-
-        //void IComponent.DettachComponent<T>(T component)
-        //{
-        //    if (component is Component)
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //    else
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
-
         public virtual void Save(IAetherWriter writer)
         {
 
@@ -85,69 +53,12 @@ namespace tainicom.Aether.Core.Components
 
         #region static methods
 
-        [Obsolete("Use Component.GetComponents<T>(element)")]
-        public static T GetFirtComponent<T>(IAether element) where T : class
-        {
-            T result = null;
-            if (element is T)
-                return (T)element;
-
-            return result;
-        }
-
-        public static EntityComponents<T> GetEntityComponents<T>(Component component)
+        public static EntityComponentsIterator<T> GetComponents<T>(IAether element)
             where T : class, IAether
         {
-            return new EntityComponents<T>(component);
-        }
-
-        public static IEnumerable<T> GetComponents<T>(IAether element)
-            where T : class, IAether
-        {
-            var component = element as IComponent;
-            if (component != null)
-                return GetComponents<T>(component);
-            else
-                return GetInterface<T>(element);
-        }
-
-        private static IEnumerable<T> GetInterface<T>(IAether element)
-          where T : class, IAether
-        {
-            T result = null;
-            if (element is T)
-                result = (T)element;
-            yield return result;
-        }
-
-        public static IEnumerable<T> GetComponents<T>(IComponent component)
-            where T : class, IAether
-        {
-            System.Diagnostics.Debug.Assert(Object.ReferenceEquals(component, component.Entity._component));
-            var entityNode = component.Entity;
-
-            do
-            {
-                if (entityNode._component is T)
-                    yield return (T)entityNode._component;
-
-                entityNode = entityNode._nextComponentNode;
-            }
-            while (!Object.ReferenceEquals(entityNode, component.Entity));
-
-            yield break;
+            return new EntityComponentsIterator<T>(element);
         }
 
         #endregion
-    }
-
-    internal sealed class ComponentProxy : Component
-    {
-        internal IAether Value { get; private set; }
-
-        public ComponentProxy(IAether component)
-        {
-            this.Value = component;
-        }
     }
 }

@@ -15,77 +15,93 @@
 #endregion
 
 using System;
-using System.Collections.Generic;
+using tainicom.Aether.Elementary;
 
 
 namespace tainicom.Aether.Core.Components
 {
-    public struct EntityComponents<T>
-        where T : class
+    public struct EntityComponentsIterator<T>
+        where T : class, IAether
     {
-        private readonly Component component;
+        private IAether element;
 
-        internal EntityComponents(Component component)
+        public EntityComponentsIterator(IAether element)
         {
-            this.component = component;
+            this.element = element;
         }
 
-        public ComponentEnumerator<T> GetEnumerator()
+        public EntityComponentsEnumerator<T> GetEnumerator()
         {
-            return new ComponentEnumerator<T>(this.component);
+            return new EntityComponentsEnumerator<T>(element);
         }
     }
 
-    public struct ComponentEnumerator<T>
-        where T : class
+    public struct EntityComponentsEnumerator<T>
+        where T : class, IAether
     {
-        private readonly Component headComponent;
+        private readonly IAether head;
+
+        bool isComponent;
         private Component currentComponent;
 
-        internal ComponentEnumerator(Component component)
+        public EntityComponentsEnumerator(IAether element)
         {
-            this.headComponent = component;
+            this.head = element;
+            this.Current = default(T);
+
             this.currentComponent = null;
+            this.isComponent = false;
+            if (head is Component)
+                this.isComponent = true;
         }
 
-        public T Current
-        {
-            get
-            {
-                if (currentComponent is ComponentProxy)
-                    return ((ComponentProxy)currentComponent).Value as T;
-                else
-                    return currentComponent as T;
-            }
-        }
+        public T Current { get; private set; }
 
         public bool MoveNext()
         {
-            while (true)
-            {
-                if (currentComponent == null)
-                {
-                    currentComponent = headComponent;
-                }
-                else
-                {
-                    currentComponent = currentComponent._nextComponent;
-                    if (currentComponent == headComponent)
-                    {
-                        return false;
-                    }
-                }
+            if (!isComponent)
+                return MoveNextInterface();
+            else
+                return MoveNextComponent();
+        }
 
-                if (currentComponent is T)
-                    return true;
+        private bool MoveNextInterface()
+        {
+            if (Current == null && head is T)
+            {
+                Current = (T)head;
+                return true;
             }
 
             return false;
         }
 
-        public void Reset()
+        private bool MoveNextComponent()
         {
-            this.currentComponent = null;
+            while (true)
+            {
+                if (Current == null)
+                {
+                    currentComponent = (Component)head;
+                }
+                else
+                {
+                    // get next component
+                    currentComponent = currentComponent._nextComponent;                    
+                    if (Object.ReferenceEquals(currentComponent, head))
+                        break;
+                }
+
+                if (currentComponent is T)
+                {
+                    Current = (T)currentComponent.Entity._component;
+                    return true;
+                }
+            }
+
+            Current = null;
+            return false;
         }
     }
+
 }

@@ -30,7 +30,7 @@ namespace tainicom.Aether.Core.Components
         internal ComponentNode _nextComponentNode;
         internal ComponentNode _prevComponentNode;
 
-        public ComponentNode(IComponent component)
+        internal ComponentNode(IComponent component)
         {
             if (component == null)
                 throw new ArgumentNullException("component");

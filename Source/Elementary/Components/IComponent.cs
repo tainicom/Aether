@@ -23,12 +23,5 @@ namespace tainicom.Aether.Elementary.Components
     {
         ComponentNode Entity { get; }
 
-        //void AttachComponent<T>(T component)
-        //    where T : class, IAether;
-
-        //void DettachComponent<T>(T component)
-        //    where T : class, IAether;
-
-
     }
 }
