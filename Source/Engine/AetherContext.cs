@@ -43,14 +43,19 @@ namespace tainicom.Aether.Engine
             GC.SuppressFinalize(this);
         }
 
-        private void Dispose(bool disposing)
+        protected virtual void Dispose(bool disposing)
         {
-            if (_isDisposed) return;
-            OnDispose(disposing);
+            if (IsDisposed)
+                return;
+
+            if (disposing)
+            {
+
+            }
+
+
             _isDisposed = true;
         }
-        
-        protected abstract void OnDispose(bool disposing);
 
         #endregion
         

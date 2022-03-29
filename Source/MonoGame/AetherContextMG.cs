@@ -40,18 +40,21 @@ namespace tainicom.Aether.MonoGame
             this._deviceContext = new DeviceContextMG(graphicsDevice);
         }
         
-        protected override void OnDispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (!IsDisposed)
             {
-                _contentManager.Dispose();
-                _graphicsDevice.Dispose();
+                if (disposing)
+                {
+                    _contentManager.Dispose();
+                    _graphicsDevice.Dispose();
+                }
+
+                this._graphicsDevice = null;
+                this._contentManager = null;
             }
 
-            this._graphicsDevice = null;
-            this._contentManager = null;
-
-            return;
+            base.Dispose(disposing);
         }
         
         public static GraphicsDevice GetDevice(AetherEngine engine)
