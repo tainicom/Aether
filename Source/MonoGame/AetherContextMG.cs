@@ -14,6 +14,7 @@
 //   limitations under the License.
 #endregion
 
+using System;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Elementary.Visual;
@@ -23,17 +24,23 @@ namespace tainicom.Aether.MonoGame
 {
     public class AetherContextMG: AetherContext
     {
+        private IServiceProvider _serviceProvider;
         private GraphicsDevice _graphicsDevice;
         private ContentManager _contentManager;
         private IDeviceContext _deviceContext;
 
+        public IServiceProvider ServiceProvider { get { return _serviceProvider; } }
         public GraphicsDevice Device { get { return _graphicsDevice; } }
         public ContentManager Content { get { return _contentManager; } }
         
         public override IDeviceContext DeviceContext { get { return _deviceContext; } }
 
-        public AetherContextMG(GraphicsDevice graphicsDevice, ContentManager content):base()
+        public AetherContextMG(IServiceProvider serviceProvider, GraphicsDevice graphicsDevice, ContentManager content) : base()
         {
+            if (serviceProvider == null)
+                throw new NullReferenceException("serviceProvider");
+
+            this._serviceProvider = serviceProvider;
             this._graphicsDevice = graphicsDevice;
             this._contentManager = content;
 
@@ -50,6 +57,7 @@ namespace tainicom.Aether.MonoGame
                     _graphicsDevice.Dispose();
                 }
 
+                this._serviceProvider = null;
                 this._graphicsDevice = null;
                 this._contentManager = null;
             }
@@ -57,6 +65,12 @@ namespace tainicom.Aether.MonoGame
             base.Dispose(disposing);
         }
         
+        public static TService GetService<TService>(AetherEngine engine)
+            where TService : class
+        {
+            return (TService)((AetherContextMG)engine.Context).ServiceProvider.GetService(typeof(TService));
+        }
+
         public static GraphicsDevice GetDevice(AetherEngine engine)
         {
             return ((AetherContextMG)engine.Context).Device;
