@@ -35,16 +35,18 @@ namespace tainicom.Aether.MonoGame
         
         public override IDeviceContext DeviceContext { get { return _deviceContext; } }
 
-        public AetherContextMG(IServiceProvider serviceProvider, GraphicsDevice graphicsDevice, ContentManager content) : base()
+        public AetherContextMG(IServiceProvider serviceProvider, ContentManager content) : base()
         {
             if (serviceProvider == null)
                 throw new NullReferenceException("serviceProvider");
 
             this._serviceProvider = serviceProvider;
-            this._graphicsDevice = graphicsDevice;
+
+            var IGraphicsDeviceService = (IGraphicsDeviceService)serviceProvider.GetService(typeof(IGraphicsDeviceService));            
+            this._graphicsDevice = IGraphicsDeviceService.GraphicsDevice;
             this._contentManager = content;
 
-            this._deviceContext = new DeviceContextMG(graphicsDevice);
+            this._deviceContext = new DeviceContextMG(_graphicsDevice);
         }
         
         protected override void Dispose(bool disposing)
