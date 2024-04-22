@@ -7,12 +7,12 @@
     <ProjectGuid>{6926AF8D-F389-4454-8553-ACD2DBBE3DB3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>tainicom.Aether</RootNamespace>
+    <AssemblyName>Aether</AssemblyName>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <AssemblyName>Aether</AssemblyName>
     <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
