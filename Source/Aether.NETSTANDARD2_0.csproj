@@ -112,9 +112,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.Portable.9000" Version="3.8.9009">
-      <PrivateAssets>All</PrivateAssets> 
-      <NoWarn>NU1701</NoWarn>
+    <PackageReference Include="nkast.Xna.Framework" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Content" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Graphics" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Audio" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Media" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Ref" Version="3.11.9002">
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
 

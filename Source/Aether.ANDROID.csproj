@@ -141,7 +141,14 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
-    <PackageReference Include="MonoGame.Framework.Android" Version="3.6.0.1625">
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="nkast.Xna.Framework" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Content" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Graphics" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Audio" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Media" Version="3.11.9002" />
+    <PackageReference Include="nkast.Xna.Framework.Ref" Version="3.11.9002">
       <PrivateAssets>all</PrivateAssets>
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
