@@ -46,7 +46,7 @@ namespace tainicom.Aether.Core.Serialization
         
         public void Close()
         {
-            #if WINDOWS || WP7
+            #if WINDOWS
             reader.Close();
 			#else
             reader.Dispose();
@@ -171,7 +171,7 @@ namespace tainicom.Aether.Core.Serialization
                 if (!uid.Equals(UniqueID.Unknown))
                     deserialisedParticles.Add(uid, particle);
 
-                //particle = (IAetherParticle)FormatterServices.GetUninitializedObject(particleType); //this behaves the same the build in Serialisation. Not available on WP7
+                //particle = (IAetherParticle)FormatterServices.GetUninitializedObject(particleType); //this behaves the same the build in Serialisation.
                 IAetherSerialization serialisableParticle = particle as IAetherSerialization;
                 if (serialisableParticle != null)
                     serialisableParticle.Load(this);

@@ -365,9 +365,6 @@ namespace tainicom.Aether.Core.Serialization
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
-            #if WP7
-            value = new Vector3();
-            #endif
             value.X = reader.ReadSingle();
             value.Y = reader.ReadSingle();
             value.Z = reader.ReadSingle();
@@ -377,9 +374,6 @@ namespace tainicom.Aether.Core.Serialization
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
-#if WP7
-            value = new Vector4();
-#endif
             value.X = reader.ReadSingle();
             value.Y = reader.ReadSingle();
             value.Z = reader.ReadSingle();
@@ -395,9 +389,6 @@ namespace tainicom.Aether.Core.Serialization
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
-            #if WP7
-            value = new Quaternion();
-            #endif
             value.X = reader.ReadSingle();
             value.Y = reader.ReadSingle();
             value.Z = reader.ReadSingle();
@@ -453,9 +444,6 @@ namespace tainicom.Aether.Core.Serialization
             for (int i = 0; i < count; i++)
             {
                 Vector2 item;
-                #if WP7
-                item = new Vector2();
-                #endif
                 item.X = reader.ReadSingle();
                 item.Y = reader.ReadSingle();
                 values.Add(item);
@@ -472,9 +460,6 @@ namespace tainicom.Aether.Core.Serialization
             for (int i = 0; i < count; i++)
             {
                 Vector3 item;
-                #if WP7
-                item = new Vector3();
-                #endif
                 item.X = reader.ReadSingle();
                 item.Y = reader.ReadSingle();
                 item.Z = reader.ReadSingle();
@@ -501,9 +486,6 @@ namespace tainicom.Aether.Core.Serialization
         {
             //string name2 = reader.ReadString();
             //System.Diagnostics.Debug.Assert(name == name2);
-            #if WP7
-            value = new BoundingBox();
-            #endif
             value.Min.X = reader.ReadSingle();
             value.Min.Y = reader.ReadSingle();
             value.Min.Z = reader.ReadSingle();

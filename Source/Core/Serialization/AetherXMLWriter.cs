@@ -55,7 +55,7 @@ namespace tainicom.Aether.Core.Serialization
         
         public void Close()
         {
-            #if WINDOWS || WP7
+            #if WINDOWS
             writer.Close();
 			#else
             writer.Dispose();
