@@ -39,23 +39,24 @@ namespace tainicom.Aether.Core.Components
     public struct EntityComponentsEnumerator<T>
         where T : class, IAether
     {
-        private readonly IAether head;
+        private readonly IAether _head;
+        private T _current;
 
         bool isComponent;
         private Component currentComponent;
 
         public EntityComponentsEnumerator(IAether element)
         {
-            this.head = element;
-            this.Current = default(T);
+            this._head = element;
+            this._current = default(T);
 
             this.currentComponent = null;
             this.isComponent = false;
-            if (head is Component)
+            if (_head is Component)
                 this.isComponent = true;
         }
 
-        public T Current { get; private set; }
+        public T Current { get { return _current; } }
 
         public bool MoveNext()
         {
@@ -67,9 +68,9 @@ namespace tainicom.Aether.Core.Components
 
         private bool MoveNextInterface()
         {
-            if (Current == null && head is T)
+            if (_current == null && _head is T)
             {
-                Current = (T)head;
+                _current = (T)_head;
                 return true;
             }
 
@@ -82,24 +83,24 @@ namespace tainicom.Aether.Core.Components
             {
                 if (Current == null)
                 {
-                    currentComponent = (Component)head;
+                    currentComponent = (Component)_head;
                 }
                 else
                 {
                     // get next component
                     currentComponent = currentComponent._nextComponent;                    
-                    if (Object.ReferenceEquals(currentComponent, head))
+                    if (Object.ReferenceEquals(currentComponent, _head))
                         break;
                 }
 
                 if (currentComponent is T)
                 {
-                    Current = (T)currentComponent.Entity._component;
+                    _current = (T)currentComponent.Entity._component;
                     return true;
                 }
             }
 
-            Current = null;
+            _current = null;
             return false;
         }
     }
