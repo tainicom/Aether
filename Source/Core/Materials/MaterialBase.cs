@@ -29,17 +29,14 @@ namespace tainicom.Aether.Core.Materials
     abstract public class MaterialBase : IMaterial, IInitializable, IShaderMatrices, IAetherSerialization
     {   
         #region Implement IShaderMatrices Properties
-        #if(WINDOWS)
+
         [Browsable(false)]
-        #endif
         public Matrix Projection { get; set; }
-        #if(WINDOWS)
+
         [Browsable(false)]
-        #endif
         public Matrix View { get; set; }
-        #if(WINDOWS)
+
         [Browsable(false)]
-        #endif
         public Matrix World { get; set; }
         #endregion
 
@@ -47,22 +44,18 @@ namespace tainicom.Aether.Core.Materials
         IDeviceContext DeviceContext;
         protected Effect _effect;
 
-        #if(WINDOWS)
         [Category("States")]
-        #endif
         public BlendState BlendState { get; set; }
-        #if(WINDOWS)
+
         [Category("States")]
-        #endif
         public DepthStencilState DepthStencilState { get; set; }
-        #if(WINDOWS)
+
         [Category("States")]
-        #endif
         public RasterizerState RasterizerState { get; set; }
-        #if(WINDOWS)
+
         [Category("States")]
-        #endif
         public SamplerState[] SamplerStates { get; set; }
+
         public PrimitiveType PrimitiveType { get; set; }
 
         

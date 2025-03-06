@@ -40,9 +40,7 @@ namespace tainicom.Aether.Core.Cameras
             set { _aspectRatio = value; if (updateLock == 0) UpdateProjection(); }
         }
 
-        #if(WINDOWS)
         [Category("Projection")]
-        #endif
         public float FieldOfView
         {
             get { return _fieldOfView; }

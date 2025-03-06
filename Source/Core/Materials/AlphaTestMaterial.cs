@@ -14,16 +14,14 @@
 //   limitations under the License.
 #endregion
 
-#if (WINDOWS)
-using tainicom.Aether.Design.Converters;
-#endif
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using System;
 using System.ComponentModel;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Core.Materials;
 using tainicom.Aether.Core.Materials.Data;
 using tainicom.Aether.Elementary.Serialization;
-using System;
+using tainicom.Aether.Design.Converters;
 
 namespace tainicom.Aether.Core.Materials
 {
@@ -32,25 +30,17 @@ namespace tainicom.Aether.Core.Materials
         //TODO: we must hide Effect class completly.
         public AlphaTestEffect Effect { get { return (AlphaTestEffect)_effect; } } 
 
-        #if (WINDOWS)
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))] 
-        #endif
         public Vector3 DiffuseColor { get; set; }
 
-        #if (WINDOWS)
         [Category("Lighting")]
-        #endif
         public int ReferenceAlpha { get; set; }
         
-        #if (WINDOWS)
         [Category("AlphaTest")]
-        #endif
         public float Alpha { get; set; }
 
-        #if (WINDOWS)
         [Category("AlphaTest")]
-        #endif
         public bool VertexColorEnabled { get; set; }
 
         public AlphaTestMaterial():base()

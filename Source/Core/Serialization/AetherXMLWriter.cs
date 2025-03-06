@@ -27,7 +27,6 @@ using tainicom.Aether.Elementary.Managers;
 
 namespace tainicom.Aether.Core.Serialization
 {
-#if (WINDOWS)
     public class AetherXMLWriter : IAetherWriter
     {
         public readonly AetherEngine Engine;
@@ -55,11 +54,7 @@ namespace tainicom.Aether.Core.Serialization
         
         public void Close()
         {
-            #if WINDOWS
             writer.Close();
-			#else
-            writer.Dispose();
-			#endif
         }
         
         public void Write(string name, IAetherSerialization value)
@@ -423,5 +418,4 @@ namespace tainicom.Aether.Core.Serialization
             writer.WriteEndElement();
         }
     }
-#endif
 }

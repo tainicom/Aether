@@ -23,9 +23,6 @@
     <Compile Include="Core\Temporal\AetherTimer.cs" />
     <Compile Include="Core\Data\EnabledCollection.cs" />
     <Compile Include="Core\Managers\TemporalManager.cs" />
-    <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
-    <Compile Include="Core\Serialization\AetherXMLReader.cs" />
-    <Compile Include="Core\Serialization\AetherXMLWriter.cs" />
     <Compile Include="Elementary\Temporal\ITemporal.cs" />
     <Compile Include="Elementary\Temporal\ITickable.cs" />
     <Compile Include="Elementary\Extensions.cs" />
@@ -45,9 +42,16 @@
     <Compile Include="Core\Visual\PointLight.cs" />
     <Compile Include="Core\Visual\SpotLight.cs" />
     <Compile Include="Core\Serialization\AetherBinaryReader.cs" />
+    <Compile Include="Core\Serialization\AetherBinaryWriter.cs" />
+    <Compile Include="Core\Serialization\AetherXMLReader.cs" />
+    <Compile Include="Core\Serialization\AetherXMLWriter.cs" />
     <Compile Include="Core\Serialization\DefaultTypeResolver.cs" />
     <Compile Include="Core\Walkers\DepthFirstWalker.cs" />
     <Compile Include="Core\Walkers\VisualWalker.cs" />
+    <Compile Include="Design\Converters\QuaternionEditAsYawPitchRollConverter.cs" />
+    <Compile Include="Design\Converters\Vector3EditAsColorConverter.cs" />
+    <Compile Include="Design\Converters\Vector3EditConverter.cs" />
+    <Compile Include="Design\Converters\Vector4EditAsColorConverter.cs" />
     <Compile Include="Elementary\Audio\ISound.cs" />
     <Compile Include="Elementary\Cameras\ICamera.cs" />
     <Compile Include="Elementary\Cameras\ICameraNode.cs" />

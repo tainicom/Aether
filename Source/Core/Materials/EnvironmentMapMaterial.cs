@@ -14,14 +14,12 @@
 //   limitations under the License.
 #endregion
 
-#if(WINDOWS)
-using tainicom.Aether.Design.Converters;
-#endif
-using Microsoft.Xna.Framework.Graphics;
-using System.Runtime.Serialization;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Core.Materials.Data;
+using tainicom.Aether.Design.Converters;
 using tainicom.Aether.Elementary.Serialization;
 
 namespace tainicom.Aether.Core.Materials
@@ -31,52 +29,38 @@ namespace tainicom.Aether.Core.Materials
         //TODO: we must hide Effect class completly.
         public EnvironmentMapEffect Effect { get { return (EnvironmentMapEffect)_effect; } }
         
-        #if (WINDOWS)
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 DiffuseColor { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 AmbientLightColor { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 EmissiveColor { get; set; }
         
-        #if (WINDOWS)
         [Category("Lighting")]
-        #endif
         public DirectionalLightData DirectionalLight0 { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
-        #endif
         public DirectionalLightData DirectionalLight1 { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
-        #endif
         public DirectionalLightData DirectionalLight2 { get; set; }
 
-        #if (WINDOWS)
         [Category("Lighting")]
-        #endif
         public float Alpha { get; set; }
 
-        #if (WINDOWS)
         [Category("EnviromentalMap")]
-        #endif
         public float EnvironmentMapAmount { get; set; }
-        #if (WINDOWS)
+
         [Category("EnviromentalMap")]
         [TypeConverter(typeof(Vector3EditConverter))]
-        #endif
         public Vector3 EnvironmentMapSpecular { get; set; }
-        #if (WINDOWS)
+
         [Category("EnviromentalMap")]
-        #endif
         public float FresnelFactor { get; set; }
         
         public EnvironmentMapMaterial():base()

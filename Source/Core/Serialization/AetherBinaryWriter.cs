@@ -27,7 +27,6 @@ using Microsoft.Xna.Framework;
 
 namespace tainicom.Aether.Core.Serialization
 {
-#if (WINDOWS)
     public class AetherBinaryWriter : IAetherWriter
     {
         public readonly AetherEngine Engine;
@@ -409,5 +408,4 @@ namespace tainicom.Aether.Core.Serialization
             writer.Write(BoundingBox.Max.Z);
         }
     }
-#endif
 }

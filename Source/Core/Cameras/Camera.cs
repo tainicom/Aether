@@ -47,50 +47,39 @@ namespace tainicom.Aether.Core.Cameras
         #endregion fields
 
         public Camera()
-        {         
+        {
         }
         
         #region ICamera Members
 
-        #if(WINDOWS)
-        [Browsable(false)]
-        #endif
+        [System.ComponentModel.Browsable(false)]
         public Matrix View { get { return _view; } }
-        #if(WINDOWS)
-        [Browsable(false)]
-        #endif
+
+        [System.ComponentModel.Browsable(false)]
         public Matrix Projection { get { return _projection; } }
         
-        #if(WINDOWS)
-        [Category("Positioning")]
-        #endif
+        [System.ComponentModel.Category("Positioning")]
         public virtual Vector3 Position
         {
             get { return _position; }
             set { _position = value; if (updateLock == 0) UpdateView(); }
         }
 
-        #if(WINDOWS)
-        [Category("Positioning")]
-        #endif
+        [System.ComponentModel.Category("Positioning")]
         public Vector3 LookAt
         {
             get { return _lookAt; }
             set { _lookAt = value; if (updateLock == 0) UpdateView(); }
         }
 
-        #if(WINDOWS)
-        [Category("Positioning")]
-        #endif
+        [System.ComponentModel.Category("Positioning")]
         public Vector3 Up
         {
             get { return _up; }
             set { _up = value; if (updateLock == 0) UpdateView(); }
         }
 
-        #if(WINDOWS)
-        [Category("Positioning")]
-        #endif
+        [System.ComponentModel.Category("Positioning")]
         public Vector3 Forward
         {
             get
@@ -112,9 +101,7 @@ namespace tainicom.Aether.Core.Cameras
             }
         }
 
-        #if(WINDOWS)
-        [Category("Projection")]
-        #endif
+        [System.ComponentModel.Category("Projection")]
         public float NearPlane
         {
             get { return _nearPlane; }
@@ -125,9 +112,7 @@ namespace tainicom.Aether.Core.Cameras
             }
         }
 
-        #if(WINDOWS)
-        [Category("Projection")]
-        #endif
+        [System.ComponentModel.Category("Projection")]
         public float FarPlane
         {
             get { return _farPlane; }

@@ -15,20 +15,18 @@
 #endregion
 
 using System;
+using System.ComponentModel;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Linq;
 using System.Text;
-using tainicom.Aether.Core.Materials;
-using Microsoft.Xna.Framework.Graphics;
-using tainicom.Aether.Engine;
 using Microsoft.Xna.Framework;
-using System.Runtime.Serialization;
-using System.ComponentModel;
+using Microsoft.Xna.Framework.Graphics;
+using tainicom.Aether.Core.Materials;
+using tainicom.Aether.Engine;
 using tainicom.Aether.Core.Materials.Data;
 using tainicom.Aether.Elementary.Serialization;
-#if (WINDOWS)
 using tainicom.Aether.Design.Converters;
-#endif
 
 namespace tainicom.Aether.Core.Materials
 {
@@ -37,43 +35,31 @@ namespace tainicom.Aether.Core.Materials
         private SkinnedEffect Effect { get { return (SkinnedEffect)_effect; } }
         public int BoneTransformsCount { get; protected set; }
 
-        #if (WINDOWS)
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 DiffuseColor { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 AmbientLightColor { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 EmissiveColor { get; set; }
         
-        #if (WINDOWS)
         [Category("Lighting")]
-        #endif
         public DirectionalLightData DirectionalLight0 { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
-        #endif
         public DirectionalLightData DirectionalLight1 { get; set; }
-        #if (WINDOWS)
+
         [Category("Lighting")]
-        #endif
         public DirectionalLightData DirectionalLight2 { get; set; }
         
-        #if (WINDOWS)
         [Category("Lighting")]
-        #endif
         public float Alpha { get; set; }
 
-        #if (WINDOWS)
         [Category("Skinning")]
-        #endif
         public int WeightsPerVertex { get; set; }
 
 

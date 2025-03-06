@@ -14,15 +14,12 @@
 //   limitations under the License.
 #endregion
 
-#if(WINDOWS)
-using tainicom.Aether.Design.Converters;
-
-#endif
 using System;
-using Microsoft.Xna.Framework;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Xml;
+using Microsoft.Xna.Framework;
+using tainicom.Aether.Design.Converters;
 
 namespace tainicom.Aether.Core.Materials.Data
 {
@@ -32,23 +29,18 @@ namespace tainicom.Aether.Core.Materials.Data
     /// a GraphicDevice reference. So we have to keep our own copy of data
     /// and copy them to Effect.
     /// </summary>
-    #if (WINDOWS)
     [TypeConverter(typeof(ExpandableObjectConverter))]
-    #endif
     public class DirectionalLightData
-    {              
-        #if (WINDOWS)
+    {
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 DiffuseColor { get; set; }
-        #if (WINDOWS)
+
         [TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 SpecularColor { get; set; }
-        #if (WINDOWS)
+
         [TypeConverter(typeof(Vector3EditConverter))]
-        #endif
         public Vector3 Direction { get; set; }
+
         public bool Enabled { get; set; }
 
         public DirectionalLightData()

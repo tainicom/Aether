@@ -14,13 +14,11 @@
 //   limitations under the License.
 #endregion
 
-#if WINDOWS
-using tainicom.Aether.Design.Converters;
-#endif
 using System.ComponentModel;
+using Microsoft.Xna.Framework;
+using tainicom.Aether.Design.Converters;
 using tainicom.Aether.Elementary.Visual;
 using tainicom.Aether.Elementary.Serialization;
-using Microsoft.Xna.Framework;
 using tainicom.Aether.Elementary.Spatial;
 
 namespace tainicom.Aether.Core.Visual
@@ -29,19 +27,13 @@ namespace tainicom.Aether.Core.Visual
     {
         public Vector3 Position { get; set; }
         
-        #if WINDOWS
         [Category("Light"), TypeConverter(typeof(Vector3EditAsColorConverter))]
-        #endif
         public Vector3 LightSourceColor { get; set; }
 
-        #if WINDOWS
         [Category("Light")]
-        #endif
         public float Intensity { get; set; }
 
-        #if WINDOWS
         [Category("Light")]
-        #endif
         public float MaximumRadius { get; set; }
 
         public Vector3 PremultiplyColor { get { return this.LightSourceColor * this.Intensity; } }

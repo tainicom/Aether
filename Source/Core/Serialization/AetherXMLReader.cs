@@ -46,11 +46,7 @@ namespace tainicom.Aether.Core.Serialization
         
         public void Close()
         {
-            #if WINDOWS
             reader.Close();
-			#else
-            reader.Dispose();
-			#endif
         }
 
         public void Read(string name, IAetherSerialization value)
