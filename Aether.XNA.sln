@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aether.WINDOWS.XNA", "Source\Aether.WINDOWS.XNA.csproj", "{94503A24-9581-40E4-92EB-04457017BBD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aether.XNA", "Source\Aether.XNA.csproj", "{94503A24-9581-40E4-92EB-04457017BBD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
