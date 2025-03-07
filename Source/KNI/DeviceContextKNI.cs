@@ -20,13 +20,13 @@ using tainicom.Aether.Elementary.Visual;
 
 namespace tainicom.Aether.MonoGame
 {
-    public class DeviceContextMG : IDeviceContext, IGeometryVisitor
+    public class DeviceContextKNI : IDeviceContext, IGeometryVisitor
     {
         private GraphicsDevice GraphicsDevice;
         public PrimitiveType PrimitiveType { get; set; }
         
 
-        public DeviceContextMG(GraphicsDevice graphicsDevice)
+        public DeviceContextKNI(GraphicsDevice graphicsDevice)
         {            
             this.GraphicsDevice = graphicsDevice;
         }

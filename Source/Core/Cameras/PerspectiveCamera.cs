@@ -94,7 +94,7 @@ namespace tainicom.Aether.Core.Cameras
 
         public virtual void Initialize(AetherEngine engine)
         {
-            var device = AetherContextMG.GetDevice(engine);
+            var device = AetherContextKNI.GetDevice(engine);
             float width = (float)device.Viewport.Width;
             float height = (float)device.Viewport.Height;
             _aspectRatio = width / height;

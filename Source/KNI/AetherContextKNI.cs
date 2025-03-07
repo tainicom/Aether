@@ -22,7 +22,7 @@ using tainicom.Aether.Engine;
 
 namespace tainicom.Aether.MonoGame
 {
-    public class AetherContextMG: AetherContext
+    public class AetherContextKNI: AetherContext
     {
         private IServiceProvider _serviceProvider;
         private GraphicsDevice _graphicsDevice;
@@ -35,7 +35,7 @@ namespace tainicom.Aether.MonoGame
         
         public override IDeviceContext DeviceContext { get { return _deviceContext; } }
 
-        public AetherContextMG(IServiceProvider serviceProvider, ContentManager content) : base()
+        public AetherContextKNI(IServiceProvider serviceProvider, ContentManager content) : base()
         {
             if (serviceProvider == null)
                 throw new NullReferenceException("serviceProvider");
@@ -46,7 +46,7 @@ namespace tainicom.Aether.MonoGame
             this._graphicsDevice = IGraphicsDeviceService.GraphicsDevice;
             this._contentManager = content;
 
-            this._deviceContext = new DeviceContextMG(_graphicsDevice);
+            this._deviceContext = new DeviceContextKNI(_graphicsDevice);
         }
         
         protected override void Dispose(bool disposing)
@@ -70,17 +70,17 @@ namespace tainicom.Aether.MonoGame
         public static TService GetService<TService>(AetherEngine engine)
             where TService : class
         {
-            return (TService)((AetherContextMG)engine.Context).ServiceProvider.GetService(typeof(TService));
+            return (TService)((AetherContextKNI)engine.Context).ServiceProvider.GetService(typeof(TService));
         }
 
         public static GraphicsDevice GetDevice(AetherEngine engine)
         {
-            return ((AetherContextMG)engine.Context).Device;
+            return ((AetherContextKNI)engine.Context).Device;
         }
 
         public static ContentManager GetContent(AetherEngine engine)
         {
-            return ((AetherContextMG)engine.Context).Content;
+            return ((AetherContextKNI)engine.Context).Content;
         }
 
     }

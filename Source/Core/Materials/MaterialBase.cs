@@ -73,7 +73,7 @@ namespace tainicom.Aether.Core.Materials
 
         public virtual void Initialize(AetherEngine engine)
         {
-            this.GraphicsDevice = AetherContextMG.GetDevice(engine);
+            this.GraphicsDevice = AetherContextKNI.GetDevice(engine);
             this.DeviceContext = engine.Context.DeviceContext;
             CreateEffect();
         }
@@ -114,7 +114,7 @@ namespace tainicom.Aether.Core.Materials
 
         public void SetVertices<T>(IVisual visual, T[] data) where T : struct
         {
-            ((DeviceContextMG)DeviceContext).PrimitiveType = this.PrimitiveType;
+            ((DeviceContextKNI)DeviceContext).PrimitiveType = this.PrimitiveType;
             DeviceContext.SetVertices(visual, data);
         }
 
