@@ -18,7 +18,7 @@ using System;
 using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Elementary.Visual;
 
-namespace tainicom.Aether.MonoGame
+namespace tainicom.Aether.KNI
 {
     public class DeviceContextKNI : IDeviceContext, IGeometryVisitor
     {

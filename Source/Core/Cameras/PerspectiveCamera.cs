@@ -22,7 +22,7 @@ using tainicom.Aether.Elementary.Cameras;
 using tainicom.Aether.Elementary.Serialization;
 using tainicom.Aether.Engine;
 using tainicom.Aether.Maths;
-using tainicom.Aether.MonoGame;
+using tainicom.Aether.KNI;
 
 namespace tainicom.Aether.Core.Cameras
 {

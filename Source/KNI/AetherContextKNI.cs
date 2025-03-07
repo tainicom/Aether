@@ -20,7 +20,7 @@ using Microsoft.Xna.Framework.Graphics;
 using tainicom.Aether.Elementary.Visual;
 using tainicom.Aether.Engine;
 
-namespace tainicom.Aether.MonoGame
+namespace tainicom.Aether.KNI
 {
     public class AetherContextKNI: AetherContext
     {

@@ -22,7 +22,7 @@ using tainicom.Aether.Engine;
 using System.ComponentModel;
 using tainicom.Aether.Elementary;
 using tainicom.Aether.Elementary.Serialization;
-using tainicom.Aether.MonoGame;
+using tainicom.Aether.KNI;
 
 namespace tainicom.Aether.Core.Materials
 {
